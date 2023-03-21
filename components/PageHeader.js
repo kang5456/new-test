@@ -23,19 +23,17 @@ const PageHeader = () => {
     <Grid container direction="column" className={classes.container}>
       <Grid item>
         <Typography variant="h1" gutterBottom align="center">
-          Blog with Next.js and Contentful
+          slide show part
         </Typography>
       </Grid>
 
       <Grid item>
-        <Typography
+        {/* <Typography
           variant="body1"
           color="textSecondary"
           component="p"
           align="center"
         >
-          This is a statically generated blog example using Next.js and
-          Contentful.
           <br /> You can see the code&#8594;{" "}
           <a
             target="_blank"
@@ -63,18 +61,7 @@ const PageHeader = () => {
           >
             Japanese
           </a>
-          .<br />
-          Or I can make your blog. Contact me from{" "}
-          <a
-            target="_blank"
-            rel="noreferrer noopener"
-            href="https://satoruakiyama.com/contact"
-            className={classes.link}
-          >
-            here
-          </a>
-          .
-        </Typography>
+        </Typography> */}
       </Grid>
     </Grid>
   );

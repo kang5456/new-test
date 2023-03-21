@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
+// import FacebookIcon from "@material-ui/icons/Facebook";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import HomeIcon from "@material-ui/icons/Home";
 // if you wanto to add twitter
@@ -12,8 +12,8 @@ import { socialMedia } from "data/socialMedia";
 
 const useStyles = makeStyles((theme) => ({
   snsIcon: {
-    width: "30px",
-    height: "30px",
+    width: "15px",
+    height: "15px",
 
     [theme.breakpoints.down("xs")]: {
       width: "25px",
@@ -59,7 +59,7 @@ const Social = ({ color }) => {
           color={color ? "primary" : "secondary"}
         />
       </Grid>
-      <Grid
+      {/* <Grid
         item
         component={"a"}
         target="_blank"
@@ -70,8 +70,8 @@ const Social = ({ color }) => {
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
-      </Grid>
-      <Grid
+      </Grid> */}
+      {/* <Grid
         item
         component={"a"}
         target="_blank"
@@ -94,7 +94,7 @@ const Social = ({ color }) => {
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
-      </Grid>
+      </Grid> */}
       {/* add social media*/}
     </Grid>
   );
