@@ -5,4 +5,5 @@ module.exports = {
     NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN:
       process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
   },
+  swcMinify: true,
 };

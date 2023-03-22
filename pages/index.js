@@ -6,12 +6,17 @@ import { Container, Grid } from "@material-ui/core";
 
 import { getAllPosts } from "lib/index";
 
+import React from 'react';
+import SlideShow from '../components/SlideShow';
+import { getSlides } from '../lib/api';
+
 export async function getStaticProps() {
   const posts = await getAllPosts();
-  return { revalidate: 1, props: { posts } };
+  const slides = posts.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.
+  return { revalidate: 1, props: { posts, slides } };
 }
 
-export default function Index({ posts }) {
+export default function Index({ posts, slides }) {
   return (
     <>
       <Layout
@@ -22,6 +27,10 @@ export default function Index({ posts }) {
         <Container maxWidth="lg">
           {/* you can delete this component or you can use this for your page header. */}
           <PageHeader />
+
+          {/* Add SlideShow component */}
+          <SlideShow slides={slides} />
+
           {/* blog post */}
           <Grid container spacing={4}>
             {posts?.map(({ fields }) => (

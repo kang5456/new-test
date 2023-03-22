@@ -23,7 +23,7 @@ const PageHeader = () => {
     <Grid container direction="column" className={classes.container}>
       <Grid item>
         <Typography variant="h1" gutterBottom align="center">
-          slide show part
+          slide show function part
         </Typography>
       </Grid>
 
