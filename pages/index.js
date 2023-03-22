@@ -1,4 +1,5 @@
 import Post from "components/Post";
+import Opinion from "components/Opinion"; // Opinion 컴포넌트를 추가합니다.
 import Layout from "components/layout/Layout";
 import PageHeader from "components/PageHeader";
 
@@ -33,21 +34,28 @@ export default function Index({ posts, slides }) {
 
           {/* blog post */}
           <Grid container spacing={4}>
-            {posts?.map(({ fields }) => (
-              <Grid item key={fields.slug} xs={12} sm={6} md={4}>
-                <Grid container>
-                  <Post
-                    title={fields.title}
-                    subtitle={fields.subTitle}
-                    authorName={fields.author.fields.name}
-                    authorImage={fields.author.fields.image.fields.file.url}
-                    slug={fields.slug}
-                    date={fields.date}
-                    coverImage={fields.coverImage.fields.file.url}
-                  />
-                </Grid>
+            {/* 최신기사 영역 */}
+            <Grid item xs={12} md={8}>
+              <Grid container spacing={4}>
+                {posts?.map(({ fields }) => (
+                  <Grid item key={fields.slug} xs={12} sm={6} md={6}>
+                    <Post
+                      title={fields.title}
+                      subtitle={fields.subTitle}
+                      authorName={fields.author.fields.name}
+                      authorImage={fields.author.fields.image.fields.file.url}
+                      slug={fields.slug}
+                      date={fields.date}
+                      coverImage={fields.coverImage.fields.file.url}
+                    />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
+            </Grid>
+            {/* 오피니언 영역 */}
+            <Grid item xs={12} md={4}>
+              <Opinion />
+            </Grid>
           </Grid>
         </Container>
       </Layout>

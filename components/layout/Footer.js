@@ -31,13 +31,18 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
 
-  return (
+return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Grid container justify="flex-end" item xs={12}>
+        <Grid container justify="flex-start" alignItems="center">
           <Grid item>
+            <Typography variant="h5" className={classes.copylight}>
+              B.Initiative
+            </Typography>
+          </Grid>
+          <Grid item xs>
             <Social />
-          </Grid>  
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <Typography
