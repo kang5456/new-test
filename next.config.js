@@ -9,8 +9,20 @@ module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
       test: /\.m?js/,
-      resolve: {
-        fullySpecified: false,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            [
+              'next/babel',
+              {
+                'preset-env': {
+                  modules: 'commonjs',
+                },
+              },
+            ],
+          ],
+        },
       },
     });
 
