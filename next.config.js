@@ -6,4 +6,14 @@ module.exports = {
       process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
   },
   swcMinify: true,
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.module.rules.push({
+      test: /\.m?js/,
+      resolve: {
+        fullySpecified: false,
+      },
+    });
+
+    return config;
+  },
 };
