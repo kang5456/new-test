@@ -1,6 +1,7 @@
 import Link from "components/Link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Insight from "pages/insight"
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -105,6 +106,20 @@ const tabs = (
           </Link>
         </Grid>
       ))}
+      {/* <Grid item>
+        <Link href="/insight">
+          <Typography
+            className={classes.link}
+            style={{
+              fontWeight: router.pathname === "/insight" && "bold",
+              borderBottom:
+                router.pathname === "/insight" && "1px solid #757ce8",
+            }}
+          >
+            인사이트
+          </Typography>
+        </Link>
+      </Grid> */}
     </Grid>
   </>
 );
@@ -122,33 +137,57 @@ const tabs = (
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {path.map(({ name, link }) => (
-            <ListItem
-              key={link}
-              divider
-              button
-              onClick={() => {
-                setOpenDrawer(false);
-              }}
-            >
-              <ListItemText disableTypography>
-                <Link href={link}>
-                  <Typography
-                    style={{
-                      color:
-                        router.pathname === link
-                          ? "primary"
-                          : "rgb(107 107 107)",
-                      fontWeight: router.pathname === link && "bold",
-                    }}
-                  >
-                    {name}
-                  </Typography>
-                </Link>
-              </ListItemText>
-            </ListItem>
-          ))}
-        </List>
+  {path.map(({ name, link }) => (
+    <ListItem
+      key={link}
+      divider
+      button
+      onClick={() => {
+        setOpenDrawer(false);
+      }}
+    >
+      <ListItemText disableTypography>
+        <Link href={link}>
+          <Typography
+            style={{
+              color:
+                router.pathname === link
+                  ? "primary"
+                  : "rgb(107 107 107)",
+              fontWeight: router.pathname === link && "bold",
+            }}
+          >
+            {name}
+          </Typography>
+        </Link>
+      </ListItemText>
+    </ListItem>
+  ))}
+  <ListItem
+    key="/insight"
+    divider
+    button
+    onClick={() => {
+      setOpenDrawer(false);
+    }}
+  >
+    <ListItemText disableTypography>
+      <Link href="/insight">
+        <Typography
+          style={{
+            color:
+              router.pathname === "/insight"
+                ? "primary"
+                : "rgb(107 107 107)",
+            fontWeight: router.pathname === "/insight" && "bold",
+          }}
+        >
+          인사이트
+        </Typography>
+      </Link>
+    </ListItemText>
+  </ListItem>
+</List>
       </SwipeableDrawer>
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}

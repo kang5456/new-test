@@ -7,7 +7,6 @@ import theme from "theme";
 
 import 'swiper/swiper-bundle.min.css';
 
-
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 

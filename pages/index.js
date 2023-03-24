@@ -11,10 +11,6 @@ import React from 'react';
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
 
-import dynamic from 'next/dynamic';
-const Swiper = dynamic(() => import('swiper/react'), { ssr: false });
-
-
 export async function getStaticProps() {
   const posts = await getAllPosts();
   const slides = posts.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.

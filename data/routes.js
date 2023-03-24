@@ -3,7 +3,7 @@
 
 export const routes = [
   { name: "아이언플래그", link: "/ironflg" },
-  { name: "인사이트", link: "/about" },
+  { name: "인사이트", link: "/insight" },
   { name: "B.techFIN", link: "/btechfin" },
   { name: "언론", link: "/media" },
   // { name: "path name", link: "link url" }, like this

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IronFlag = () => {
+const btechfin = () => {
   const classes = useStyles();
   // use ure name
   const name = '"Your Name"';
@@ -70,4 +70,4 @@ const IronFlag = () => {
   );
 };
 
-export default IronFlag;
+export default btechfin;
