@@ -16,7 +16,8 @@ import {
   SwipeableDrawer,
   IconButton,
   Menu,
-  MenuItem
+  MenuItem,
+  Fade
 } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
@@ -122,6 +123,7 @@ const Header = () => {
               borderBottom:
                 router.pathname === "/ironflag" && "1px solid #757ce8",
             }}
+            onClick={() => router.push('/ironflag')}
           >
             아이언 플래그
           </Typography>
@@ -137,6 +139,7 @@ const Header = () => {
                 router.pathname === "/insight" && "1px solid #757ce8",
             }}
             onClick={(event) => handleDropdownMenu("insight", event)}
+            onMouseEnter={(event) => handleDropdownMenu("insight", event)}
           >
             인사이트
           </Typography>
@@ -148,10 +151,10 @@ const Header = () => {
             <MenuItem onClick={() => handleDropdownItemClick("/insight/opinion")}>
               오피니언
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/insight/report")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/insight/stories")}>
               기획 연재
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/insight")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/insight/report")}>
               업계소식
             </MenuItem>
           </Menu>
@@ -167,6 +170,7 @@ const Header = () => {
                 router.pathname === "/btechfin" && "1px solid #757ce8",
             }}
             onClick={(event) => handleDropdownMenu("btechfin", event)}
+            onMouseEnter={(event) => handleDropdownMenu("btechfin", event)}
           >
             B.TechFIN
           </Typography>
@@ -203,6 +207,7 @@ const Header = () => {
                 router.pathname === "/press" && "1px solid #757ce8",
             }}
             onClick={(event) => handleDropdownMenu("press", event)}
+            onMouseEnter={(event) => handleDropdownMenu("press", event)}
           >
             언론
           </Typography>
@@ -336,7 +341,7 @@ const Header = () => {
                     alt="logo"
                     style={{
                       height: "27px",
-                      width: "27px",
+                      width: "27px", 
                       position: "relative",
                       zIndex: 100,
                     }}
