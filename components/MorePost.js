@@ -51,10 +51,16 @@ export default function Post({
   slug,
   date,
   coverImage,
+  type, // 새로운 prop 'type'을 추가하고 기본값을 "blog"로 설정합니다.
 }) {
   const classes = useStyles();
+
+  // 'type' prop에 따라 링크를 동적으로 처리합니다.
+  const linkHref = type === "press" ? "/press/[slug]" : "/blog/[slug]";
+  const linkAs = type === "press" ? `/press/${slug}` : `/blog/${slug}`;
+
   return (
-    <Link href="/blog/[slug]" as={`/blog/${slug}`} className={classes.link}>
+    <Link href={linkHref} as={linkAs} className={classes.link}>
       <Card className={classes.root}>
         <CardMedia className={classes.media} image={coverImage} title={title} />
         <CardContent>
@@ -62,7 +68,7 @@ export default function Post({
             {title}
           </Typography>
           <Typography variant="body1" color="textSecondary" component="p">
-            {subtitle.length > 80 ? subtitle.substr(0, 80) + "..." : subtitle}
+            {subtitle && subtitle.length > 80 ? subtitle.substr(0, 80) + "..." : subtitle}
           </Typography>
         </CardContent>
         {/* if you don't need author section, delete this block */}

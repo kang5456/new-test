@@ -27,9 +27,9 @@ const SlideShow = ({ slides }) => {
       navigation
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
+      loop // 무한 슬라이드 추가
       autoplay={{
-        delay: 3000, // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
-        disableOnInteraction: false // 슬라이드 이동 후 자동 슬라이드 기능을 일시 중지할 지 여부
+        delay: 2000, // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
       }}
       
     >

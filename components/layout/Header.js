@@ -16,8 +16,7 @@ import {
   SwipeableDrawer,
   IconButton,
   Menu,
-  MenuItem,
-  Fade
+  MenuItem
 } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
@@ -148,13 +147,13 @@ const Header = () => {
             open={Boolean(anchorEl.insight)}
             onClose={(event) => handleDropdownMenu("insight", event)}
           >
-            <MenuItem onClick={() => handleDropdownItemClick("/insight/opinion")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/opinion")}>
               오피니언
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/insight/stories")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/stories")}>
               기획 연재
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/insight/report")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/report")}>
               업계소식
             </MenuItem>
           </Menu>
@@ -179,19 +178,19 @@ const Header = () => {
           open={Boolean(anchorEl.btechfin)}
           onClose={(event) => handleDropdownMenu("btechfin", event)}
           >
-            <MenuItem onClick={() => handleDropdownItemClick("/btechfin/b.gamefin")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.gamefin")}>
               B.GameFIN
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/btechfin/b.metafin")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.metafin")}>
               B.MetaFIN
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/btechfin/b.enterfin")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.enterfin")}>
               B.EnterFIN
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/btechfin/b.esgfin")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.esgfin")}>
               B.ESGFIN
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/btechfin/b.isp")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.isp")}>
               B.ISP
             </MenuItem>
           </Menu>
@@ -216,13 +215,13 @@ const Header = () => {
             open={Boolean(anchorEl.press)}
             onClose={(event) => handleDropdownMenu("press", event)}
           >
-            <MenuItem onClick={() => handleDropdownItemClick("/press/release")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/release")}>
               보도자료
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/press/media")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/media")}>
               미디어
             </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/press/ir")}>
+            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/ir")}>
               IR
             </MenuItem>
           </Menu>
@@ -230,82 +229,6 @@ const Header = () => {
       </Grid>
     </>
   );
-
-
-//   const drawer = (
-//     <>
-//       <SwipeableDrawer
-//         disableBackdropTransition={!iOS}
-//         disableDiscovery={iOS}
-//         open={openDrawer}
-//         onClose={() => setOpenDrawer(false)}
-//         onOpen={() => setOpenDrawer(true)}
-//         classes={{ paper: classes.drawer }}
-//         anchor="right"
-//       >
-//         <div className={classes.toolbarMargin} />
-//         <List disablePadding>
-//   {path.map(({ name, link }) => (
-//     <ListItem
-//       key={link}
-//       divider
-//       button
-//       onClick={() => {
-//         setOpenDrawer(false);
-//       }}
-//     >
-//       <ListItemText disableTypography>
-//         <Link href={link}>
-//           <Typography
-//             style={{
-//               color:
-//                 router.pathname === link
-//                   ? "primary"
-//                   : "rgb(107 107 107)",
-//               fontWeight: router.pathname === link && "bold",
-//             }}
-//           >
-//             {name}
-//           </Typography>
-//         </Link>
-//       </ListItemText>
-//     </ListItem>
-//   ))}
-//   <ListItem
-//     key="/insight"
-//     divider
-//     button
-//     onClick={() => {
-//       setOpenDrawer(false);
-//     }}
-//   >
-//     <ListItemText disableTypography>
-//       <Link href="/insight">
-//         <Typography
-//           style={{
-//             color:
-//               router.pathname === "/insight"
-//                 ? "primary"
-//                 : "rgb(107 107 107)",
-//             fontWeight: router.pathname === "/insight" && "bold",
-//           }}
-//         >
-//           인사이트
-//         </Typography>
-//       </Link>
-//     </ListItemText>
-//   </ListItem>
-// </List>
-//       </SwipeableDrawer>
-//       <IconButton
-//         onClick={() => setOpenDrawer(!openDrawer)}
-//         disableRipple
-//         className={classes.drawerIconContainer}
-//       >
-//         <MenuIcon className={classes.drawerIcon} />
-//       </IconButton>
-//     </>
-//   );
 
   return (
     <>

@@ -43,7 +43,7 @@ export default function Index({ posts }) {
                       authorImage={fields.author.fields.image.fields.file.url}
                       slug={fields.slug}
                       date={fields.date}
-                      coverImage={fields.coverImage.fields.file.url}
+                      coverImage={fields.cover.fields.file.url}
                     />
                   </Grid>
                 ))}

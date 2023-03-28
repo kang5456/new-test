@@ -14,13 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogHeader = ({
+const Header = ({
   title,
   subtitle,
   authorName,
   authorImage,
   date,
   coverImage,
+  type,
 }) => {
   const classes = useStyles();
   return (
@@ -29,18 +30,27 @@ const BlogHeader = ({
         <Grid item>
           <Typography variant="h1">{title}</Typography>
         </Grid>
-        <Grid item container wrap="nowrap" alignItems="center" spacing={3}>
+        {type && (
           <Grid item>
-            <Avatar
-              aria-label="avator image"
-              className={classes.avatar}
-              src={authorImage}
-            />
+            <Typography>{type}</Typography>
           </Grid>
-          <Grid item container direction="column">
+        )}
+        <Grid item container wrap="nowrap" alignItems="center" spacing={3}>
+          {authorImage && (
             <Grid item>
-              <Typography>{authorName}</Typography>
+              <Avatar
+                aria-label="avator image"
+                className={classes.avatar}
+                src={authorImage}
+              />
             </Grid>
+          )}
+          <Grid item container direction="column">
+            {authorName && (
+              <Grid item>
+                <Typography>{authorName}</Typography>
+              </Grid>
+            )}
             <Grid item>
               <Typography color="textSecondary">
                 {moment(date).format("MMMM Do YYYY")}
@@ -51,12 +61,14 @@ const BlogHeader = ({
         <Grid item>
           <img src={coverImage} style={{ height: "auto", width: "100%" }} />
         </Grid>
-        <Grid item>
-          <Typography variant="h2">{subtitle}</Typography>
-        </Grid>
+        {subtitle && (
+          <Grid item>
+            <Typography variant="h2">{subtitle}</Typography>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );
 };
 
-export default BlogHeader;
+export default Header;
