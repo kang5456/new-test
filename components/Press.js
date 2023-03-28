@@ -25,33 +25,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Press = ({ title, type, cover, author, content, order, slug }) => {
-    const classes = useStyles();
-    const coverUrl = cover?.fields?.file?.url;
+const Press = ({ title, type, coverImage, author, content, order, slug }) => {
+  const classes = useStyles();
 
-    // 클릭시 상세 페이지로 이동하는 링크
-    const linkHref = type === "press" ? "/press/[slug]" : "/blog/[slug]";
-    const linkAs = type === "press" ? `/press/${slug}` : `/blog/${slug}`;
-  
-    return (
-      <Link href={linkHref} as={linkAs}>
-        <Card className={classes.root}>
-          <CardHeader title={title} />
-          {coverUrl && (
-            <CardMedia
-              className={classes.media}
-              image={`https:${coverUrl}`}
-              title={title}
-            />
-          )}
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="div">
-              {documentToReactComponents(content)}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Link>
-    );
-  };
+  // 클릭시 상세 페이지로 이동하는 링크
+  const linkHref = type === "press" ? "/press/[slug]" : "/blog/[slug]";
+  const linkAs = type === "press" ? `/press/${slug}` : `/blog/${slug}`;
 
-  export default Press;
+  return (
+    <Link href={linkHref} as={linkAs}>
+      <Card className={classes.root}>
+        <CardHeader title={title} />
+        {coverImage && (
+          <CardMedia
+            className={classes.media}
+            image={`https:${coverImage}`}
+            title={title}
+          />
+        )}
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="div">
+            {documentToReactComponents(content)}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+};
+
+export default Press;

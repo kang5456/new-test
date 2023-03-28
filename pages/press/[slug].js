@@ -5,7 +5,6 @@ import Layout from "components/layout/Layout";
 import PressHeader from "components/BlogHeader";
 import PressBody from "components/BlogBody";
 import MorePress from "components/MorePost";
-import ShareButton from "components/ShareButton";
 
 import { getPressBySlug, getMorePress, getAllPressWithSlug } from "lib/index";
 
@@ -20,8 +19,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const press = await getPressBySlug(params.title);
-  const morePress = await getMorePress(params.title);
+  const press = await getPressBySlug(params.slug); // 수정
+  const morePress = await getMorePress(params.slug); // 수정
+  
   return {
     props: {
       press: press ? press : null,
@@ -85,15 +85,15 @@ const Press = ({ press, morePress }) => {
           {morePress?.map(({ fields }) => (
             <Grid item key={fields.title} xs={12} md={4}>
               <Grid container>
-              <MorePress
-                title={press?.fields.title}
-                subtitle={press?.fields.subTitle}
-                authorName={press?.fields.author?.name}
-                authorImage={press?.fields.author?.image?.fields?.file?.url}
-                slug={press?.fields.slug}
-                date={press?.fields.date}
-                coverImage={press?.fields.cover.fields.file.url}
-              />
+                <MorePress
+                  title={fields.title} // 수정
+                  subtitle={fields.subTitle} // 수정
+                  authorName={fields.author?.name} // 수정
+                  authorImage={fields.author?.image?.fields?.file?.url} // 수정
+                  slug={fields.slug} // 수정
+                  date={fields.date} // 수정
+                  coverImage={fields.cover.fields.file.url} // 수정
+                />
               </Grid>
             </Grid>
           ))}
