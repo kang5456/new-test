@@ -1,6 +1,8 @@
 import Layout from "components/layout/Layout";
 import Post from "components/Post";
 import PageHeader from "components/PageHeader";
+import Press from 'components/Press';
+import { getAllPress } from 'lib/index';
 
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 
@@ -9,11 +11,11 @@ import { getAllPosts } from "lib/index";
 import React from 'react';
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
-  return { revalidate: 1, props: { posts } };
+  const press = await getAllPress();
+  return { revalidate: 1, props: { press } };
 }
 
-export default function Index({ posts }) {
+export default function Index({ press }) {
   return (
     <>
       <Layout
@@ -35,13 +37,13 @@ export default function Index({ posts }) {
             <Grid item xs={12}>
               <Grid container spacing={4} justifyContent="center">
                 {posts?.map(({ fields }) => (
-                  <Grid item key={fields.slug} xs={12} sm={6} md={6}>
+                  <Grid item key={fields.title} xs={12} sm={6} md={6}>
                     <Post
                       title={fields.title}
                       subtitle={fields.subTitle}
                       authorName={fields.author.fields.name}
                       authorImage={fields.author.fields.image.fields.file.url}
-                      slug={fields.slug}
+                      slug={fields.title}
                       date={fields.date}
                       coverImage={fields.cover.fields.file.url}
                     />
