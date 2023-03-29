@@ -19,8 +19,8 @@ export default function Release({ press }) {
       <Container maxWidth="md">
         <Grid container spacing={4} justify="center">
           <Grid item xs={8}>
-            <Typography variant="h4" component="h1" align="center" gutterBottom>
-              - Latest Release -
+            <Typography variant="h4" component="h1" align="left" gutterBottom>
+              언론
             </Typography>
           </Grid>
 
@@ -31,12 +31,12 @@ export default function Release({ press }) {
                   <Grid item key={fields.title} xs={12} sm={6} md={6}>
                     <Press
                       title={fields.title}
-                      type={fields.type}
+                      type="press" // 이 부분을 추가합니다.
                       coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
                       author={fields.author}
                       content={fields.content}
                       order={fields.order}
-                      slug={fields.slug}
+                      slug={fields.title}
                     />
                   </Grid>
                 ))}
