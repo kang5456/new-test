@@ -5,6 +5,8 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { AppBar, Toolbar, Typography, Button, makeStyles } from "@material-ui/core";
 import theme from "theme";
+import { SSRProvider } from '@react-aria/ssr';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import 'swiper/swiper-bundle.min.css';
 
@@ -50,11 +52,13 @@ export default function MyApp(props) {
         
       </Head>
 
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <SSRProvider>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </SSRProvider>
     </React.Fragment>
   );
 }

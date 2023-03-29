@@ -18,6 +18,11 @@ import {
   Menu,
   MenuItem
 } from "@material-ui/core";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+} from "react-bootstrap";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
 import MenuIcon from "@material-ui/icons/Menu";
@@ -110,173 +115,66 @@ const Header = () => {
 
   const path = routes;
 
-  const tabs = (
-    <>
-      <Grid container justify="center" spacing={2}>
-        {/* 아이언 플래그 탭 */}
-        <Grid item>
-          <Typography
-            className={classes.link}
-            style={{
-              fontWeight: router.pathname === "/ironflag" && "bold",
-              borderBottom:
-                router.pathname === "/ironflag" && "1px solid #757ce8",
-            }}
-            onClick={() => router.push('/ironflag')}
-          >
-            아이언 플래그
-          </Typography>
+  const navbar = (
+    <Navbar expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="/">
+        <Grid container wrap="nowrap" spacing={1} alignItems="flex-end">
+          <Grid item>
+            <Typography
+              style={{
+                color: "#ffff",
+                fontWeight: "bold",
+                fontSize: "1.75em",
+                position: "relative",
+                zIndex: 100,
+              }}
+            >
+              BlogTest
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img
+              src="/favicon-32x32.png"
+              alt="logo"
+              style={{
+                height: "27px",
+                width: "27px",
+                position: "relative",
+                zIndex: 100,
+              }}
+            />
+          </Grid>
         </Grid>
-
-        {/* 인사이트 탭 */}
-        <Grid item>
-          <Typography
-            className={classes.link}
-            style={{
-              fontWeight: router.pathname === "/insight" && "bold",
-              borderBottom:
-                router.pathname === "/insight" && "1px solid #757ce8",
-            }}
-            onClick={(event) => handleDropdownMenu("insight", event)}
-            onMouseEnter={(event) => handleDropdownMenu("insight", event)}
-          >
-            인사이트
-          </Typography>
-          <Menu
-            anchorEl={anchorEl.insight}
-            open={Boolean(anchorEl.insight)}
-            onClose={(event) => handleDropdownMenu("insight", event)}
-          >
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/opinion")}>
-              오피니언
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/stories")}>
-              기획 연재
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/insight/report")}>
-              업계소식
-            </MenuItem>
-          </Menu>
-        </Grid>
-
-        {/* btechfin 탭 */}
-        <Grid item>
-          <Typography
-            className={classes.link}
-            style={{
-              fontWeight: router.pathname === "/btechfin" && "bold",
-              borderBottom:
-                router.pathname === "/btechfin" && "1px solid #757ce8",
-            }}
-            onClick={(event) => handleDropdownMenu("btechfin", event)}
-            onMouseEnter={(event) => handleDropdownMenu("btechfin", event)}
-          >
-            B.TechFIN
-          </Typography>
-          <Menu
-          anchorEl={anchorEl.btechfin}
-          open={Boolean(anchorEl.btechfin)}
-          onClose={(event) => handleDropdownMenu("btechfin", event)}
-          >
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.gamefin")}>
-              B.GameFIN
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.metafin")}>
-              B.MetaFIN
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.enterfin")}>
-              B.EnterFIN
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.esgfin")}>
-              B.ESGFIN
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/btechfin/b.isp")}>
-              B.ISP
-            </MenuItem>
-          </Menu>
-        </Grid>
-
-        {/* 언론 탭 */}
-        <Grid item>
-          <Typography
-            className={classes.link}
-            style={{
-              fontWeight: router.pathname === "/press" && "bold",
-              borderBottom:
-                router.pathname === "/press" && "1px solid #757ce8",
-            }}
-            onClick={(event) => handleDropdownMenu("press", event)}
-            onMouseEnter={(event) => handleDropdownMenu("press", event)}
-          >
-            언론
-          </Typography>
-          <Menu
-            anchorEl={anchorEl.press}
-            open={Boolean(anchorEl.press)}
-            onClose={(event) => handleDropdownMenu("press", event)}
-          >
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/release")}>
-              보도자료
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/media")}>
-              미디어
-            </MenuItem>
-            <MenuItem onClick={() => handleDropdownItemClick("/posts/press/ir")}>
-              IR
-            </MenuItem>
-          </Menu>
-        </Grid>
-      </Grid>
-    </>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mx-auto">
+          <Nav.Link href="/ironflag">아이언 플래그</Nav.Link>
+          <NavDropdown title="인사이트" id="collapsible-nav-dropdown-insight">
+            <NavDropdown.Item href="/posts/insight/opinion">오피니언</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/insight/stories">기획 연재</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/insight/report">업계소식</NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="B.TechFIN" id="collapsible-nav-dropdown-btechfin">
+            <NavDropdown.Item href="/posts/btechfin/b.gamefin">B.GameFIN</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/btechfin/b.metafin">B.MetaFIN</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/btechfin/b.enterfin">B.EnterFIN</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/btechfin/b.esgfin">B.ESGFIN</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/btechfin/b.isp">B.ISP</NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="언론" id="collapsible-nav-dropdown-press">
+            <NavDropdown.Item href="/posts/press/release">보도자료</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/press/media">미디어</NavDropdown.Item>
+            <NavDropdown.Item href="/posts/press/ir">IR</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 
   return (
     <>
-      <ElevationScroll>
-        <AppBar className={classes.appBar}>
-          <Toolbar
-            disableGutters
-            style={{
-              maxWidth: "1280px",
-              margin: "0 auto",
-              width: "100%",
-              padding: matches ? "0 16px" : "24px",
-            }}
-          >
-            <Link href="/">
-              <Grid container wrap="nowrap" spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <Typography
-                    style={{
-                      color: "#fff",
-                      fontWeight: "bold",
-                      fontSize: "1.75em",
-                      position: "relative",
-                      zIndex: 100,
-                    }}
-                  >
-                    BlogTest
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <img
-                    src="/favicon-32x32.png"
-                    alt="logo"
-                    style={{
-                      height: "27px",
-                      width: "27px", 
-                      position: "relative",
-                      zIndex: 100,
-                    }}
-                  />
-                </Grid>
-              </Grid>
-            </Link>
-            {matches ? drawer : tabs}
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-
+      {navbar}
       <div className={classes.toolbarMargin} />
     </>
   );
