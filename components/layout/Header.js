@@ -80,6 +80,30 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.info.main,
     },
   },
+  navItem: {
+    fontSize: "1.2em", // 글씨 크기 조절
+    margin: "0 10px", // 간격 조절
+    color: "#f5f5f5", // 글씨 색상 조절
+    minHeight: '10px', // 원하는 높이로 변경
+    "&:hover": {
+      color: "#ff9800", // 마우스를 올렸을 때 글씨 색상 조절
+    },
+  },
+  dropdownMenu: {
+    minWidth: "30px", // 최소 너비 조절
+    width: "auto", // 너비를 자동으로 조절
+    maxHeight: "250px", // 최대 높이 조절
+    overflowY: "auto", // 높이가 최대 높이를 초과할 경우 스크롤 표시
+    padding: "0px", // 패딩 조절
+  },
+  navDropdown: {
+    position: "relative",
+  },
+  navDropdownMenu: {
+    position: "absolute",
+    left: "0",
+    top: "100%",
+  },
 }));
 
 const Header = () => {
@@ -89,25 +113,11 @@ const Header = () => {
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
  // 드롭다운 메뉴를 열고 닫기 위한 상태
- const [anchorEl, setAnchorEl] = useState({
-  insight: null,
-  btechfin: null,
-  press: null
+ const [dropdownOpen, setDropdownOpen] = useState({
+  insight: false,
+  btechfin: false,
+  press: false,
 });
-
-  // 드롭다운 메뉴를 열거나 닫는 함수
-  const handleDropdownMenu = (menuName, event) => {
-    setAnchorEl((prevAnchorEl) => ({
-      ...prevAnchorEl,
-      [menuName]: prevAnchorEl[menuName] ? null : event.currentTarget
-    }));
-  };
-
-  // 드롭다운 메뉴 항목을 클릭했을 때 동작하는 함수
-  const handleDropdownItemClick = (url) => {
-    router.push(url);
-    setAnchorEl({ insight: null, btechfin: null, press: null });
-  };
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -116,7 +126,7 @@ const Header = () => {
   const path = routes;
 
   const navbar = (
-    <Navbar expand="lg" bg="dark" variant="dark">
+    <Navbar expand="lg" bg="dark" variant="dark" className="navbar-hover">
       <Navbar.Brand href="/">
         <Grid container wrap="nowrap" spacing={1} alignItems="flex-end">
           <Grid item>
@@ -148,27 +158,61 @@ const Header = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mx-auto">
-          <Nav.Link href="/ironflag">아이언 플래그</Nav.Link>
-          <NavDropdown title="인사이트" id="collapsible-nav-dropdown-insight">
-            <NavDropdown.Item href="/posts/insight/opinion">오피니언</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/insight/stories">기획 연재</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/insight/report">업계소식</NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="B.TechFIN" id="collapsible-nav-dropdown-btechfin">
-            <NavDropdown.Item href="/posts/btechfin/b.gamefin">B.GameFIN</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/btechfin/b.metafin">B.MetaFIN</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/btechfin/b.enterfin">B.EnterFIN</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/btechfin/b.esgfin">B.ESGFIN</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/btechfin/b.isp">B.ISP</NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="언론" id="collapsible-nav-dropdown-press">
-            <NavDropdown.Item href="/posts/press/release">보도자료</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/press/media">미디어</NavDropdown.Item>
-            <NavDropdown.Item href="/posts/press/ir">IR</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
+  <Nav className="mx-auto">
+    <Nav.Link className={classes.navItem} href="/ironflag">아이언플래그</Nav.Link>
+
+    <Nav.Item
+      onMouseEnter={() => setDropdownOpen({ ...dropdownOpen, insight: true })}
+      onMouseLeave={() => setDropdownOpen({ ...dropdownOpen, insight: false })}
+    >
+      <Nav.Link href="/insight" className={classes.navItem} id="collapsible-nav-dropdown-insight">인사이트</Nav.Link>
+      <NavDropdown
+        className={classes.navDropdown}
+        show={dropdownOpen.insight}
+        menuAlign={{ lg: 'center' }}
+      >
+        <NavDropdown.Item href="/posts/insight/opinion">오피니언</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/insight/stories">기획 연재</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/insight/report">업계소식</NavDropdown.Item>
+      </NavDropdown>
+    </Nav.Item>
+
+    <Nav.Item
+      onMouseEnter={() => setDropdownOpen({ ...dropdownOpen, btechfin: true })}
+      onMouseLeave={() => setDropdownOpen({ ...dropdownOpen, btechfin: false })}
+    >
+      <Nav.Link href="/btechfin" className={classes.navItem} id="collapsible-nav-dropdown-btechfin">B.TechFIN</Nav.Link>
+      <NavDropdown
+        className={classes.navDropdown}
+        show={dropdownOpen.btechfin}
+        menuAlign={{ lg: 'center' }}
+      >
+        <NavDropdown.Item href="/posts/btechfin/b.gamefin">B.GameFIN</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/btechfin/b.metafin">B.MetaFIN</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/btechfin/b.enterfin">B.EnterFIN</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/btechfin/b.esgfin">B.ESGFIN</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/btechfin/b.isp">B.ISP</NavDropdown.Item>
+      </NavDropdown>
+    </Nav.Item>
+
+    <Nav.Item
+      onMouseEnter={() => setDropdownOpen({ ...dropdownOpen, press: true })}
+      onMouseLeave={() => setDropdownOpen({ ...dropdownOpen, press: false })}
+    >
+      <Nav.Link href="/press" className={classes.navItem} id="collapsible-nav-dropdown-press">언론</Nav.Link>
+      <NavDropdown
+        className={classes.navDropdown}
+        show={dropdownOpen.press}
+        menuAlign={{ lg: 'center' }}
+      >
+        <NavDropdown.Item href="/posts/press/release">보도자료</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/press/media">미디어</NavDropdown.Item>
+        <NavDropdown.Item href="/posts/press/ir">IR</NavDropdown.Item>
+      </NavDropdown>
+    </Nav.Item>
+  </Nav>
+</Navbar.Collapse>
+
     </Navbar>
   );
 

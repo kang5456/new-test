@@ -7,7 +7,7 @@ import { AppBar, Toolbar, Typography, Button, makeStyles } from "@material-ui/co
 import theme from "theme";
 import { SSRProvider } from '@react-aria/ssr';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import "../styles/styles.css"; // 기존 import 문 아래에 추가
 import 'swiper/swiper-bundle.min.css';
 
 export default function MyApp(props) {
