@@ -40,12 +40,12 @@ export default function Index({ press }) {
                   <Grid item key={fields.title} xs={12} sm={6} md={6}>
                     <Press
                       title={fields.title}
-                      subtitle={fields.subTitle}
-                      authorName={fields.author.fields.name}
-                      authorImage={fields.author.fields.image.fields.file.url}
+                      type="press" // 이 부분을 추가합니다.
+                      coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                      author={fields.author}
+                      content={fields.content}
+                      order={fields.order}
                       slug={fields.title}
-                      date={fields.date}
-                      coverImage={fields.cover.fields.file.url}
                     />
                   </Grid>
                 ))}
