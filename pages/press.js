@@ -36,9 +36,9 @@ export default function Index({ press }) {
             {/* 최신기사 영역 */}
             <Grid item xs={12}>
               <Grid container spacing={4} justifyContent="center">
-                {posts?.map(({ fields }) => (
+                {press?.map(({ fields }) => (
                   <Grid item key={fields.title} xs={12} sm={6} md={6}>
-                    <Post
+                    <Press
                       title={fields.title}
                       subtitle={fields.subTitle}
                       authorName={fields.author.fields.name}
