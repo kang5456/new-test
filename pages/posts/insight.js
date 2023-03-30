@@ -1,6 +1,5 @@
 import Layout from "components/layout/Layout";
 import Post from "components/Post";
-import PageHeader from "components/PageHeader";
 
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 

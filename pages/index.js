@@ -1,11 +1,11 @@
 import Post from "components/Post";
 import Opinion from "components/Opinion"; // Opinion 컴포넌트를 추가합니다.
 import Layout from "components/layout/Layout";
-import PageHeader from "components/PageHeader";
+
 
 import { Container, Grid } from "@material-ui/core";
 
-import { getAllPosts } from "lib/index";
+import { getAllPosts, getAllInsight } from "lib/index"; // Import getAllPosts and getAllInsight
 
 import React from 'react';
 import SlideShow from '../components/SlideShow';
@@ -13,21 +13,18 @@ import { getSlides } from '../lib/api';
 
 export async function getStaticProps() {
   const posts = await getAllPosts();
-  const slides = posts.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.
+  const insights = await getAllInsight(); // 인사이트 데이터를 가져옵니다.
+  const slides = insights.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.
   return { revalidate: 1, props: { posts, slides } };
 }
 
 export default function Index({ posts, slides }) {
   return (
     <>
-      <Layout
-        // type your page title and page description.
-        title="Blog with Next.js and Contentful"
-        description="This is a Blog Demo with Next.js and Contentful. You can see the code in github. And you can use the code to make your own blog. "
-      >
+      <Layout>
         <Container maxWidth="lg">
           {/* you can delete this component or you can use this for your page header. */}
-          <PageHeader />
+          {/* <PageHeader /> */}
 
           {/* Add SlideShow component */}
           <SlideShow slides={slides} />

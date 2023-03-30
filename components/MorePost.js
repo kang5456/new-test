@@ -51,13 +51,25 @@ export default function Post({
   slug,
   date,
   coverImage,
-  type, // 새로운 prop 'type'을 추가하고 기본값을 "blog"로 설정합니다.
+  type = "blog", // 새로운 prop 'type'을 추가하고 기본값을 "blog"로 설정합니다.
 }) {
   const classes = useStyles();
 
   // 'type' prop에 따라 링크를 동적으로 처리합니다.
-  const linkHref = type === "press" ? "/press/[slug]" : "/blog/[slug]";
-  const linkAs = type === "press" ? `/press/${slug}` : `/blog/${slug}`;
+  let linkHref, linkAs;
+  switch (type) {
+    case "press":
+      linkHref = "/press/[slug]";
+      linkAs = `/press/${slug}`;
+      break;
+    case "insight":
+      linkHref = "/insight/[slug]";
+      linkAs = `/insight/${slug}`;
+      break;
+    default:
+      linkHref = "/blog/[slug]";
+      linkAs = `/blog/${slug}`;
+  }
 
   return (
     <Link href={linkHref} as={linkAs} className={classes.link}>

@@ -8,11 +8,11 @@
 }
 
 .dropdown-menu {
-  min-width: 30px;
+  min-width: 20px;
   width: auto;
   max-height: 250px;
   overflow-y: auto;
-  padding: 5px;
+  padding: 2px;
 }
 
 .navbar-dark .navbar-nav .nav-link.dropdown-toggle::after {
