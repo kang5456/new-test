@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-
 import styles from './SlideShow.module.css';
 
 const SlideShow = ({ slides }) => {

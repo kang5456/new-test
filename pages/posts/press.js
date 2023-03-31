@@ -1,14 +1,9 @@
 import Layout from "components/layout/Layout";
-import Post from "components/Post";
-import PageHeader from "components/PageHeader";
 import Press from 'components/Press';
 import { getAllPress } from 'lib/index';
-
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
-
-import { getAllPosts } from "lib/index";
-
 import React from 'react';
+import { useState } from "react";
 
 export async function getStaticProps() {
   const press = await getAllPress();
@@ -16,13 +11,24 @@ export async function getStaticProps() {
 }
 
 export default function Index({ press }) {
+
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수
+  const postsPerPage = 10; // 한 페이지당 보여줄 게시글 수
+
+  // 현재 페이지에 보여줄 게시글의 시작/끝 index 계산
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = press.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
+
+  // 페이지 번호 목록을 만드는 함수
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(press.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <>
-      <Layout
-        // type your page title and page description.
-        title="Blog with Next.js and Contentful"
-        description="This is a Blog Demo with Next.js and Contentful. You can see the code in github. And you can use the code to make your own blog. "
-      >
+      <Layout>
         <Container maxWidth="lg">
           {/* you can delete this component or you can use this for your page header. */}
           <Grid item>
@@ -50,6 +56,16 @@ export default function Index({ press }) {
                   </Grid>
                 ))}
               </Grid>
+
+              {/* 페이지 번호 목록을 출력 */}
+              <Grid container spacing={2} justify="center" style={{ marginTop: '2rem' }}>
+                {pageNumbers.map((number) =>(
+                  <Grid item key={number}>
+                  <button onClick={() => setCurrentPage(number)}>{number}</button>
+                </Grid>
+                ))}
+              </Grid>
+
             </Grid>
           </Grid>
         </Container>
