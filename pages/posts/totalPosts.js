@@ -18,7 +18,7 @@ export default function Report({ insights }) {
         <Grid container spacing={4} justify="center">
           <Grid item xs={8}>
             <Typography variant="h4" component="h1" align="left" gutterBottom>
-              인사이트
+              전체기사
             </Typography>
           </Grid>
 

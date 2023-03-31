@@ -2,11 +2,9 @@ import Post from "components/Post";
 import Opinion from "components/Opinion"; // Opinion 컴포넌트를 추가합니다.
 import Layout from "components/layout/Layout";
 import Insight from "components/Insight";
-
+import { useRouter } from 'next/router';
 import { Container, Grid } from "@material-ui/core";
-
 import { getAllPosts, getAllInsight } from "lib/index"; // Import getAllPosts and getAllInsight
-
 import React from 'react';
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
@@ -19,11 +17,15 @@ export async function getStaticProps() {
 }
 
 export default function Index({ posts, insights, slides }) {
+  const router = useRouter();
+  const handleClick = (title) => {
+    router.push('/posts/totalPosts');
+  }
+  
   return (
     <>
       <Layout>
         <Container maxWidth="lg">
-          {/* you can delete this component or you can use this for your page header. */}
           {/* <PageHeader /> */}
 
           {/* Add SlideShow component */}
@@ -48,7 +50,24 @@ export default function Index({ posts, insights, slides }) {
                   </Grid>
                 ))}
               </Grid>
+              
+              <Grid item xs={12} style={{ textAlign: 'center', marginTop: '20px' }}>
+                <button
+                  onClick={() => handleClick()}
+                  style={{
+                    backgroundColor: '#fff',
+                    color: '#333',
+                    padding: '8px 16px',
+                    borderRadius: '4px',
+                    border: '1px solid #ccc',
+                    cursor: 'pointer',
+                  }}
+                  >
+                  더보기
+                </button>
+              </Grid>
             </Grid>
+
             {/* 오피니언 영역 */}
             <Grid item xs={12} md={4}>
               <Opinion />
