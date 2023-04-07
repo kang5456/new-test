@@ -45,4 +45,25 @@
     font-size: 14px;
     font-weight: 700;
   }
+
+  .noPressContainer {
+    fill: #aaaaaa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }
+  
+  .noPressImage {
+    fill: #aaaaaa;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 16px;
+  }
+
+  .noPressText {
+    color: #aaaaaa;
+  }
+  
   

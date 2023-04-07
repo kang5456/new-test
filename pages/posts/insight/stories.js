@@ -1,51 +1,52 @@
-import Layout from "components/layout/Layout";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Layout from 'components/layout/Layout';
+import Press from 'components/Press';
+import { Container, Grid, Typography } from '@material-ui/core';
+import { getAllPress, getMoreInsight } from 'lib/index';
 
-import { Container, Grid, Typography, Avatar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+export async function getStaticProps() {
+  // const press = await getAllPress();
+  const stories = await getMoreInsight(null, "stories"); // title 필요하지 않으면 null로
+  return { props: { stories }, revalidate: 1 };
+}
 
-const Stories = () => {
-  const [posts, setPosts] = useState([]);
-  const [noPosts, setNoPosts] = useState(false);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      // 게시물 데이터를 가져오는 API 호출을 여기에 작성합니다.
-      // 예시: const response = await fetch('/api/press');
-      //       const data = await response.json();
-      //       setPosts(data);
-
-      // 임시로 빈 배열을 설정합니다.
-      const data = [];
-
-      setPosts(data);
-      setNoPosts(data.length === 0);
-    }
-
-    fetchPosts();
-  }, []);
+export default function Release({ stories }) {
+  const noPosts = stories.length === 0;
 
   return (
     <Layout>
       <Container maxWidth="md">
-        <Grid container direction="column" spacing={8}>
+        <Grid container spacing={4} justify="center">
           {noPosts ? (
-            <Grid item>
-              <Typography variant="h1" align="center" gutterBottom>
+            <Grid item xs={12}>
+              <Typography variant="h5" align="center" gutterBottom>
                 게시물 없음
               </Typography>
             </Grid>
           ) : (
-            posts.map((post) => (
-              <Grid item key={post.id}>
-                <Typography variant="h6">{post.title}</Typography>
+            <Grid container spacing={4} justify="center">
+              <Grid item xs={12}>
+                <Grid container spacing={4} justify="center">
+                  {stories?.map(({ fields }) => (
+                    <Grid item key={fields.title} xs={12} sm={6} md={6}>
+                      <Press
+                        title={fields.title}
+                        type="stories" // 이 부분을 추가합니다.
+                        coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                        author={fields.author}
+                        content={fields.content}
+                        order={fields.order}
+                        slug={fields.title}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
-            ))
+            </Grid>
           )}
+          
         </Grid>
       </Container>
     </Layout>
   );
-};
-
-export default Stories;
+}

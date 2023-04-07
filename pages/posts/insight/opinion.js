@@ -1,17 +1,17 @@
 import React from 'react';
 import Layout from 'components/layout/Layout';
 import Press from 'components/Press';
-import MorePress from 'components/MorePost';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { getAllPress } from 'lib/index';
+import { getAllPress, getMoreInsight } from 'lib/index';
 
 export async function getStaticProps() {
-  const press = await getAllPress();
-  return { props: { press }, revalidate: 1 };
+  // const press = await getAllPress();
+  const opinion = await getMoreInsight(null, "opinion"); // title 필요하지 않으면 null로
+  return { props: { opinion }, revalidate: 1 };
 }
 
-export default function Release({ press }) {
-  const noPosts = press.length === 0;
+export default function Release({ opinion }) {
+  const noPosts = opinion.length === 0;
 
   return (
     <Layout>
@@ -27,11 +27,11 @@ export default function Release({ press }) {
             <Grid container spacing={4} justify="center">
               <Grid item xs={12}>
                 <Grid container spacing={4} justify="center">
-                  {press?.map(({ fields }) => (
+                  {opinion?.map(({ fields }) => (
                     <Grid item key={fields.title} xs={12} sm={6} md={6}>
                       <Press
                         title={fields.title}
-                        type="press" // 이 부분을 추가합니다.
+                        type="opinion" // 이 부분을 추가합니다.
                         coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
                         author={fields.author}
                         content={fields.content}

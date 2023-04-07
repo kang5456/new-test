@@ -1,46 +1,52 @@
-import Layout from "components/layout/Layout";
 import React from 'react';
+import Layout from 'components/layout/Layout';
+import Press from 'components/Press';
+import { Container, Grid, Typography } from '@material-ui/core';
+import { getAllPress, getMorePress } from 'lib/index';
 
-import { Container, Grid, Typography, Avatar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+export async function getStaticProps() {
+  // const press = await getAllPress();
+  const media = await getMorePress(null, "media"); // title 필요하지 않으면 null로
+  return { props: { media }, revalidate: 1 };
+}
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
-  },
-  title: {
-    fontWeight: 600,
-    marginBottom: theme.spacing(2),
-  },
-  content: {
-    lineHeight: 1.8,
-    marginBottom: theme.spacing(4),
-  },
-  image: {
-    maxWidth: "100%",
-    height: "auto",
-    marginBottom: theme.spacing(4),
-  },
-}));
-
-const btechfin = () => {
+export default function Release({ media }) {
+  const noPosts = media.length === 0;
 
   return (
     <Layout>
       <Container maxWidth="md">
-        <Grid container direction="column" spacing={8}>
-
-          <Grid item>
-            <Typography variant="h1" align="center" gutterBottom>
-            게시물 없음
-            </Typography>
-          </Grid>
-
+        <Grid container spacing={4} justify="center">
+          {noPosts ? (
+            <Grid item xs={12}>
+              <Typography variant="h5" align="center" gutterBottom>
+                게시물 없음
+              </Typography>
+            </Grid>
+          ) : (
+            <Grid container spacing={4} justify="center">
+              <Grid item xs={12}>
+                <Grid container spacing={4} justify="center">
+                  {media?.map(({ fields }) => (
+                    <Grid item key={fields.title} xs={12} sm={6} md={6}>
+                      <Press
+                        title={fields.title}
+                        type="media" // 이 부분을 추가합니다.
+                        coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                        author={fields.author}
+                        content={fields.content}
+                        order={fields.order}
+                        slug={fields.title}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          
         </Grid>
       </Container>
     </Layout>
   );
-};
-
-export default btechfin;
+}
