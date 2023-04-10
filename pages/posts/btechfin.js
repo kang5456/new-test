@@ -1,73 +1,55 @@
-import Layout from "components/layout/Layout";
+import React from 'react';
+import Layout from 'components/layout/Layout';
+import Press from 'components/Press';
+import { Container, Grid, Typography } from '@material-ui/core';
+import { getAllPress, getMoreBtechfin } from 'lib/index';
 
-import { Container, Grid, Typography, Avatar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+export async function getStaticProps() {
+  // const press = await getAllPress();
+  const BTechFIN = await getMoreBtechfin(null, "BTechFIN"); // title 필요하지 않으면 null로
+  return { props: { BTechFIN }, revalidate: 1 };
+}
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
-  },
-  title: {
-    fontWeight: 600,
-    marginBottom: theme.spacing(2),
-  },
-  content: {
-    lineHeight: 1.8,
-    marginBottom: theme.spacing(4),
-  },
-  image: {
-    maxWidth: "100%",
-    height: "auto",
-    marginBottom: theme.spacing(4),
-  },
-}));
+export default function Release({ BTechFIN }) {
+  const noPosts = BTechFIN.length === 0;
 
-const btechfin = () => {
-  const classes = useStyles();
-  // use ure name
-  const name = '"Your Name"';
-  // use your picture
-  const avatar =
-    "https://images.ctfassets.net/atxm25972ze9/7y6t7fqxDPqJ21ZECdUV9D/0ace08faabfb401be8e89d689b04ae98/adult-1868750__340.jpg?h=250";
   return (
-    <Layout
-      // type your page title and page description.
-      title=" About | Blog with Next.js and Contentful"
-      description="This is a Blog Demo with Next.js and Contentful. You can see the code in github. And you can use the code to make your own blog. "
-    >
+    <Layout>
       <Container maxWidth="md">
-        <Grid container direction="column" spacing={8}>
-
-          <Grid item>
-            <Typography variant="h1" align="center" gutterBottom>
-            ------ plancard part ------
-            </Typography>
-          </Grid>
-
-          <Grid item container spacing={2} alignItems="center">
-            <Grid
-              item
-              container
-              md={4}
-              direction="column"
-              alignItems="center"
-              spacing={2}
-            >
-            </Grid>
-
-            <Grid item container md={8}>
-              <Typography variant="body1">
-                {/* your introduction */}
-              ------ Leader part ------
+        <Grid container spacing={4} justify="center">
+          {noPosts ? (
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <div>
+                <img src="/empty-folder.svg" alt="Empty folder" style={{ width: '30px' }} />
+              </div>
+              <Typography variant="subtitle1" align="center" gutterBottom color="textSecondary">
+                게시물 없습니다.
               </Typography>
             </Grid>
-
-          </Grid>
+          ) : (
+            <Grid container spacing={4} justify="center">
+              <Grid item xs={12}>
+                <Grid container spacing={4} justify="center">
+                  {BTechFIN?.map(({ fields }) => (
+                    <Grid item key={fields.title} xs={12} sm={6} md={6}>
+                      <Press
+                        title={fields.title}
+                        type="BTechFIN" // 이 부분을 추가합니다.
+                        coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                        author={fields.author}
+                        content={fields.content}
+                        order={fields.order}
+                        slug={fields.title}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          
         </Grid>
       </Container>
     </Layout>
   );
-};
-
-export default btechfin;
+}

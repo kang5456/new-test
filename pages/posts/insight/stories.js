@@ -18,11 +18,14 @@ export default function Release({ stories }) {
       <Container maxWidth="md">
         <Grid container spacing={4} justify="center">
           {noPosts ? (
-            <Grid item xs={12}>
-              <Typography variant="h5" align="center" gutterBottom>
-                게시물 없음
-              </Typography>
-            </Grid>
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+            <div>
+              <img src="/empty-folder.svg" alt="Empty folder" style={{ width: '30px' }} />
+            </div>
+            <Typography variant="subtitle1" align="center" gutterBottom color="textSecondary">
+              게시물 없습니다.
+            </Typography>
+          </Grid>
           ) : (
             <Grid container spacing={4} justify="center">
               <Grid item xs={12}>

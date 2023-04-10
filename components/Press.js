@@ -1,11 +1,7 @@
 import Link from "components/Link";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import { Card, CardActionArea, CardHeader, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 

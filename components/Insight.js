@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const Insight = ({ title, type, coverImage, author, content, order, slug }) => {
     const classes = useStyles();
 
-      // 클릭시 상세 페이지로 이동하는 링크
+  // 클릭시 상세 페이지로 이동하는 링크
   const linkHref = type === "insight" ? "/insight/[slug]" : "/blog/[slug]";
   const linkAs = type === "insight" ? `/insight/${slug}` : `/blog/${slug}`;
 
