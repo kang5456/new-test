@@ -1,29 +1,9 @@
-import Link from "components/Link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import Insight from "pages/posts/insight";
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {
-  Grid,
-  AppBar,
-  Toolbar,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  SwipeableDrawer,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-
-import MenuIcon from "@material-ui/icons/Menu";
-
-import { routes } from "data/routes";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -41,12 +21,12 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: `4em`,
+    marginBottom: `0.1em`,
     [theme.breakpoints.down("md")]: {
-      marginBottom: "4em",
+      marginBottom: "0.1em",
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "2em",
+      marginBottom: "0.1em",
     },
   },
   drawerIconContainer: {
@@ -78,11 +58,11 @@ const useStyles = makeStyles((theme) => ({
   },
   navItem: {
     fontSize: "1.2em", // 글씨 크기 조절
-    margin: "0 15px", // 간격 조절
-    color: "#f5f5f5", // 글씨 색상 조절
+    margin: "5px", // 간격 조절
+    color: "#000", // 글씨 색상 조절
     minHeight: "10px", // 원하는 높이로 변경
     "&:hover": {
-      color: "#ff9800", // 마우스를 올렸을 때 글씨 색상 조절
+      color: "#7b68ee", // 마우스를 올렸을 때 글씨 색상 조절
     },
   },
   dropdownMenu: {
@@ -90,15 +70,30 @@ const useStyles = makeStyles((theme) => ({
     width: "auto", // 너비를 자동으로 조절
     maxHeight: "250px", // 최대 높이 조절
     overflowY: "auto", // 높이가 최대 높이를 초과할 경우 스크롤 표시
-    padding: "2px", // 패딩 조절
+    padding: "1px", // 패딩 조절
   },
   navDropdown: {
     position: "relative",
+    "& .dropdown-menu": {
+      border: "none", // 이 속성을 추가하여 테두리를 없애줍니다.
+  },
   },
   navDropdownMenu: {
     position: "absolute",
     left: "0",
     top: "100%",
+    zIndex: 5000, // 이 값을 높게 설정하여 다른 요소보다 위에 표시되도록 합니다.
+  },
+  navDropdownItem: {
+    fontSize: "0.9em", // 원하는 글씨 크기로 조절
+  },
+  lightBoxShadow: {
+    boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)", // 그림자 색상과 퍼지 정도를 조절
+  },
+  hideDropdownArrow: {
+    "& .nav-link::after": {
+      display: "none",
+    },
   },
 }));
 
@@ -106,8 +101,6 @@ const Header = () => {
   const classes = useStyles();
   const theme = useTheme();
   const router = useRouter();
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   // 드롭다운 메뉴를 열고 닫기 위한 상태
   const [dropdownOpen, setDropdownOpen] = useState({
@@ -141,140 +134,215 @@ const Header = () => {
   };
 
   const navbar = (
-    <Navbar expand="lg" bg="dark" variant="dark" className="navbar-hover">
-      <Navbar.Brand href="/">
-        <Grid 
-          container wrap="nowrap" 
-          spacing={1} 
-          alignItems="center"
-          style={{ marginTop: "-8px" }}
+    <Box className={classes.lightBoxShadow}>
+      <Navbar
+        expand="lg"
+        bg="white"
+        variant="white"
+        className="navbar-hover"
+        fixed="top"
+        style={{
+          boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Navbar.Brand
+          href="/"
+          style={{
+            marginLeft: "calc(50% - 640px)", // 로고 위치 조정
+            marginRight: "calc(50% - 500px)", // 로고 위치 조정
+          }}
         >
-          <Grid item>
-            <Typography
-              style={{
-                color: "#ffff",
-                fontWeight: "bold",
-                fontSize: "1.75em",
-                position: "relative",
-                zIndex: 100,
-              }}
-            >
-              BlogTest
-            </Typography>
+          <Grid
+            container
+            direction="column" // 수직 방향 정렬
+            alignItems="center"
+            style={{ marginTop: "20px", marginBottom: "10px" }}
+          >
+            <Grid item>
+              <img
+                src="/logo_initiative.png"
+                alt="logo"
+                style={{
+                  height: "24px",
+                  width: "45px",
+                  position: "relative",
+                  zIndex: 100,
+                  marginBottom: "5px",
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Typography
+                style={{
+                  color: "#000",
+                  fontWeight: "bold",
+                  fontSize: "1em",
+                  position: "relative",
+                  zIndex: 100,
+                }}
+              >
+                B.Initiative
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <img
-              src="/favicon-32x32.png"
-              alt="logo"
-              style={{
-                height: "27px",
-                width: "27px",
-                position: "relative",
-                zIndex: 100,
-              }}
-            />
-          </Grid>
-        </Grid>
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mx-auto">
-          <Nav.Link href="/posts/ironflag" className={classes.navItem}>
-            아이언플래그
-          </Nav.Link>
-
-          <Nav.Item
-            onMouseEnter={() => handleDropdownOpen("insight")}
-            onMouseLeave={handleDropdownClose}
-          >
-            <Nav.Link
-              href="/posts/insight"
-              className={classes.navItem}
-              id="collapsible-nav-dropdown-insight"
-            >
-              인사이트
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          style={{
+            position: "fixed",
+            marginLeft: "calc(50% - 204px)", // 로고 위치 조정
+            marginRight: "calc(50% - 500px)", // 로고 위치 조정
+            marginTop: "15px",
+            fontWeight: "bold",
+            fontSize: "1.051em",
+          }}
+        >
+          <Nav className="mx-auto">
+            <Nav.Link href="/posts/ironflag" className={classes.navItem}>
+              아이언플래그
             </Nav.Link>
-            <NavDropdown
-              className={classes.navDropdown}
-              show={dropdownOpen.insight}
-              menuAlign={{ lg: "center" }}
-            >
-              <NavDropdown.Item href="/posts/insight/opinion" onClick={handleItemClick}>
-                오피니언
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/insight/stories" onClick={handleItemClick}>
-                기획 연재
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/insight/report" onClick={handleItemClick}>
-                업계소식
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav.Item>
 
-          <Nav.Item
-            onMouseEnter={() => handleDropdownOpen("btechfin")}
-            onMouseLeave={handleDropdownClose}
-          >
-            <Nav.Link
-              href="/posts/btechfin"
-              className={classes.navItem}
-              id="collapsible-nav-dropdown-btechfin"
+            <Nav.Item
+              onMouseEnter={() => handleDropdownOpen("insight")}
+              onMouseLeave={handleDropdownClose}
+              className={classes.hideDropdownArrow}
             >
-              B.TechFIN
-            </Nav.Link>
-            <NavDropdown
-              className={classes.navDropdown}
-              show={dropdownOpen.btechfin}
-              menuAlign={{ lg: "center" }}
-            >
-              <NavDropdown.Item href="/posts/btechfin/b.gamefin" onClick={handleItemClick}>
-                B.GameFIN
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/btechfin/b.metafin" onClick={handleItemClick}>
-                B.MetaFIN
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/btechfin/b.enterfin" onClick={handleItemClick}>
-                B.EnterFIN
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/btechfin/b.esgfin" onClick={handleItemClick}>
-                B.ESGFIN
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/btechfin/b.isp" onClick={handleItemClick}>
-                B.ISP
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav.Item>
+              <Nav.Link
+                href="/posts/insight"
+                className={classes.navItem}
+                id="collapsible-nav-dropdown-insight"
+              >
+                인사이트
+              </Nav.Link>
+              <NavDropdown
+                className={classes.navDropdown}
+                show={dropdownOpen.insight}
+                menualign={{ lg: "center" }}
+              >
+                <NavDropdown.Item
+                  href="/posts/insight/opinion"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  오피니언
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/insight/stories"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  기획 연재
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/insight/report"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  업계소식
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Item>
 
-          <Nav.Item
-            onMouseEnter={() => handleDropdownOpen("press")}
-            onMouseLeave={handleDropdownClose}
-          >
-            <Nav.Link
-              href="/posts/press"
-              className={classes.navItem}
-              id="collapsible-nav-dropdown-press"
+            <Nav.Item
+              onMouseEnter={() => handleDropdownOpen("btechfin")}
+              onMouseLeave={handleDropdownClose}
+              className={classes.hideDropdownArrow}
             >
-              언론
-            </Nav.Link>
-            <NavDropdown
-              className={classes.navDropdown}
-              show={dropdownOpen.press}
-              menuAlign={{ lg: "center" }}
+              <Nav.Link
+                href="/posts/btechfin"
+                className={classes.navItem}
+                id="collapsible-nav-dropdown-btechfin"
+              >
+                B.TechFIN
+              </Nav.Link>
+              <NavDropdown
+                className={classes.navDropdown}
+                show={dropdownOpen.btechfin}
+                menuAlign={{ lg: "center" }}
+              >
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.gamefin"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  B.GameFIN
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.metafin"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  B.MetaFIN
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.enterfin"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  B.EnterFIN
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.esgfin"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  B.ESGFIN
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.isp"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  B.ISP
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Item>
+
+            <Nav.Item
+              onMouseEnter={() => handleDropdownOpen("press")}
+              onMouseLeave={handleDropdownClose}
+              className={classes.hideDropdownArrow}
             >
-              <NavDropdown.Item href="/posts/press/release" onClick={handleItemClick}>
-                보도자료
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/press/media" onClick={handleItemClick}>
-                미디어
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/posts/press/ir" onClick={handleItemClick}>
-                IR
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav.Item>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+              <Nav.Link
+                href="/posts/press"
+                className={classes.navItem}
+                id="collapsible-nav-dropdown-press"
+              >
+                언론
+              </Nav.Link>
+              <NavDropdown
+                className={classes.navDropdown}
+                show={dropdownOpen.press}
+                menuAlign={{ lg: "center" }}
+              >
+                <NavDropdown.Item
+                  href="/posts/press/release"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  보도자료
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/press/media"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  미디어
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/press/ir"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  IR
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Box>
   );
 
   return (

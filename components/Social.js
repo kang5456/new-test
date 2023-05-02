@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
 // import FacebookIcon from "@material-ui/icons/Facebook";
@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       width: "25px",
       height: "25px",
-    },
-    "&:hover": {
-      color: theme.palette.info.main,
     },
   },
 }));
@@ -46,13 +43,17 @@ const Social = ({ color }) => {
     </Grid> */
   }
   return (
-    <Grid item container spacing={2} justify="center">
+    <Grid item container spacing={0} justify="center" alignItems="center">
+      <Grid item>
+        <Typography style={{ fontSize: "1em", color: "#fff" }}>아이언플래그</Typography>
+      </Grid>
       <Grid
         item
         component={"a"}
         target="_blank"
         rel="noreferrer noopener"
         href={homepage}
+        style={{ marginTop: "-3px" }}
       >
         <HomeIcon
           className={classes.snsIcon}

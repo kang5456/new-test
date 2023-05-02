@@ -9,7 +9,6 @@ import MoreInsight from "components/MorePost";
 import { getInsightBySlug, getMoreInsight, getAllInsightWithSlug } from "lib/index";
 
 import { Container, Grid, Typography } from "@material-ui/core";
-import { SwiperSlide } from "swiper/react";
 
 export async function getStaticPaths() {
     const allInsight = await getAllInsightWithSlug();
@@ -61,25 +60,6 @@ const Insight = ({ insight, moreInsight }) => {
       />
         <InsightBody content={insight?.fields.content} />
         <Container maxWidth="lg" style={{ marginTop: "8em" }}>
-          <SwiperContainer>
-            <SwiperSlide
-              className={StylesProvider.slide}
-              style={{ cursor: "pointer"}}
-              onClick={handleClick}
-            >
-              {imageUrl && (
-                <img
-                  src={httpsImageUrl}
-                  alt={insight.fields.title}
-                />
-              )}
-              <div>
-                <h2>{insight.fields.title}</h2>
-                <h3>{insight.fields.subTitle}</h3>
-                <p>By {insight.fields.author}</p>
-              </div>
-            </SwiperSlide>
-          </SwiperContainer>
           <Grid container direction="column" alignItems="center">
             <Grid item>
               <Typography
@@ -93,7 +73,7 @@ const Insight = ({ insight, moreInsight }) => {
               </Typography>
             </Grid>
           </Grid>
-          <Typography
+          {/* <Typography
             align="center"
             gutterBottom
             style={{
@@ -121,7 +101,7 @@ const Insight = ({ insight, moreInsight }) => {
                 </Grid>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
         </Container>
       </Layout>
     );

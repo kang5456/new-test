@@ -15,16 +15,10 @@ const useStyles = makeStyles((theme) => ({
   link: {
     fontSize: "1.25em",
     color: "#fff",
-    "&:hover": {
-      color: theme.palette.info.main,
-    },
   },
   copylight: {
     color: "#fff",
     fontSize: "1em",
-    "&:hover": {
-      color: theme.palette.info.main,
-    },
   },
 }));
 
@@ -34,20 +28,60 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Grid container justify="space-between" alignItems="center">
+        <Grid container 
+          direction="column" 
+          alignItems="center"
+          style={{
+            marginLeft: "calc(0% - 590px)", // 로고 위치 조정
+            marginRight: "calc(50% - 530px)", // 로고 위치 조정
+            marginTop: "calc(0% - 5px)",
+            marginBottom: "calc(0% - 39px)",
+          }}
+          >
           <Grid item>
-            <Typography variant="h5" className={classes.copylight}>
+            <img
+              src="/logo_initiative2.webp"
+              alt="logo"
+              style={{
+                height: "18px",
+                width: "32px",
+                position: "relative",
+                zIndex: 100,
+                marginBottom: "10px",
+                filter: "grayscale(100%)"
+              }}
+              />
+          </Grid>
+          <Grid item>
+            <Typography variant="h5" 
+              className={classes.copylight}
+              style={{ fontWeight: "bold" }}
+              >
               B.Initiative
             </Typography>
           </Grid>
-          <Grid item>
-            <Social />
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container alignItems="flex-end" justify="flex-end">
+            <Grid item 
+              style={{ 
+                textAlign: "right", 
+                marginRight: "calc(50% - 640px)", // 로고 위치 조정
+                marginBottom: "calc(0% - 30px)",
+                }}
+                >
+              <Social />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
           <Typography
             className={classes.copylight}
-            style={{ textAlign: "center", fontSize: '12px' }}
+            style={{ 
+              textAlign: "center", 
+              fontSize: '12px',
+              marginBottom: "calc(0% - 13px)",
+            }}
           >
             <div style={{ color: "gray", marginBottom: "5px" }}>
               이 사이트는 블록체인 기술과 소식을 공유하기 위한 비영리적 목적으로

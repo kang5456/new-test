@@ -48,7 +48,6 @@ const Btechfin = ({ btechfin, moreBtechfin }) => {
       <BtechfinHeader
         title={btechfin?.fields.title}
         subtitle={btechfin?.fields.subTitle}
-        authorName={btechfin?.fields.author}
         authorImage={btechfin?.fields.authorImage?.fields?.file?.url}
         slug={btechfin?.fields.title}
         date={btechfin?.fields.date}
@@ -69,7 +68,7 @@ const Btechfin = ({ btechfin, moreBtechfin }) => {
               </Typography>
             </Grid>
           </Grid>
-          <Typography
+          {/* <Typography
             align="center"
             gutterBottom
             style={{
@@ -97,7 +96,7 @@ const Btechfin = ({ btechfin, moreBtechfin }) => {
                 </Grid>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
         </Container>
       </Layout>
     );

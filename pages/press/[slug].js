@@ -48,7 +48,6 @@ const Press = ({ press, morePress }) => {
     <PressHeader
       title={press?.fields.title}
       subtitle={press?.fields.subTitle}
-      authorName={press?.fields.author}
       authorImage={press?.fields.authorImage?.fields?.file?.url}
       slug={press?.fields.title}
       date={press?.fields.date}
@@ -69,7 +68,7 @@ const Press = ({ press, morePress }) => {
             </Typography>
           </Grid>
         </Grid>
-        <Typography
+        {/* <Typography
           align="center"
           gutterBottom
           style={{
@@ -97,7 +96,7 @@ const Press = ({ press, morePress }) => {
               </Grid>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
       </Container>
     </Layout>
   );

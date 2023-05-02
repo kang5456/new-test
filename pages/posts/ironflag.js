@@ -1,71 +1,41 @@
+import React from "react";
 import Layout from "components/layout/Layout";
+import PlanCard from "components/IronFlag/PlanCard";
+import TeamIntro from "components/IronFlag/TeamInfo";
+import BusinessSection from "components/IronFlag/BusinessSection";
 
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Partners from "components/IronFlag/Partners";
+import AboutSection from "components/IronFlag/AboutSection";
+import HiringSection from "components/IronFlag/HiringSection";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
+  background: {
+    backgroundColor: "#F2F2F2",
   },
-  title: {
-    fontWeight: 600,
-    marginBottom: theme.spacing(2),
-  },
-  content: {
-    lineHeight: 1.8,
-    marginBottom: theme.spacing(4),
-  },
-  image: {
-    maxWidth: "100%",
-    height: "auto",
-    marginBottom: theme.spacing(4),
+  contentWrapper: {
+    margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
+    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    padding: theme.spacing(4, 0),
   },
 }));
 
 const IronFlag = () => {
   const classes = useStyles();
-  // use ure name
-  const name = '"Your Name"';
-  // use your picture
-  const avatar =
-    "https://images.ctfassets.net/atxm25972ze9/7y6t7fqxDPqJ21ZECdUV9D/0ace08faabfb401be8e89d689b04ae98/adult-1868750__340.jpg?h=250";
+
   return (
-    <Layout
-      // type your page title and page description.
-      title=" About | Blog with Next.js and Contentful"
-      description="This is a Blog Demo with Next.js and Contentful. You can see the code in github. And you can use the code to make your own blog. "
-    >
-      <Container maxWidth="md">
-        <Grid container direction="column" spacing={8}>
-
-          <Grid item>
-            <Typography variant="h1" align="center" gutterBottom>
-            ------ plancard part ------
-            </Typography>
-          </Grid>
-
-          <Grid item container spacing={2} alignItems="center">
-            <Grid
-              item
-              container
-              md={4}
-              direction="column"
-              alignItems="center"
-              spacing={2}
-            >
-            </Grid>
-
-            <Grid item container md={8}>
-              <Typography variant="body1">
-                {/* your introduction */}
-              ------ Leader part ------
-              </Typography>
-            </Grid>
-
-          </Grid>
-        </Grid>
-      </Container>
+    <Layout>
+      <div className={classes.background}>
+        <div className={classes.contentWrapper}>
+          <PlanCard />
+          <TeamIntro />
+          <BusinessSection />
+          <Partners/>
+          <AboutSection />
+          <HiringSection />
+        </div>
+      </div>
     </Layout>
   );
 };

@@ -45,7 +45,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
         />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main style={{ backgroundColor: "#f9f9f9" }}>{children}</main>
       <Footer />
       <style jsx global>
         {`
