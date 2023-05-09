@@ -21,8 +21,8 @@ const SlideShow = ({ slides }) => {
   const router = useRouter();
   const classes = useStyles();
 
-  const handleClick = (slug) => {
-    router.push(`/insights/${slug}`);
+  const handleClick = (title) => {
+    router.push(`/insight/${title}`);
   };
 
   useEffect(() => {
@@ -62,13 +62,13 @@ const SlideShow = ({ slides }) => {
         const httpsImageUrl = imageUrl?.replace("http:", "https:");
         const title = fields.title;
 
-        const slug = title.replace(/\s+/g, "-").toLowerCase(); // title 값을 slug로 변환
+        const slug = encodeURIComponent(title.replace(/\s+/g, "-").toLowerCase()); // title 값을 slug로 변환하고 인코딩
 
         return (
           <SwiperSlide
             key={index}
             className={styles.slide}
-            onClick={() => handleClick(slug)} // slug 값을 사용하도록 변경
+            onClick={() => handleClick(title)} // slug 값을 사용하도록 변경
           >
             {httpsImageUrl && <img src={httpsImageUrl} alt={title} />}
             <CardContent className={classes.contentWrapper}>

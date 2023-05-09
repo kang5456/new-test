@@ -4,7 +4,7 @@ import Layout from "components/layout/Layout";
 import Insight from "components/Insight";
 import { useRouter } from 'next/router';
 import { Container, Grid, Typography } from "@material-ui/core";
-import { getAllPosts, getAllInsight } from "lib/index"; // Import getAllPosts and getAllInsight
+import { getAllPosts, getAllInsight, getAllOpinions } from "lib/index"; // Import getAllPosts and getAllInsight
 import React from 'react';
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
@@ -12,11 +12,12 @@ import { getSlides } from '../lib/api';
 export async function getStaticProps() {
   const posts = await getAllPosts();
   const insights = await getAllInsight(); // 인사이트 데이터를 가져옵니다.
+  const opinions = await getAllOpinions(); // Get opinions data
   const slides = insights.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.
-  return { revalidate: 1, props: { posts,insights, slides } };
+  return { revalidate: 1, props: { posts, insights, slides, opinions } };
 }
 
-export default function Index({ posts, insights, slides }) {
+export default function Index({ posts, insights, slides, opinions }) {
   const router = useRouter();
   const handleClick = (title) => {
     router.push('/posts/totalPosts');
@@ -94,7 +95,8 @@ export default function Index({ posts, insights, slides }) {
 
             {/* 오피니언 영역 */}
             <Grid item xs={12} md={4}>
-              <Opinion />
+              {/* Pass opinions data to Opinion component */}
+              <Opinion opinions={opinions} />
             </Grid>
           </Grid>
         </Container>

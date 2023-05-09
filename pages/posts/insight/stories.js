@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentWrapper: {
     margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
-    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    maxWidth: "1450px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(0, 0),
   },
   customText: {
@@ -30,7 +30,7 @@ export async function getStaticProps() {
   return { props: { stories }, revalidate: 1 };
 }
 
-export default function Release({ stories }) {
+export default function Stories({ stories }) {
   const classes = useStyles();
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수

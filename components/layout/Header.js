@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Grid, Typography, Box } from "@material-ui/core";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import { IconButton } from "@material-ui/core";
+import TranslateIcon from "@material-ui/icons/Translate";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -108,6 +110,42 @@ const Header = () => {
     btechfin: false,
     press: false,
   });
+
+  const translate = async (language) => {
+    // 원하는 번역 대상 DOM 요소를 선택하세요.
+    const elementToTranslate = document.querySelector("#element-to-translate");
+  
+    // DOM 요소가 존재하는지 확인
+    if (!elementToTranslate) {
+      console.error("Element to translate not found.");
+      return;
+    }
+  
+    const textToTranslate = elementToTranslate.textContent;
+  
+    try {
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: textToTranslate,
+          target: language,
+        }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        const translatedText = data.translatedText;
+        elementToTranslate.textContent = translatedText;
+      } else {
+        console.error("Error translating text:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error translating text:", error);
+    }
+  };
 
   const handleDropdownOpen = (dropdown) => {
     setDropdownOpen((prevState) => {
@@ -340,6 +378,12 @@ const Header = () => {
               </NavDropdown>
             </Nav.Item>
           </Nav>
+          <Nav.Item onClick={() => translate("ko")} className={classes.navItem}>
+            KO
+          </Nav.Item>
+          <Nav.Item onClick={() => translate("en")} className={classes.navItem}>
+            EN
+          </Nav.Item>
         </Navbar.Collapse>
       </Navbar>
     </Box>

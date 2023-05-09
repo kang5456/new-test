@@ -46,7 +46,7 @@ const Insight = ({ title, type, coverImage, author, content, order, slug, create
   const linkAs = type === "insight" ? `/insight/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={linkHref} as={linkAs}>
+    <Link href={`/insight/${title}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div

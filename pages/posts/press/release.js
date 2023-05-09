@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from 'components/layout/Layout';
 import Press from 'components/Press';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { getAllPress } from 'lib/index';
+import { getAllPress, getMorePress } from 'lib/index';
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentWrapper: {
     margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
-    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    maxWidth: "1450px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(0, 0),
   },
   customText: {
@@ -24,25 +24,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export async function getStaticProps() {
-  const press = await getAllPress();
-  return { props: { press }, revalidate: 1 };
+ // const release = await getAllPress();
+  const pressrelease = await getMorePress(null, "press release");
+  return { props: { pressrelease }, revalidate: 1 };
 }
 
-export default function Release({ press }) {
+export default function Release({ pressrelease }) {
   const classes = useStyles();
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수
   const postsPerPage = 10; // 한 페이지당 보여줄 게시글 수
-  const noPosts = press.length === 0;
+  const noPosts = pressrelease.length === 0;
 
   // 현재 페이지에 보여줄 게시글의 시작/끝 index 계산
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = press.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
+  const currentPosts = pressrelease.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
 
   // 페이지 번호 목록을 만드는 함수
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(press.length / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(pressrelease.length / postsPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -72,11 +73,11 @@ export default function Release({ press }) {
               <Grid container spacing={4} justify="center">
                 <Grid item xs={12}>
                   <Grid container spacing={4} justify="center">
-                    {press?.map(({ fields, sys }) => (
+                    {pressrelease?.map(({ fields, sys }) => (
                       <Grid item key={fields.title} xs={12}>
                         <Press
                           title={fields.title}
-                          type="press" // 이 부분을 추가합니다.
+                          type="press release" // 이 부분을 추가합니다.
                           coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
                           content={fields.content}
                           slug={fields.title}

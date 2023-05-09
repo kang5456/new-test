@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentWrapper: {
     margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
-    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    maxWidth: "1450px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(0, 0),
   },
   customText: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export async function getStaticProps() {
-  //const insights = await getAllInsight();
+  //const insight = await getAllInsight();
   const report = await getMoreInsight(null, "report"); // title 필요하지 않으면 null로
   return { revalidate: 1, props: { report } };
 }

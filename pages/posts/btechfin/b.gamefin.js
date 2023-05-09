@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from 'components/layout/Layout';
 import BtechFIN from 'components/BtechFIN';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { getAllPress, getMoreBtechfin } from 'lib/index';
+import { getAllBtechfin, getMoreBtechfin } from 'lib/index';
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentWrapper: {
     margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
-    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    maxWidth: "1450px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(0, 0),
   },
   customText: {
@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export async function getStaticProps() {
-  // const press = await getAllPress();
-  const BGameFIN = await getMoreBtechfin(null, "BGameFIN"); // title 필요하지 않으면 null로
+  //const bTechFin = await getAllBtechfin();
+  const BGameFIN = await getMoreBtechfin(null, "B.GameFIN"); // title 필요하지 않으면 null로
   return { props: { BGameFIN }, revalidate: 1 };
 }
 
-export default function Release({ BGameFIN }) {
+export default function Bgamefin({ BGameFIN }) {
   const classes = useStyles();
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수
@@ -75,7 +75,7 @@ export default function Release({ BGameFIN }) {
                         <Grid item key={fields.title} xs={12}>
                           <BtechFIN
                             title={fields.title}
-                            type="BGameFIN" // 이 부분을 추가합니다.
+                            type="B.GameFIN" // 이 부분을 추가합니다.
                             coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
                             content={fields.content}
                             slug={fields.title}

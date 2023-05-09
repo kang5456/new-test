@@ -27,12 +27,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     paddingBottom: "21%",
     paddingTop: "30px",
-    width: "35%",
+    width: "40%",
     borderRadius: "15px"
   },
   contentWrapper: {
+    position: "relative",
     padding: "16px",
-    width: "50%",
+    width: "80%",
     height: "200px",
   },
 }));
@@ -41,11 +42,11 @@ const Btechfin = ({ title, type, coverImage, author, content, order, slug, creat
     const classes = useStyles();
 
       // 클릭시 상세 페이지로 이동하는 링크
-  const linkHref = type === "btechfin" ? "/btechfin/[slug]" : "/blog/[slug]";
-  const linkAs = type === "btechfin" ? `/btechfin/${slug}` : `/blog/${slug}`;
+  const linkHref = type === "bTechFin" ? "/bTechFin/[slug]" : "/blog/[slug]";
+  const linkAs = type === "bTechFin" ? `/bTechFin/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={linkHref} as={linkAs}>
+    <Link href={`/bTechFin/${slug}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div
@@ -58,13 +59,28 @@ const Btechfin = ({ title, type, coverImage, author, content, order, slug, creat
             <Typography variant="subtitle1" style={{ fontWeight: "bold", marginBottom: "5px", marginTop: "-15px", }}>
               업계소식
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography 
+              variant="h5" 
+              component="h2"
+              style={{ 
+                fontWeight: "bold",
+                fontSize: "20px"
+               }}
+              >
               {title}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
               {author}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary" style={{ marginTop: "117px" }}>
+            <Typography 
+                variant="subtitle2" 
+                color="textSecondary" 
+                style={{ 
+                  position: "absolute", // 변경합니다.
+                  bottom: 4, // 변경합니다.
+                  left: "15px",
+                  }}
+                  >
               {createdAt && new Intl.DateTimeFormat("en-US", {
                 year: "numeric",
                 month: "long",

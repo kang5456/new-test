@@ -1,7 +1,7 @@
 import Link from "components/Link";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardActionArea, CardHeader, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 
@@ -26,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     paddingBottom: "21%",
     paddingTop: "30px",
-    width: "35%",
+    width: "40%",
     borderRadius: "15px"
   },
   contentWrapper: {
+    position: "relative",
     padding: "16px",
-    width: "50%",
+    width: "80%",
     height: "200px",
   },
 }));
@@ -44,7 +45,7 @@ const Press = ({ title, type, coverImage, author, content, order, slug, createdA
   const linkAs = type === "press" ? `/press/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={linkHref} as={linkAs}>
+    <Link href={`/press/${slug}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div
@@ -57,13 +58,28 @@ const Press = ({ title, type, coverImage, author, content, order, slug, createdA
             <Typography variant="subtitle1" style={{ fontWeight: "bold", marginBottom: "5px", marginTop: "-15px", }}>
               보도자료
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography 
+              variant="h5" 
+              component="h2"
+              style={{ 
+                fontWeight: "bold",
+                fontSize: "20px"
+               }}
+              >
               {title}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
               {author}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary" style={{ marginTop: "117px" }}>
+            <Typography 
+                variant="subtitle2" 
+                color="textSecondary" 
+                style={{ 
+                  position: "absolute", // 변경합니다.
+                  bottom: 4, // 변경합니다.
+                  left: "15px",
+                  }}
+                  >
               {createdAt && new Intl.DateTimeFormat("en-US", {
                 year: "numeric",
                 month: "long",

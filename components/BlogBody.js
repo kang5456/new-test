@@ -1,8 +1,8 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-
-import { Container, Grid } from "@material-ui/core";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
+import { Container, Grid, CardMedia, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 0px 10px 1px #b2b2b28f",
   },
   root: {
-    maxWidth: "800px",
+    maxWidth: "1100px",
   },
   blogBody: {
     marginTop: "2rem",
@@ -27,41 +27,53 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.info.main,
     },
   },
+  media: {
+    height: 440,
+    paddingTop: "0px", // 16:9
+  },
 }));
 
-const BlogBody = ({ content }) => {
+const BlogBody = ({ 
+    content,
+    coverImage, 
+}) => {
   const classes = useStyles();
+  
   const options = {
     renderNode: {
+      [BLOCKS.PARAGRAPH]: (_, children) => (
+        <p style={{ marginBottom: "1.5em", marginTop: "0.5em" }}>{children}</p>
+      ),
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { url, fileName } = node.data.target.fields.file;
-        return (
-          <img
-            src={url}
-            alt={fileName}
-            style={{ height: "auto", width: "100%", margin: "1em 0" }}
-          />
-        );
-      },
-      [INLINES.HYPERLINK]: (node) => {
-        const { uri } = node.data;
-        const { value } = node.content[0];
-        return (
-          <a target="_blank" rel="noreferrer noopener" href={uri}>
-            {value}
-          </a>
-        );
+        const { title, file } = node.data.target.fields;
+        const { url } = file;
+        return <img src={url} alt={title} />;
       },
     },
   };
+
   return (
-    <Container className={classes.root}>
-      <Grid container>
-        <Grid item className={classes.blogBody}>
-          {documentToReactComponents(content, options)}
-        </Grid>
-      </Grid>
-    </Container>
+    <div>
+      {coverImage && (
+        <img src={coverImage} alt="" className={classes.coverImage} />
+      )}
+      <Box
+        component="div"
+        style={{
+          fontSize: "18px",
+          lineHeight: "1.6",
+          letterSpacing: "0.009em",
+          wordBreak: "keep-all",
+          fontFamily: "Roboto, sans-serif",
+          color: "#333",
+          padding: "0 1em", // 좌우 여백을 추가
+          textAlign: "justify", // 텍스트 정렬을 양쪽 정렬로 변경
+          whiteSpace: "pre-wrap", // 띄어쓰기와 줄바꿈 보존
+        }}
+      >
+        {documentToReactComponents(content, options)}
+      </Box>
+    </div>
   );
 };
 
