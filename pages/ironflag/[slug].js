@@ -103,7 +103,7 @@ const Ironflag = ({ ironflag, moreIronflag }) => {
     );
   };
   
-  export default Insight;
+  export default Ironflag;
 
 
 
