@@ -42,8 +42,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const insight = await getInsightBySlug(params.contentfulId); // 수정
-  const moreInsight = await getMoreInsight(params.contentfulId); // 수정
+  const insight = await getInsightBySlug(params.slug); // 수정
+  const moreInsight = await getMoreInsight(params.slug); // 수정
 
   return {
     props: {
