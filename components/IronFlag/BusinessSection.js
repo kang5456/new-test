@@ -16,6 +16,34 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(5), // 여기를 조정해주세요 (위쪽 여백 추가)
     paddingBottom: theme.spacing(0), // 여기를 조정해주세요 (아래쪽 여백 추가)
   },
+    iconWrapper: {
+    width: "110px",
+    height: "110px",
+    borderRadius: "50%",
+    backgroundColor: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "0 auto",
+    border: "3px solid #F4F4F4", // 테두리 선 색상 추가
+  },
+  iconText: {
+    marginTop: "1rem",
+    textAlign: "center", // 텍스트를 가운데 정렬
+  },
+  iconText2: {
+    marginTop: "0.5rem",
+    textAlign: "center", // 텍스트를 가운데 정렬
+  },
+  imageItem: {
+    margin: "0 8px", // 이미지 간격 조절 (가로 간격)
+  },
+  bTechFINImageItem: {
+    margin: "-20px", // B.TechFIN 이미지 간격 조절 (가로 간격)
+  },
+  bISPImageItem: {
+    margin: "-40px", // B.ISP 이미지 간격 조절 (가로 간격)
+  },
 }));
 
 const businesses = [
@@ -63,35 +91,35 @@ const bISPInfo = {
       number: "01",
       text: "Analysis",
       text2: "사업 아이템 분석",
-      width: "15%",
+      width: "40%",
     },
     {
       src: "/icon2.webp",
       number: "02",
       text: "Suitability",
       text2: "블록체인 기술 적합성 연구",
-      width: "15%",
+      width: "40%",
     },
     {
       src: "/icon3.webp",
       number: "03",
       text: "Appropriateness",
       text2: "가상자산 발행 및 운용 당위성 연구",
-      width: "13%",
+      width: "30%",
     },
     {
       src: "/icon4.webp",
       number: "04",
       text: "Reality",
       text2: "비즈니스 모델 설계 및 현실성 연구",
-      width: "15%",
+      width: "40%",
     },
     {
       src: "/icon5.webp",
       number: "05",
       text: "Feasibility",
       text2: "프로젝트 공동 연구 및 추진성 검토",
-      width: "15%",
+      width: "40%",
     },
   ],
 };
@@ -111,6 +139,16 @@ const BusinessSection = () => {
   const handleBusinessClick = (title) => {
     setSelectedBusiness(businessInfo[title]);
   };
+
+  const splitTextAtIndex = (text, index) => {
+    const words = text.split(" ");
+    return [
+      words.slice(0, index).join(" "),
+      words.slice(index).join(" "),
+    ];
+  };
+
+  const breakAtIndex = 2; // 원하는 줄바꿈 위치
 
   return (
     <div className={classes.background}>
@@ -171,7 +209,7 @@ const BusinessSection = () => {
                 )}
               </Typography>
             </Grid>
-            <Grid container spacing={1} justify="flex-start">
+            <Grid container spacing={1} justify="center">
               {/* B.TechFIN */}
               {selectedBusiness.btechfin && (
                 <Grid item xs={12} sm={6} md={3}>
@@ -198,13 +236,44 @@ const BusinessSection = () => {
               )}
               {/* Other images */}
               {selectedBusiness.images.map((image, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <img src={image.src} style={{ width: image.width }} />
-                  <Typography variant="body1" style={{ marginTop: "1rem" }}>
-                    {image.number} {image.text}
+                <Grid item 
+                  xs={12} sm={6} md={3} 
+                  key={index}
+                  className={
+                    selectedBusiness.title === "B.TechFIN Blockchain Technology Finance"
+                      ? classes.bTechFINImageItem
+                      : selectedBusiness.title === "B.ISP Blockchain Information Strategy Planning"
+                      ? classes.bISPImageItem
+                      : null
+                  }
+                  >
+                  {image.number ? (
+                    <div className={classes.iconWrapper}>
+                      <img src={image.src} style={{ width: image.width }} />
+                    </div>
+                  ) : (
+                    <img
+                    src={image.src}
+                    style={{
+                      width: image.width,
+                      display: "block", // 추가
+                      marginLeft: "auto", // 추가
+                      marginRight: "auto", // 추가
+                    }}
+                  />
+                  )}
+                  <Typography variant="body1" style={{ marginTop: "1rem", textAlign: "center", fontWeight: "bold", fontSize: "20px" }}>
+                    <span style={{ color: "#7b68ee" }}>{image.number}</span> <span>{image.text}</span>
                   </Typography>
-                  <Typography variant="body1" style={{ marginTop: "0.5rem" }}>
-                    {image.text2}
+                  <Typography variant="body1" style={{ marginTop: "0.5rem", textAlign: "center" }}>
+                    {image.text2 &&
+                      image.text2.split(" ").map((word, index, wordsArray) => (
+                        <React.Fragment key={index}>
+                          {word}
+                          {index === breakAtIndex - 1 && <br />}
+                          {index !== breakAtIndex - 1 && index < wordsArray.length - 1 && " "}
+                        </React.Fragment>
+                    ))}
                   </Typography>
                 </Grid>
               ))}

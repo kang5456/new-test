@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./BusinessCard.module.css";
@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: "1.2rem",
     color: "#000",
+    "&$clicked": {
+      color: "#000",
+    },
     transition: "all 0.4s ease",
   },
   content: {
@@ -55,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
 
 const BusinessCard = ({ title }) => {
   const classes = useStyles();
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
 
   return (
     <Card className={styles.businessCard}>
@@ -63,7 +71,11 @@ const BusinessCard = ({ title }) => {
         <CardContent className={classes.content}>
         <div className={classes.container}>
           <Typography className={classes.icon}>{/* icon */}</Typography>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography 
+            className={`${classes.title} ${isClicked ? classes.clicked : ""}`}
+            onClick={handleClick}
+            >{title}
+          </Typography>
         </div>
         </CardContent>
       </CardActionArea>

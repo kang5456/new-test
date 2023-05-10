@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
   image: {
     maxWidth: "75%",
     height: "auto",
+    marginLeft: "4px", // 이미지 왼쪽 마진
+    marginRight: "4px", // 이미지 오른쪽 마진
+  },
+  imageContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
   },
   line: {
     backgroundColor: "#868e96",
@@ -60,15 +69,19 @@ const HiringSection = () => {
         >
           아이언플래그와 함께 할 열정 넘치는 인재를 항상 찾고 있습니다.
         </Typography>
-        <Grid container spacing={2}>
-          {jobs.map((job, index) => (
-            <Grid item key={index} xs={12} md={4}>
-              <a href={job.link} target="_blank" rel="noopener noreferrer">
-                <img src={job.image} className={classes.image} alt="" />
-              </a>
-            </Grid>
-          ))}
-        </Grid>
+        <div className={classes.imageItem}>
+          <Grid container spacing={1}>
+            {jobs.map((job, index) => (
+              <Grid item key={index} xs={12} md={4}>
+                <a href={job.link} target="_blank" rel="noopener noreferrer">
+                  <div className={classes.imageContainer}>
+                    <img src={job.image} className={classes.image} alt="" />
+                  </div>
+                </a>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </Container>
     </div>
   );
