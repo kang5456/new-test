@@ -36,7 +36,7 @@ const generateSlug = (title = "") => {
 export async function getStaticPaths() {
   const allBtechfin = await getAllBtechfinWithSlug();
   return {
-    paths: allBtechfin.map((bTechFin) => `/bTechFin/${generateSlug(bTechFin.title)}`),
+    paths: allBtechfin.map((bTechFin) => `/btechfin/${generateSlug(bTechFin.title)}`),
     fallback: true,
   };
   

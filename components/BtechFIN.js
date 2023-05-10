@@ -46,7 +46,7 @@ const Btechfin = ({ title, type, coverImage, author, content, order, slug, creat
   const linkAs = type === "bTechFin" ? `/bTechFin/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={`/bTechFin/${slug}`}>
+    <Link href={`/btechfin/${slug}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div
