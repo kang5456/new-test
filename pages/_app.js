@@ -11,6 +11,7 @@ import "../styles/styles.css"; // 기존 import 문 아래에 추가
 import 'swiper/swiper-bundle.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 

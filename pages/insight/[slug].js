@@ -66,7 +66,7 @@ const Insight = ({ insight, moreInsight }) => {
     <Layout
       title={insight?.fields.title}
       description={insight?.fields.subTitle}
-      ogImage={insight?.fields.cover.fields.file.url}
+      ogImage={insight?.fields.cover?.fields.file.url || 'default_image_url'}
       url={`https://yourwebsite.com/insight/${generateSlug(insight?.fields.title)}`}
     >
       <div className={classes.contentWrapper}>

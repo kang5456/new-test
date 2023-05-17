@@ -67,7 +67,7 @@ const Btechfin = ({ bTechFin, moreBtechfin }) => {
     <Layout
       title={bTechFin?.fields.title}
       description={bTechFin?.fields.subTitle}
-      ogImage={bTechFin?.fields.cover.fields.file.url}
+      ogImage={bTechFin?.fields.cover?.fields.file.url || 'default_image_url'}
       url={`https://yourwebsite.com/bTechFin/${generateSlug(bTechFin?.fields.title)}`}
     >
       <div className={classes.contentWrapper}>

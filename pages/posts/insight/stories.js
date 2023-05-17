@@ -23,6 +23,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function extractImageFromContent(content) {
+  if (!content || !content.content) {
+    return null;
+  }
+
+  for (const item of content.content) {
+    if (item.nodeType === 'embedded-asset-block') {
+      return item.data.target.fields.file.url;
+    }
+
+    const nestedImage = extractImageFromContent(item);
+    if (nestedImage) {
+      return nestedImage;
+    }
+  }
+
+  return null;
+}
 
 export async function getStaticProps() {
   // const press = await getAllPress();
@@ -78,7 +96,7 @@ export default function Stories({ stories }) {
                           <Insight
                             title={fields.title}
                             type="stories" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                            coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.

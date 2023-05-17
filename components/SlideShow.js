@@ -14,6 +14,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function extractImageFromContent(content) {
+  if (!content || !content.content) {
+    return null;
+  }
+
+  for (const item of content.content) {
+    if (item.nodeType === 'embedded-asset-block') {
+      return item.data.target.fields.file.url;
+    }
+
+    const nestedImage = extractImageFromContent(item);
+    if (nestedImage) {
+      return nestedImage;
+    }
+  }
+
+  return null;
+}
+
 const SlideShow = ({ slides }) => {
   const [SwiperModule, setSwiperModule] = useState(null);
   const [SwiperSlideModule, setSwiperSlideModule] = useState(null);
@@ -46,7 +65,8 @@ const SlideShow = ({ slides }) => {
       //navigation
       pagination={{ clickable: true }}
       //scrollbar={{ draggable: true }}
-      loop // 무한 슬라이드 추가
+      loop="true" // 무한 슬라이드 추가
+      loopAdditionalSlides="1"
       autoplay={{
         delay: 2000, // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
         disableOnInteraction: false, // 추가된 부분: 인터랙션 후에도 autoplay가 계속 작동합니다.
@@ -58,7 +78,7 @@ const SlideShow = ({ slides }) => {
       }}
     >
       {slides.map(({ fields, sys }, index) => {
-        const imageUrl = fields?.cover?.fields?.file?.url;
+        const imageUrl = fields?.cover?.fields?.file?.url || extractImageFromContent(fields.content);
         const httpsImageUrl = imageUrl?.replace("http:", "https:");
         const title = fields.title;
 

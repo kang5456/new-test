@@ -9,6 +9,25 @@ import React from 'react';
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
 
+function extractImageFromContent(content) {
+  if (!content || !content.content) {
+    return null;
+  }
+
+  for (const item of content.content) {
+    if (item.nodeType === 'embedded-asset-block') {
+      return item.data.target.fields.file.url;
+    }
+
+    const nestedImage = extractImageFromContent(item);
+    if (nestedImage) {
+      return nestedImage;
+    }
+  }
+
+  return null;
+}
+
 export async function getStaticProps() {
   const posts = await getAllPosts();
   const insights = await getAllInsight(); // 인사이트 데이터를 가져옵니다.
@@ -47,11 +66,11 @@ export default function Index({ posts, insights, slides, opinions }) {
                       <Insight
                         title={fields.title}
                         type="insight" // 이 부분을 추가합니다.
-                        coverImage={fields.cover?.fields?.file?.url} // 이 부분을 수정합니다.
+                        coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
                         author={fields.author}
                         content={fields.content}
                         order={fields.order}
-                        slug={fields.title}
+                        slug={fields.slug}
                         createdAt={sys.createdAt} // 이 부분을 추가합니다.
                       />
                     </Grid>
