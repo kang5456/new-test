@@ -20,7 +20,7 @@ function extractImageFromContent(content) {
   }
 
   for (const item of content.content) {
-    if (item.nodeType === 'embedded-asset-block') {
+    if (item.nodeType === "embedded-asset-block") {
       return item.data.target.fields.file.url;
     }
 
@@ -66,7 +66,6 @@ const SlideShow = ({ slides }) => {
       pagination={{ clickable: true }}
       //scrollbar={{ draggable: true }}
       loop="true" // 무한 슬라이드 추가
-      loopAdditionalSlides="1"
       autoplay={{
         delay: 2000, // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
         disableOnInteraction: false, // 추가된 부분: 인터랙션 후에도 autoplay가 계속 작동합니다.
@@ -78,11 +77,15 @@ const SlideShow = ({ slides }) => {
       }}
     >
       {slides.map(({ fields, sys }, index) => {
-        const imageUrl = fields?.cover?.fields?.file?.url || extractImageFromContent(fields.content);
+        const imageUrl =
+          fields?.cover?.fields?.file?.url ||
+          extractImageFromContent(fields.content);
         const httpsImageUrl = imageUrl?.replace("http:", "https:");
         const title = fields.title;
 
-        const slug = encodeURIComponent(title.replace(/\s+/g, "-").toLowerCase()); // title 값을 slug로 변환하고 인코딩
+        const slug = encodeURIComponent(
+          title.replace(/\s+/g, "-").toLowerCase()
+        ); // title 값을 slug로 변환하고 인코딩
 
         return (
           <SwiperSlide
@@ -92,45 +95,46 @@ const SlideShow = ({ slides }) => {
           >
             {httpsImageUrl && <img src={httpsImageUrl} alt={title} />}
             <CardContent className={classes.contentWrapper}>
-              <Typography 
-                variant="subtitle1" 
-                  style={{ 
-                    fontWeight: "bold", 
-                    marginBottom: "5px", 
-                    position: "absolute", // 수정
-                    top: 20, // 수정
-                    left: 20, 
-                    }}
-                  >
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontWeight: "bold",
+                  marginBottom: "5px",
+                  position: "absolute", // 수정
+                  top: 20, // 수정
+                  left: 20,
+                }}
+              >
                 업계소식
               </Typography>
-              <Typography 
-                variant="h5" 
+              <Typography
+                variant="h5"
                 component="h2"
-                style={{ 
+                style={{
                   position: "absolute", // 수정
                   fontWeight: "bold",
                   fontSize: "18px",
                   top: 80,
                   left: 20,
                 }}
-                >
+              >
                 {title}
               </Typography>
-              <Typography 
-                variant="subtitle2" 
-                color="textSecondary" 
-                style={{ 
+              <Typography
+                variant="subtitle2"
+                color="textSecondary"
+                style={{
                   position: "absolute", // 변경합니다.
                   bottom: 20, // 변경합니다.
                   left: "25px",
-                  }}
-                >
-                {sys.createdAt && new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit",
-                }).format(new Date(sys.createdAt))}
+                }}
+              >
+                {sys.createdAt &&
+                  new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "2-digit",
+                  }).format(new Date(sys.createdAt))}
               </Typography>
             </CardContent>
           </SwiperSlide>

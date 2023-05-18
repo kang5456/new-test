@@ -21,7 +21,7 @@ const FileDownloadButton = ({ fileUrl, fileName }) => {
   };
 
   return (
-    <IconButton className={classes.button} onClick={handleClick}>
+    <IconButton className={classes.button} href={fileUrl} download={fileName}>
       <GetApp />
     </IconButton>
   );

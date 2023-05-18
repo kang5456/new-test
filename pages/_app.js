@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Head from "next/head";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { AppBar, Toolbar, Typography, Button, makeStyles } from "@material-ui/core";
 import theme from "theme";
+import Head from "next/head";
+import PropTypes from "prop-types";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { SSRProvider } from '@react-aria/ssr';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/styles.css"; // 기존 import 문 아래에 추가

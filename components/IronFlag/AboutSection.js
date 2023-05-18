@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
+import { Button, Dialog, IconButton, makeStyles } from "@material-ui/core";
+import { GetApp } from "@material-ui/icons";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import FileDownloadButton from "./FileDownloadButton";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -34,6 +35,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const PDFViewer = ({ fileUrl }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <>
+      <Button onClick={handleOpen}>View PDF</Button>
+      <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
+        <iframe
+          src={fileUrl}
+          style={{ width: '100%', height: '90vh' }}
+          frameBorder="0"
+        />
+      </Dialog>
+    </>
+  );
+};
+
 const About = ({ title, date, en, image, fileUrl, fileName }) => {
   const classes = useStyles();
 
@@ -43,7 +64,7 @@ const About = ({ title, date, en, image, fileUrl, fileName }) => {
       <div>
         <p className={classes.title}>{title}</p>
         <p className={classes.date}>{date}</p>
-        {fileUrl && <FileDownloadButton fileUrl={fileUrl} fileName={fileName} />}
+        {fileUrl && <PDFViewer fileUrl={fileUrl} />}
       </div>
     </div>
   );
@@ -83,9 +104,9 @@ const AboutSection = () => {
             <Grid item xs={12} sm={6} padding={1}>  
               <About
                 title="아이언플래그 회사소개서"
-                date="2022 / 한국어"
+                date="2023 / 한국어"
                 image="/file1.webp"
-                fileUrl="/file1.pdf"
+                fileUrl="/Ironflag-(KR)CI.pdf"
                 fileName="회사소개서.pdf"
               />
               <About
@@ -95,9 +116,9 @@ const AboutSection = () => {
             <Grid item xs={12} sm={6} padding={1}>
               <About
                 title="IRONFLAG Company Profile"
-                date="2022 / ENGLISH"
+                date="2023 / ENGLISH"
                 image="/file2.webp"
-                fileUrl="/file2.pdf"
+                fileUrl="/Ironflag-(EN)CI.pdf"
                 fileName="회사소개서.pdf"
               />
             </Grid>
