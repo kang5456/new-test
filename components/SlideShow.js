@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import styles from "./SlideShow.module.css";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
+import { Carousel } from "react-responsive-carousel";
+
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
@@ -34,9 +36,6 @@ function extractImageFromContent(content) {
 }
 
 const SlideShow = ({ slides }) => {
-  const [SwiperModule, setSwiperModule] = useState(null);
-  const [SwiperSlideModule, setSwiperSlideModule] = useState(null);
-
   const router = useRouter();
   const classes = useStyles();
 
@@ -44,37 +43,17 @@ const SlideShow = ({ slides }) => {
     router.push(`/insight/${title}`);
   };
 
-  useEffect(() => {
-    import("swiper/react").then(({ Swiper, SwiperSlide }) => {
-      setSwiperModule(Swiper);
-      setSwiperSlideModule(SwiperSlide);
-    });
-  }, []);
-
-  if (!SwiperModule || !SwiperSlideModule) {
-    return null;
-  }
-
-  const Swiper = SwiperModule;
-  const SwiperSlide = SwiperSlideModule;
-
   return (
-    <Swiper
-      spaceBetween={180}
-      slidesPerView={1}
-      //navigation
-      pagination={{ clickable: true }}
-      //scrollbar={{ draggable: true }}
-      loop="true" // 무한 슬라이드 추가
-      autoplay={{
-        delay: 2000, // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
-        disableOnInteraction: false, // 추가된 부분: 인터랙션 후에도 autoplay가 계속 작동합니다.
-      }}
-      effect="fade" // 추가: fade 효과를 사용합니다.
-      speed={1000} // 추가: 전환 속도를 1000ms로 설정합니다.
-      style={{
-        width: "93%",
-      }}
+    <Carousel
+      showThumbs={false}
+      autoPlay={true}
+      interval={3000} // 자동으로 슬라이드 이동할 시간 간격 (밀리초)
+      infiniteLoop={true} // 무한 슬라이드 추가
+      transitionTime={1000} // 전환 속도를 1000ms로 설정합니다.
+      showArrows={false}
+      showStatus={false}
+      showIndicators={false}
+      className={styles.carousel}
     >
       {slides.map(({ fields, sys }, index) => {
         const imageUrl =
@@ -88,10 +67,10 @@ const SlideShow = ({ slides }) => {
         ); // title 값을 slug로 변환하고 인코딩
 
         return (
-          <SwiperSlide
+          <div
             key={index}
             className={styles.slide}
-            onClick={() => handleClick(title)} // slug 값을 사용하도록 변경
+            onClick={() => handleClick(title)}
           >
             {httpsImageUrl && <img src={httpsImageUrl} alt={title} />}
             <CardContent className={classes.contentWrapper}>
@@ -100,8 +79,8 @@ const SlideShow = ({ slides }) => {
                 style={{
                   fontWeight: "bold",
                   marginBottom: "5px",
-                  position: "absolute", // 수정
-                  top: 20, // 수정
+                  position: "absolute",
+                  top: 20,
                   left: 20,
                 }}
               >
@@ -111,7 +90,7 @@ const SlideShow = ({ slides }) => {
                 variant="h5"
                 component="h2"
                 style={{
-                  position: "absolute", // 수정
+                  position: "absolute",
                   fontWeight: "bold",
                   fontSize: "18px",
                   top: 80,
@@ -124,8 +103,8 @@ const SlideShow = ({ slides }) => {
                 variant="subtitle2"
                 color="textSecondary"
                 style={{
-                  position: "absolute", // 변경합니다.
-                  bottom: 20, // 변경합니다.
+                  position: "absolute",
+                  bottom: 20,
                   left: "25px",
                 }}
               >
@@ -137,10 +116,10 @@ const SlideShow = ({ slides }) => {
                   }).format(new Date(sys.createdAt))}
               </Typography>
             </CardContent>
-          </SwiperSlide>
+          </div>
         );
       })}
-    </Swiper>
+    </Carousel>
   );
 };
 
