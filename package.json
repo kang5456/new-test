@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.0.3",
@@ -29,6 +29,7 @@
     "prop-types": "latest",
     "react": "^16.14.0",
     "react-bootstrap": "^2.7.2",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.14.0",
     "react-fast-marquee": "^1.5.0",
     "react-i18next": "^12.2.2",

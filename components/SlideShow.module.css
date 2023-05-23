@@ -3,7 +3,6 @@
   height: 100%;
 }
 
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -37,7 +36,7 @@
 }
 
 .slide img {
-  flex: 1; /* 이미지 영역이 전체 슬라이드의 반을 차지하도록 설정합니다. */
+  flex: 1.12; /* 이미지 영역이 전체 슬라이드의 반을 차지하도록 설정합니다. */
   position: relative;
   object-fit: cover;
   width: 50%;
@@ -82,23 +81,94 @@
   bottom: 70%;
 }
 
-/* 스크롤바 컨테이너 */
-.swiper-scrollbar {
-  position: absolute;
-  bottom: 20px; /* 스크롤바의 위치를 조절합니다. 필요한 경우 값을 변경하세요. */
-  left: 0;
-  right: 0;
+.slideShowContainer {
+  position: relative;
   width: 100%;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin: 0 auto;
+  height: 320px;
 }
 
-/* 스크롤바 드래그 요소 */
-.swiper-scrollbar-drag {
-  height: 100%;
-  width: auto;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
+.indicatorContainer {
+  position: absolute;
+  bottom: 10px; /* 인디케이터의 위치를 조정합니다 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(204, 202, 202);
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.indicator.active {
+  background-color: #000;
+}
+
+/* .slideShowContainer .carousel .slider-wrapper .carousel-slider .control-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slideShowContainer .carousel .slider-wrapper .carousel-slider .control-dots li {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slideShowContainer .carousel .slider-wrapper .carousel-slider .control-dots li button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: gray;
+  transition: background-color 0.3s ease;
+}
+
+.slideShowContainer .carousel .slider-wrapper .carousel-slider .control-dots li.selected button {
+  background-color: red;
+} */
+
+.customArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s ease;
+}
+
+.customArrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.customArrowPrev {
+  left: 20px;
+}
+
+.customArrowNext {
+  right: 20px;
 }
