@@ -36,7 +36,7 @@ const generateSlug = (title = "") => {
 export async function getStaticPaths() {
   const allPress = await getAllPressWithSlug();
   return {
-    paths: allPress.map((press) => `/press/${press.slug}`),
+    paths: allPress.map((press) => `/press/${press.title}`),
     fallback: true,
   };
 }
@@ -62,14 +62,12 @@ const Press = ({ press, morePress }) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  const slug = press ? generateSlug(press.title) : "";
-
   return (
     <Layout
       title={press?.fields.title}
       description={press?.fields.subTitle}
       ogImage={press?.fields.cover?.fields.file.url || 'default_image_url'}
-      url={`https://yourwebsite.com/press/${slug}`}
+      url={`https://yourwebsite.com/press/${generateSlug(press?.fields.title)}`}
     >
       <div className={classes.contentWrapper}>
         <div className={classes.background}>

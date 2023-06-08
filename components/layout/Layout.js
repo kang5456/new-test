@@ -43,6 +43,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
           }
           key="og:description"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
       <Header />
       <main style={{ backgroundColor: "#f9f9f9" }}>{children}</main>
