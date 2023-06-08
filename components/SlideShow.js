@@ -165,10 +165,13 @@ const SlideShow = ({ slides }) => {
                   }}
                 >
                   {sys.createdAt &&
-                    new Intl.DateTimeFormat("en-US", {
+                    new Intl.DateTimeFormat("ko-KR", {
                       year: "numeric",
                       month: "long",
                       day: "2-digit",
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true
                     }).format(new Date(sys.createdAt))}
                 </Typography>
               </CardContent>

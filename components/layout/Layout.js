@@ -7,13 +7,13 @@ const Layout = ({ children, title, description, ogImage, url }) => {
   // website Url
   const pageUrl = "https://blog-with-nextjs-and-contentful.vercel.app/";
   // when you share this page on facebook you'll see this image
-  const ogImg = "/blog-demo-min.png";
+  const ogImg = "";
   // google site vertification
   const GOOGLE_SITE_VERTIFICATION = process.env.GOOGLE_SITE_VERTIFICATION;
   return (
     <>
       <Head>
-        <title>{title ? title : "Blog"}</title>
+        <title>{title ? title : "Tiims"}</title>
         <meta
           name="description"
           key="description"

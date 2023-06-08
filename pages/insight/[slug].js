@@ -36,14 +36,14 @@ const generateSlug = (title = "") => {
 export async function getStaticPaths() {
   const allInsight = await getAllInsightWithSlug();
   return {
-    paths: allInsight.map((insight) => `/insight/${insight.title}`),
+    paths: allInsight.map((insight) => `/insight/${insight.id}`),
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const insight = await getInsightBySlug(params.slug); // 수정
-  const moreInsight = await getMoreInsight(params.slug); // 수정
+  const insight = await getInsightBySlug(params.id); // 수정
+  const moreInsight = await getMoreInsight(params.id); // 수정
 
   return {
     props: {
@@ -67,7 +67,7 @@ const Insight = ({ insight, moreInsight }) => {
       title={insight?.fields.title}
       description={insight?.fields.subTitle}
       ogImage={insight?.fields.cover?.fields.file.url || 'default_image_url'}
-      url={`https://yourwebsite.com/insight/${generateSlug(insight?.fields.title)}`}
+      url={`https://yourwebsite.com/insight/${insight?.id}`}
     >
       <div className={classes.contentWrapper}>
         <div className={classes.background}>

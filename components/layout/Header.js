@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     "& .dropdown-menu": {
       border: "none", // 이 속성을 추가하여 테두리를 없애줍니다.
-  },
+    },
   },
   navDropdownMenu: {
     position: "absolute",
@@ -102,6 +102,23 @@ const Header = () => {
   const theme = useTheme();
   const router = useRouter();
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const updateMobileStatus = () => {
+    setIsMobile(window.innerWidth < 600);
+  };
+
+  useEffect(() => {
+    const updateMobileStatus = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+  
+    updateMobileStatus(); // Run on component mount
+
+    window.addEventListener("resize", updateMobileStatus);
+    return () => window.removeEventListener("resize", updateMobileStatus);
+  }, []);
+
   // 드롭다운 메뉴를 열고 닫기 위한 상태
   const [dropdownOpen, setDropdownOpen] = useState({
     insight: false,
@@ -110,6 +127,8 @@ const Header = () => {
   });
 
   const handleDropdownOpen = (dropdown) => {
+    if (!isMobile) return;
+
     setDropdownOpen((prevState) => {
       const newState = { ...prevState };
       Object.keys(newState).forEach((key) => {
@@ -120,11 +139,20 @@ const Header = () => {
   };
 
   const handleDropdownClose = () => {
+    if (!isMobile) return;
+
     setDropdownOpen({
       insight: false,
       btechfin: false,
       press: false,
     });
+  };
+
+  const handleDropdownToggle = (dropdown) => {
+    setDropdownOpen((prevState) => ({
+      ...prevState,
+      [dropdown]: !prevState[dropdown],
+    }));
   };
 
   const handleItemClick = (e) => {
@@ -147,6 +175,7 @@ const Header = () => {
       >
         <Navbar.Brand
           href="/"
+          className="navbar-brand"
           style={{
             marginLeft: "calc(50% - 640px)", // 로고 위치 조정
             marginRight: "calc(50% - 500px)", // 로고 위치 조정
@@ -181,12 +210,15 @@ const Header = () => {
                   zIndex: 100,
                 }}
               >
-                B.Initiative
+                T.Initiative
               </Typography>
             </Grid>
           </Grid>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          className="navbar-toggle"
+        />
         <Navbar.Collapse
           id="responsive-navbar-nav"
           style={{
@@ -200,12 +232,13 @@ const Header = () => {
         >
           <Nav className="mx-auto">
             <Nav.Link href="/posts/ironflag" className={classes.navItem}>
-              아이언플래그
+              크로스체크
             </Nav.Link>
 
             <Nav.Item
               onMouseEnter={() => handleDropdownOpen("insight")}
               onMouseLeave={handleDropdownClose}
+              onClick={() => handleDropdownToggle("insight")}
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
@@ -266,9 +299,9 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  B.GameFIN
+                  B.Tiims
                 </NavDropdown.Item>
-                <NavDropdown.Item
+                {/* <NavDropdown.Item
                   href="/posts/btechfin/b.metafin"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
@@ -288,7 +321,7 @@ const Header = () => {
                   className={classes.navDropdownItem}
                 >
                   B.ESGFIN
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item
                   href="/posts/btechfin/b.isp"
                   onClick={handleItemClick}

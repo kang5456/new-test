@@ -81,10 +81,13 @@ const Btechfin = ({ title, type, coverImage, author, content, order, slug, creat
                   left: "15px",
                   }}
                   >
-              {createdAt && new Intl.DateTimeFormat("en-US", {
+              {createdAt && new Intl.DateTimeFormat("ko-KR", {
                 year: "numeric",
                 month: "long",
                 day: "2-digit",
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
               }).format(new Date(createdAt))}
             </Typography>
           </CardContent>
