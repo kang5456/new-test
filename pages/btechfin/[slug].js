@@ -83,7 +83,7 @@ const Btechfin = ({ bTechFin, moreBtechfin }) => {
                         color="textSecondary"
                         style={{ fontSize: "13px" }}
                       >
-                        언론
+                        칼럼
                       </Typography>
                     </a>
                   </Link>
@@ -91,7 +91,7 @@ const Btechfin = ({ bTechFin, moreBtechfin }) => {
                 <Grid item>
                   <Typography>-</Typography>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Link href="/posts/btechfin/b.gamefin">
                     <a>
                       <Typography
@@ -103,7 +103,7 @@ const Btechfin = ({ bTechFin, moreBtechfin }) => {
                       </Typography>
                     </a>
                   </Link>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             <Grid item>

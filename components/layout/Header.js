@@ -107,6 +107,7 @@ const Header = () => {
     insight: false,
     btechfin: false,
     press: false,
+    ironflag: false, // crosscheck 추가
   });
 
   const handleDropdownOpen = (dropdown) => {
@@ -124,6 +125,7 @@ const Header = () => {
       insight: false,
       btechfin: false,
       press: false,
+      ironflag: false, // crosscheck 추가
     });
   };
 
@@ -200,9 +202,40 @@ const Header = () => {
           }}
         >
           <Nav className="mx-auto">
-            <Nav.Link href="/posts/ironflag" className={classes.navItem}>
-              CrossCheck
-            </Nav.Link>
+            <Nav.Item
+              onMouseEnter={() => handleDropdownOpen("ironflag")}
+              onMouseLeave={handleDropdownClose}
+              className={classes.hideDropdownArrow}
+            >
+
+              <Nav.Link 
+                href="/posts/ironflag/introduce" 
+                className={classes.navItem}
+                id="collapsible-nav-dropdown-ironflag"
+                >
+                CrossCheck
+              </Nav.Link>
+              <NavDropdown
+                className={classes.navDropdown}
+                show={dropdownOpen.ironflag}
+                menualign={{ lg: "center" }}
+              >
+                <NavDropdown.Item
+                  href="/posts/ironflag/introduce"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  IR
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/ironflag/b.stiim"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                B.TechFIN
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Item>
 
             <Nav.Item
               onMouseEnter={() => handleDropdownOpen("insight")}
@@ -221,26 +254,26 @@ const Header = () => {
                 show={dropdownOpen.insight}
                 menualign={{ lg: "center" }}
               >
-                <NavDropdown.Item
+                {/* <NavDropdown.Item
                   href="/posts/insight/opinion"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
                   오피니언
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item
                   href="/posts/insight/stories"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  기획 연재
+                  보도 자료
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   href="/posts/insight/report"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  업계소식
+                  업계 소식
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>
@@ -255,7 +288,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-btechfin"
               >
-                B.TechFIN
+                Opinion
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -267,7 +300,7 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  B.TiiMs
+                  칼럼
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item
                   href="/posts/btechfin/b.metafin"
@@ -295,7 +328,7 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  B.ISP
+                  사설
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>
@@ -310,7 +343,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
               >
-                Press
+                Media
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -322,9 +355,9 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  보도자료
+                  블로그
                 </NavDropdown.Item>
-                <NavDropdown.Item
+                {/* <NavDropdown.Item
                   href="/posts/press/media"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
@@ -337,7 +370,7 @@ const Header = () => {
                   className={classes.navDropdownItem}
                 >
                   IR
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav.Item>
           </Nav>

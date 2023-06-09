@@ -74,7 +74,7 @@ export default function Release({ BISP }) {
             <Grid container spacing={4} justify="center">
               <Grid item xs={12}>
                 <Typography variant="h2" component="h1" align="left" gutterBottom style={{ fontWeight: "bold" }}>
-                  B.TechFIN
+                  Editorial
                 </Typography>
               </Grid>
               {noPosts ? (

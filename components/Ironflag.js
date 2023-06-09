@@ -14,40 +14,88 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "56.25%", // 16:9
   },
   root: {
+    display: "flex",
+    flexDirection: "row",
     transition: "all 0.3s",
+    boxShadow: 'none', 
     "&:hover": {
-      boxShadow:
-        "1px 0px 20px -1px rgba(0,0,0,0.2), 0px 0px 20px 5px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
       transform: "translateY(-3px)",
     },
+    backgroundColor: "transparent", // 이 부분을 추가하여 배경색을 없앱니다.
+  },
+  cover: {
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    paddingBottom: "21%",
+    paddingTop: "30px",
+    width: "40%",
+    borderRadius: "15px"
+  },
+  contentWrapper: {
+    position: "relative",
+    padding: "16px",
+    width: "80%",
+    height: "200px",
   },
 }));
 
-const Ironflag = ({ title, type, coverImage, author, content, order, slug }) => {
+const Ironflag = ({ title, type, coverImage, author, content, order, slug, createdAt }) => {
     const classes = useStyles();
 
       // 클릭시 상세 페이지로 이동하는 링크
   const linkHref = type === "ironflag" ? "/ironflag/[slug]" : "/blog/[slug]";
   const linkAs = type === "ironflag" ? `/ironflag/${slug}` : `/blog/${slug}`;
 
-  return(
-    <Link href={linkHref} as={linkAs}>
-    <Card className={classes.root}>
-      <CardHeader title={title} />
-      {coverImage && (
-        <CardMedia
-          className={classes.media}
-          image={`https:${coverImage}`}
-          title={title}
-        />
-      )}
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="div">
-          {documentToReactComponents(content)}
-        </Typography>
-      </CardContent>
-    </Card>
-  </Link>
-  )
-}
+  return (
+    <Link href={`/ironflag/${title}`}>
+      <a style={{ textDecoration: 'none' }}>
+        <Card className={classes.root}>
+          <div
+            className={classes.cover}
+            style={{
+              backgroundImage: `url(${coverImage})`,
+            }}
+          ></div>
+          <CardContent className={classes.contentWrapper}>
+            <Typography variant="subtitle1" style={{ fontWeight: "bold", marginBottom: "5px", marginTop: "-15px" }}>
+              B.TechFIN
+            </Typography>
+            <Typography 
+              variant="h5" 
+              component="h2"
+              style={{ 
+                fontWeight: "bold",
+                fontSize: "20px"
+               }}
+              >
+              {title}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {author}
+            </Typography>
+              <Typography 
+                variant="subtitle2" 
+                color="textSecondary" 
+                style={{ 
+                  position: "absolute", // 변경합니다.
+                  bottom: 4, // 변경합니다.
+                  left: "15px",
+                  }}
+                  >
+                {createdAt && new Intl.DateTimeFormat("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: true
+                }).format(new Date(createdAt))}
+              </Typography>
+          </CardContent>
+        </Card>
+      </a>
+    </Link>
+  );
+};
 export default Ironflag;

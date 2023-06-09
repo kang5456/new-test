@@ -56,7 +56,7 @@ const Press = ({ title, type, coverImage, author, content, order, slug, createdA
           ></div>
           <CardContent className={classes.contentWrapper}>
             <Typography variant="subtitle1" style={{ fontWeight: "bold", marginBottom: "5px", marginTop: "-15px", }}>
-              보도자료
+              Post
             </Typography>
             <Typography 
               variant="h5" 

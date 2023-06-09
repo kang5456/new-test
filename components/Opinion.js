@@ -1,9 +1,9 @@
 import React from "react";
 import Layout from "components/layout/Layout";
-import Insight from 'components/Insight';
+import BtechFIN from 'components/BtechFIN';
 import styles from "./Opinion.module.css"; // CSS 모듈을 가져옵니다.
 import { Container, Grid, Typography } from "@material-ui/core";
-import { getAllInsight } from "lib/index";
+import { getAllBtechfin } from "lib/index";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export async function getStaticProps() {
-  const insights = await getAllInsight();
-  const opinions = insights.filter(insight => insight.fields.type === "opinion");
+  const btechfins = await getAllBtechfin();
+  const opinions = btechfins.filter(btechfin => btechfin.fields.type === "B.GameFIN");
   return { props: { opinions }, revalidate: 1 };
 }
 
@@ -48,9 +48,9 @@ const Opinion = ({ opinions }) => {
         <Grid container spacing={4}>
           {opinions?.map(({ fields, sys }) => (
             <Grid item key={fields.slug} xs={12}>
-              <Insight
+              <BtechFIN
                 title={fields.title}
-                type="opinion"
+                type="B.GameFIN"
                 coverImage={fields.cover?.fields?.file?.url}
                 author={fields.author}
                 content={fields.content}

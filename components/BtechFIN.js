@@ -57,7 +57,7 @@ const Btechfin = ({ title, type, coverImage, author, content, order, slug, creat
           ></div>
           <CardContent className={classes.contentWrapper}>
             <Typography variant="subtitle1" style={{ fontWeight: "bold", marginBottom: "5px", marginTop: "-15px", }}>
-              업계소식
+              칼럼 소식
             </Typography>
             <Typography 
               variant="h5" 

@@ -41,6 +41,7 @@ const SlideShow = ({ slides }) => {
 
   const handleClick = (title) => {
     router.push(`/insight/${title}`);
+    router.push(`/bTechFin/${title}`);
   };
 
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>

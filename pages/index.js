@@ -2,10 +2,11 @@ import Post from "components/Post";
 import Opinion from "components/Opinion"; // Opinion 컴포넌트를 추가합니다.
 import Layout from "components/layout/Layout";
 import Insight from "components/Insight";
+import BtechFIN from 'components/BtechFIN';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Typography } from "@material-ui/core";
-import { getAllPosts, getAllInsight, getAllOpinions } from "lib/index"; // Import getAllPosts and getAllInsight
+import { getAllPosts, getAllInsight, getAllOpinions, getAllBtechfin } from "lib/index"; // Import getAllPosts and getAllInsight
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
 
@@ -32,8 +33,9 @@ export async function getStaticProps() {
   const posts = await getAllPosts();
   const insights = await getAllInsight(); // 인사이트 데이터를 가져옵니다.
   const opinions = await getAllOpinions(); // Get opinions data
-  const slides = insights.slice(0, 5); // 첫 5개 게시물을 슬라이드로 사용하려고 합니다.
-  return { revalidate: 1, props: { posts, insights, slides, opinions } };
+  const btechfin = await getAllBtechfin();  // Add this line
+  const slides = [...insights.slice(0, 4), ...btechfin.slice(0,1)]; // Modify this line
+  return { revalidate: 1, props: { posts, insights, slides, opinions, btechfin } };
 }
 
 export default function Index({ posts, insights, slides, opinions }) {

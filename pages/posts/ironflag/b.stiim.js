@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from 'components/layout/Layout';
-import BtechFIN from 'components/BtechFIN';
+import Ironflag from 'components/Ironflag';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { getAllBtechfin, getMoreBtechfin } from 'lib/index';
+import { getAllIronflag, getMoreIronflag } from 'lib/index';
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -43,25 +43,26 @@ function extractImageFromContent(content) {
 }
 
 export async function getStaticProps() {
-  const bTechFin = await getAllBtechfin(); // title 필요하지 않으면 null로
-  return { props: { bTechFin }, revalidate: 1 };
+  //const ironflag = await getAllIronflag(); 
+  const ironflag = await getMoreIronflag(null, "ironflag"); // title 필요하지 않으면 null로
+  return { props: { ironflag }, revalidate: 1 };
 }
 
-export default function BtechfinPage({ bTechFin }) {
+export default function ironflagPage({ ironflag }) {
   const classes = useStyles();
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수
   const postsPerPage = 10; // 한 페이지당 보여줄 게시글 수
-  const noPosts = bTechFin.length === 0;
+  const noPosts = ironflag.length === 0;
 
     // 현재 페이지에 보여줄 게시글의 시작/끝 index 계산
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = bTechFin.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
+    const currentPosts = ironflag.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
 
     // 페이지 번호 목록을 만드는 함수
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(bTechFin.length / postsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(ironflag.length / postsPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -73,7 +74,7 @@ export default function BtechfinPage({ bTechFin }) {
             <Grid container spacing={4} justify="center">
             <Grid item xs={12}>
                 <Typography variant="h2" component="h1" align="left" gutterBottom style={{ fontWeight: "bold" }}>
-                   Opinion
+                   B.TechFIN
                 </Typography>
               </Grid>
               {noPosts ? (
@@ -91,9 +92,9 @@ export default function BtechfinPage({ bTechFin }) {
                     <Grid container spacing={4} justify="center">
                       {currentPosts?.map(({ fields, sys }) => (
                         <Grid item key={fields.title} xs={12}>
-                          <BtechFIN
+                          <Ironflag
                             title={fields.title}
-                            type="bTechFin" // 이 부분을 추가합니다.
+                            type="ironflag" // 이 부분을 추가합니다.
                             coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}

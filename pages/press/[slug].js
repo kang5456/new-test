@@ -82,7 +82,7 @@ const Press = ({ press, morePress }) => {
                         color="textSecondary"
                         style={{ fontSize: "13px" }}
                       >
-                        언론
+                        Blog
                       </Typography>
                     </a>
                   </Link>
@@ -90,7 +90,7 @@ const Press = ({ press, morePress }) => {
                 <Grid item>
                   <Typography>-</Typography>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Link href="/posts/press/release">
                     <a>
                       <Typography
@@ -102,7 +102,7 @@ const Press = ({ press, morePress }) => {
                       </Typography>
                     </a>
                   </Link>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             <Grid item>
