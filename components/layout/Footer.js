@@ -57,7 +57,7 @@ const Footer = () => {
               className={classes.copylight}
               style={{ fontWeight: "bold" }}
               >
-              B.Initiative
+              TiiMs
             </Typography>
           </Grid>
         </Grid>
@@ -87,7 +87,7 @@ const Footer = () => {
               이 사이트는 블록체인 기술과 소식을 공유하기 위한 비영리적 목적으로
               운영됩니다.
             </div>
-            <div>&copy;2023 Ironflag All Rights Reserved.</div>
+            <div>&copy;2023 CrossCheck All Rights Reserved.</div>
           </Typography>
         </Grid>
       </Container>

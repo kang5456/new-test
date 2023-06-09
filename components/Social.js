@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   snsIcon: {
     width: "15px",
     height: "15px",
+    margin: "2px",
 
     [theme.breakpoints.down("xs")]: {
       width: "25px",
@@ -44,10 +45,16 @@ const Social = ({ color }) => {
   }
   return (
     <Grid item container spacing={0} justify="center" alignItems="center">
-      <Grid item>
-        <Typography style={{ fontSize: "1em", color: "#fff" }}>아이언플래그</Typography>
+      <Grid 
+        item
+        component={"a"}
+        target="_blank"
+        rel="noreferrer noopener"
+        href={homepage}
+      >
+        <Typography style={{ fontSize: "1em", color: "#fff" }}>CrossCheck</Typography>
       </Grid>
-      <Grid
+      {/* <Grid
         item
         component={"a"}
         target="_blank"
@@ -59,7 +66,7 @@ const Social = ({ color }) => {
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
-      </Grid>
+      </Grid> */}
       {/* <Grid
         item
         component={"a"}

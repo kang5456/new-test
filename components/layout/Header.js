@@ -201,7 +201,7 @@ const Header = () => {
         >
           <Nav className="mx-auto">
             <Nav.Link href="/posts/ironflag" className={classes.navItem}>
-              크로스체크
+              CrossCheck
             </Nav.Link>
 
             <Nav.Item
@@ -214,7 +214,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-insight"
               >
-                인사이트
+                Insight
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -267,9 +267,9 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  B.GameFIN
+                  B.TiiMs
                 </NavDropdown.Item>
-                <NavDropdown.Item
+                {/* <NavDropdown.Item
                   href="/posts/btechfin/b.metafin"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
@@ -289,7 +289,7 @@ const Header = () => {
                   className={classes.navDropdownItem}
                 >
                   B.ESGFIN
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 <NavDropdown.Item
                   href="/posts/btechfin/b.isp"
                   onClick={handleItemClick}
@@ -310,7 +310,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
               >
-                언론
+                Press
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}

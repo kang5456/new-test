@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "1450px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(0, 0),
   },
+  coverImage: {
+    maxWidth: "100%", // 이미지의 최대 너비를 부모 요소의 100%로 제한
+    height: "auto", // 높이를 자동으로 설정하여 원본 이미지의 비율을 유지
+  },
 }));
 
 const generateSlug = (title = "") => {

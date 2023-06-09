@@ -77,7 +77,7 @@ export default function totalPosts({ insights }) {
               <Grid container spacing={4} justify="center">
                 <Grid item xs={12}>
                   <Grid container spacing={4} justify="center">
-                    {insights?.map(({ fields, sys }) => (
+                    {currentPosts?.map(({ fields, sys }) => (
                       <Grid item key={fields.title} xs={12}>
                         <Insight
                           title={fields.title}
@@ -95,7 +95,10 @@ export default function totalPosts({ insights }) {
                   <Grid container spacing={2} justify="center" style={{ marginTop: '2rem' }}>
                     {pageNumbers.map((number) =>(
                       <Grid item key={number}>
-                      <button onClick={() => setCurrentPage(number)}>{number}</button>
+                        <button onClick={() => setCurrentPage(number)}
+                                style={{background: 'white', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px'}}>
+                          {number}
+                        </button>
                     </Grid>
                     ))}
                   </Grid>

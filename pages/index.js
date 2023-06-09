@@ -3,9 +3,9 @@ import Opinion from "components/Opinion"; // Opinion 컴포넌트를 추가합�
 import Layout from "components/layout/Layout";
 import Insight from "components/Insight";
 import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
 import { Container, Grid, Typography } from "@material-ui/core";
 import { getAllPosts, getAllInsight, getAllOpinions } from "lib/index"; // Import getAllPosts and getAllInsight
-import React from 'react';
 import SlideShow from '../components/SlideShow';
 import { getSlides } from '../lib/api';
 
@@ -38,6 +38,12 @@ export async function getStaticProps() {
 
 export default function Index({ posts, insights, slides, opinions }) {
   const router = useRouter();
+  const [shownInsights, setShownInsights] = useState([]);
+
+  useEffect(() => {
+    setShownInsights(insights.slice(0, 5)); // 먼저 5개의 게시물만 표시
+  }, [insights]);
+
   const handleClick = (title) => {
     router.push('/posts/totalPosts');
   }
@@ -61,7 +67,7 @@ export default function Index({ posts, insights, slides, opinions }) {
                 최신기사
               </Typography>
                 <Grid container spacing={4}>
-                  {insights?.map(({ fields, sys  }) => (
+                  {shownInsights?.map(({ fields, sys  }) => (
                     <Grid item key={fields.slug} xs={12}>
                       <Insight
                         title={fields.title}

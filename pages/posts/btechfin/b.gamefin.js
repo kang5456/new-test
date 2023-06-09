@@ -90,7 +90,7 @@ export default function Bgamefin({ BGameFIN }) {
                 <Grid container spacing={4} justify="center">
                   <Grid item xs={12}>
                     <Grid container spacing={4} justify="center">
-                      {BGameFIN?.map(({ fields,sys }) => (
+                      {currentPosts?.map(({ fields,sys }) => (
                         <Grid item key={fields.title} xs={12}>
                           <BtechFIN
                             title={fields.title}
@@ -105,14 +105,14 @@ export default function Bgamefin({ BGameFIN }) {
                     </Grid>
 
                   {/* 페이지 번호 목록을 출력 */}
-                  <Grid 
-                    container spacing={2} 
-                    justify="center" 
-                    style={{ marginTop: '2rem' }}>
+                  <Grid container spacing={2} justify="center" style={{ marginTop: "2rem" }}>
                     {pageNumbers.map((number) =>(
                       <Grid item key={number}>
-                      <button onClick={() => setCurrentPage(number)}>{number}</button>
-                    </Grid>
+                        <button onClick={() => setCurrentPage(number)}
+                                style={{background: 'white', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px'}}>
+                          {number}
+                        </button>
+                      </Grid>
                     ))}
                   </Grid>
                     

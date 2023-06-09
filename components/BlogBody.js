@@ -47,20 +47,26 @@ const BlogBody = ({
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const { title, file } = node.data.target.fields;
         const { url } = file;
-        return <img src={url} alt={title} />;
+        return (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <img src={url} alt={title} />;
+          </div>
+        );
       },
     },
   };
 
   return (
     <div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
       {coverImage && (
         <img src={coverImage} alt="" className={classes.coverImage} />
       )}
+      </div>
       <Box
         component="div"
         style={{
-          fontSize: "18px",
+          fontSize: "15px",
           lineHeight: "1.6",
           letterSpacing: "0.009em",
           wordBreak: "keep-all",
