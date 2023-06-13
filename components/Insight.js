@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Insight = ({ title, type, coverImage, author, content, order, slug, createdAt }) => {
+const Insight = ({ title, type, coverImage, author, rank, content, order, slug, createdAt, datePosition, authorPosition, rankPosition }) => {
     const classes = useStyles();
 
   // 클릭시 상세 페이지로 이동하는 링크
@@ -69,27 +69,48 @@ const Insight = ({ title, type, coverImage, author, content, order, slug, create
               >
               {title}
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography 
+              variant="subtitle1"
+              color="textSecondary"
+              style={{
+                position: "absolute", // 변경합니다.
+                bottom: authorPosition || 4, // 변경합니다.
+                fontSize: "15px",
+                fontWeight: "bold",
+              }}
+            >
               {author}
             </Typography>
-              <Typography 
-                variant="subtitle2" 
-                color="textSecondary" 
-                style={{ 
-                  position: "absolute", // 변경합니다.
-                  bottom: 4, // 변경합니다.
-                  left: "15px",
-                  }}
-                  >
-                {createdAt && new Intl.DateTimeFormat("ko-KR", {
-                  year: "numeric",
-                  month: "long",
-                  day: "2-digit",
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: true
-                }).format(new Date(createdAt))}
-              </Typography>
+            <Typography 
+              variant="subtitle1"
+              color="textSecondary"
+              style={{
+                position: "absolute", // 변경합니다.
+                bottom: rankPosition || -16, // 변경합니다.
+                fontSize: "13px",
+                fontWeight: "bold",
+              }}
+            >
+              {rank}
+            </Typography>
+            <Typography 
+              variant="subtitle2" 
+              color="textSecondary" 
+              style={{ 
+                position: "absolute", // 변경합니다.
+                bottom: datePosition || 4, // 변경합니다.
+                left: "15px",
+                }}
+                >
+              {createdAt && new Intl.DateTimeFormat("ko-KR", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+              }).format(new Date(createdAt))}
+            </Typography>
           </CardContent>
         </Card>
       </a>

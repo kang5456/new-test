@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
 export async function getStaticProps() {
   const btechfins = await getAllBtechfin();
-  const opinions = btechfins.filter(btechfin => btechfin.fields.type === "B.GameFIN");
+  const opinions = btechfins.filter(btechfin => 
+    btechfin.fields.type === "B.GameFIN" || btechfin.fields.type === "B.ISP");
   return { props: { opinions }, revalidate: 1 };
 }
 
@@ -50,13 +51,17 @@ const Opinion = ({ opinions }) => {
             <Grid item key={fields.slug} xs={12}>
               <BtechFIN
                 title={fields.title}
+                author={fields.author}
+                rank={fields.rank}
                 type="B.GameFIN"
                 coverImage={fields.cover?.fields?.file?.url}
-                author={fields.author}
                 content={fields.content}
                 order={fields.order}
                 slug={fields.title}
                 createdAt={sys.createdAt}
+                datePosition={-3} // 날짜 위치를 원하는 값으로 조정합니다.
+                authorPosition={29}
+                rankPosition={12}
               />
             </Grid>
           ))}

@@ -73,13 +73,17 @@ export default function Index({ posts, insights, slides, opinions }) {
                     <Grid item key={fields.slug} xs={12}>
                       <Insight
                         title={fields.title}
+                        author={fields.author}
+                        rank={fields.rank}
                         type="insight" // 이 부분을 추가합니다.
                         coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
-                        author={fields.author}
                         content={fields.content}
                         order={fields.order}
                         slug={fields.slug}
                         createdAt={sys.createdAt} // 이 부분을 추가합니다.
+                        datePosition={-5} // 날짜 위치를 원하는 값으로 조정합니다.
+                        authorPosition={30}
+                        rankPosition={12}
                       />
                     </Grid>
                   ))}

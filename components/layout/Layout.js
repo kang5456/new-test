@@ -13,7 +13,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
   return (
     <>
       <Head>
-        <title>{title ? title : "Tiims"}</title>
+        <title>{title ? title : "ST.initiative"}</title>
         <meta
           name="description"
           key="description"

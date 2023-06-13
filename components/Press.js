@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Press = ({ title, type, coverImage, author, content, order, slug, createdAt }) => {
+const Press = ({ title, type, coverImage, author, content, order, slug, createdAt, datePosition }) => {
   const classes = useStyles();
 
   // 클릭시 상세 페이지로 이동하는 링크
@@ -76,7 +76,7 @@ const Press = ({ title, type, coverImage, author, content, order, slug, createdA
                 color="textSecondary" 
                 style={{ 
                   position: "absolute", // 변경합니다.
-                  bottom: 4, // 변경합니다.
+                  bottom: datePosition || 4, // 변경합니다.
                   left: "15px",
                   }}
                   >

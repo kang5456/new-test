@@ -41,7 +41,6 @@ const SlideShow = ({ slides }) => {
 
   const handleClick = (title) => {
     router.push(`/insight/${title}`);
-    router.push(`/bTechFin/${title}`);
   };
 
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>
@@ -161,8 +160,32 @@ const SlideShow = ({ slides }) => {
                   color="textSecondary"
                   style={{
                     position: "absolute",
+                    bottom: 60, // 위치를 원하는 곳에 맞추어 조정
+                    left: 20,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {fields.author} {/* author 표시 */}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  style={{
+                    position: "absolute",
+                    bottom: 40, // 위치를 원하는 곳에 맞추어 조정
+                    left: 20,
+                    fontWeight: "bold",
+                  }}
+                >
+                  {fields.rank} {/* rank 표시 */}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  style={{
+                    position: "absolute",
                     bottom: 20,
-                    left: "25px",
+                    left: "20px",
                   }}
                 >
                   {sys.createdAt &&
@@ -170,9 +193,9 @@ const SlideShow = ({ slides }) => {
                       year: "numeric",
                       month: "long",
                       day: "2-digit",
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      hour12: true
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
                     }).format(new Date(sys.createdAt))}
                 </Typography>
               </CardContent>

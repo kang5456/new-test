@@ -95,11 +95,16 @@ export default function Report({ insight }) {
                       <Grid item key={fields.title} xs={12}>
                         <Insight
                           title={fields.title}
+                          author={fields.author}
+                          rank={fields.rank}
                           type="insight" // 이 부분을 추가합니다.
                           coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
                           content={fields.content}
                           slug={fields.title}
                           createdAt={sys.createdAt} // 이 부분을 추가합니다.
+                          datePosition={-33} // 날짜 위치를 원하는 값으로 조정합니다.
+                          authorPosition={2}
+                          rankPosition={0}
                         />
                       </Grid>
                     ))}

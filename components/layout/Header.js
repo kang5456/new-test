@@ -163,14 +163,15 @@ const Header = () => {
           >
             <Grid item>
               <img
-                src="/logo_initiative.png"
+                src="/crosscheck_logo200.png"
                 alt="logo"
                 style={{
-                  height: "24px",
+                  height: "45px",
                   width: "45px",
                   position: "relative",
                   zIndex: 100,
                   marginBottom: "5px",
+                  marginTop: "-15px",
                 }}
               />
             </Grid>
@@ -184,7 +185,7 @@ const Header = () => {
                   zIndex: 100,
                 }}
               >
-                TiiMs
+                ST.initiative
               </Typography>
             </Grid>
           </Grid>
@@ -213,7 +214,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-ironflag"
                 >
-                CrossCheck
+                크로스체크
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -247,7 +248,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-insight"
               >
-                Insight
+                인사이트
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -262,18 +263,18 @@ const Header = () => {
                   오피니언
                 </NavDropdown.Item> */}
                 <NavDropdown.Item
-                  href="/posts/insight/stories"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  보도 자료
-                </NavDropdown.Item>
-                <NavDropdown.Item
                   href="/posts/insight/report"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  업계 소식
+                  업계 동향
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/posts/insight/stories"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  사설
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>
@@ -288,13 +289,20 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-btechfin"
               >
-                Opinion
+                프레스
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.btechfin}
                 menuAlign={{ lg: "center" }}
               >
+                <NavDropdown.Item
+                  href="/posts/btechfin/b.isp"
+                  onClick={handleItemClick}
+                  className={classes.navDropdownItem}
+                >
+                  홍보 자료
+                </NavDropdown.Item>
                 <NavDropdown.Item
                   href="/posts/btechfin/b.gamefin"
                   onClick={handleItemClick}
@@ -323,13 +331,6 @@ const Header = () => {
                 >
                   B.ESGFIN
                 </NavDropdown.Item> */}
-                <NavDropdown.Item
-                  href="/posts/btechfin/b.isp"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  사설
-                </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>
 
@@ -343,7 +344,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
               >
-                Media
+                미디어
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -355,16 +356,16 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  블로그
+                  Blog
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item
+                <NavDropdown.Item
                   href="/posts/press/media"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  미디어
+                  Youtube
                 </NavDropdown.Item>
-                <NavDropdown.Item
+                {/* <NavDropdown.Item
                   href="/posts/press/ir"
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}

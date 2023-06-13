@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from 'components/layout/Layout';
-import Press from 'components/Press';
+import BtechFIN from 'components/BtechFIN';
 import { Container, Grid, Typography } from '@material-ui/core';
 import { getAllPress, getMoreBtechfin } from 'lib/index';
 import { useState } from "react";
@@ -44,7 +44,7 @@ function extractImageFromContent(content) {
 
 export async function getStaticProps() {
   // const press = await getAllPress();
-  const BISP = await getMoreBtechfin(null, "BISP"); // title 필요하지 않으면 null로
+  const BISP = await getMoreBtechfin(null, "B.ISP"); // title 필요하지 않으면 null로
   return { props: { BISP }, revalidate: 1 };
 }
 
@@ -94,11 +94,14 @@ export default function Release({ BISP }) {
                         <Grid item key={fields.title} xs={12}>
                           <BtechFIN
                             title={fields.title}
-                            type="BISP" // 이 부분을 추가합니다.
+                            author={fields.author}
+                            rank={fields.rank}
+                            type="B.ISP" // 이 부분을 추가합니다.
                             coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
+                            datePosition={-33} // 날짜 위치를 원하는 값으로 조정합니다.
                           />
                         </Grid>
                       ))}

@@ -43,7 +43,7 @@ const generateSlug = (title = "") => {
 export async function getStaticPaths() {
   const allIronflag = await getAllIronflagWithSlug();
   return {
-    paths: allIronflag.map((ironflag) => `/ironflag/${ironflag.slug}`),
+    paths: allIronflag.map((ironflag) => `/ironflag/${ironflag.title}`),
     fallback: true,
   };
 }

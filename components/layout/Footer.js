@@ -40,14 +40,14 @@ const Footer = () => {
           >
           <Grid item>
             <img
-              src="/logo_initiative2.webp"
+              src="/crosscheck_logo200.webp"
               alt="logo"
               style={{
-                height: "18px",
+                height: "32px",
                 width: "32px",
                 position: "relative",
                 zIndex: 100,
-                marginBottom: "10px",
+                marginBottom: "5px",
                 filter: "grayscale(100%)"
               }}
               />
@@ -57,7 +57,7 @@ const Footer = () => {
               className={classes.copylight}
               style={{ fontWeight: "bold" }}
               >
-              TiiMs
+              ST.initiative
             </Typography>
           </Grid>
         </Grid>
