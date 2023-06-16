@@ -3,7 +3,7 @@ import Layout from "components/layout/Layout";
 import Insight from "components/Insight";
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 import { getAllInsight } from "lib/index";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,28 +43,60 @@ function extractImageFromContent(content) {
   return null;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const insight = await getAllInsight();
-  return { revalidate: 1, props: { insight } };
+  return { props: { insight } };
 }
 
 export default function Report({ insight }) {
   const classes = useStyles();
 
+  const postsPerPage = 15; // 한 페이지당 보여줄 게시글 수
+  const numOfPagesToShow = 10; // 한 번에 보여줄 페이지 번호의 개수
+
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 정보를 저장할 state 변수
-  const postsPerPage = 10; // 한 페이지당 보여줄 게시글 수
+  const [startPage, setStartPage] = useState(1); // 시작 페이지 정보를 저장할 state 변수
+  const totalPage = Math.ceil(insight.length / postsPerPage); // 총 페이지 수 계산
+  const maxBlock = Math.ceil(totalPage / numOfPagesToShow); // 최대 페이지 블록 수 계산
+
   const noPosts = insight.length === 0;
 
+
+const handleClick = (number) => {
+    setCurrentPage(number);
+  };
+  
+  const handleNextClick = () => {
+    if (currentPage < totalPage) {
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      if (nextPage > startPage + numOfPagesToShow - 1) {
+        setStartPage(startPage + numOfPagesToShow);
+      }
+    }
+  };
+  
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      const prevPage = currentPage - 1;
+      setCurrentPage(prevPage);
+      if (prevPage < startPage) {
+        setStartPage(startPage - numOfPagesToShow > 0 ? startPage - numOfPagesToShow : 1);
+      }
+    }
+  };
+  
+  const pageNumbers = [];
+  for (let i = startPage; i < startPage + numOfPagesToShow; i++) {
+    if(i > totalPage) break;
+    pageNumbers.push(i);
+  }
+  
   // 현재 페이지에 보여줄 게시글의 시작/끝 index 계산
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = insight.slice(indexOfFirstPost, indexOfLastPost); // 현재 페이지에 보여줄 게시글 목록
 
-  // 페이지 번호 목록을 만드는 함수
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(insight.length / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
 
   return (
     <Layout>
@@ -112,14 +144,26 @@ export default function Report({ insight }) {
 
                   {/* 페이지 번호 목록을 출력 */}
                   <Grid container spacing={2} justify="center" style={{ marginTop: "2rem" }}>
+                    <Grid item>
+                      <button onClick={handlePrevClick}
+                              style={{background: 'white', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px'}}>
+                        {'< Prev'}
+                      </button>
+                    </Grid>
                     {pageNumbers.map((number) => (
                       <Grid item key={number}>
-                        <button onClick={() => setCurrentPage(number)}
+                        <button onClick={() => handleClick(number)}
                                 style={{background: 'white', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px'}}>
                           {number}
                         </button>
                       </Grid>
                     ))}
+                    <Grid item>
+                      <button onClick={handleNextClick}
+                              style={{background: 'white', color: 'black', border: 'none', padding: '5px 10px', borderRadius: '5px'}}>
+                        {'Next >'}
+                      </button>
+                    </Grid>
                   </Grid>
                   
                 </Grid>

@@ -43,7 +43,7 @@ const HiringSection = () => {
   const jobs = [
     {
       image: "/job1.webp",
-      link: "https://www.jobkorea.co.kr/Recruit/Co_Read/Recruit/C/ironflag1",
+      link: "https://www.jobkorea.co.kr/Recruit/Co_Read/C/crossck?Oem_Code=C1",
     },
     {
       image: "/job2.webp",
