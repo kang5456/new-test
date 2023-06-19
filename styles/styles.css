@@ -36,5 +36,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .navbar-nav {
+    flex-direction: column;
+  }
 }
 
