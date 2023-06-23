@@ -21,7 +21,7 @@ const PlanCard = () => {
   return (
     <div className={classes.background}>
       <Container maxWidth="lg" className={classes.container}>
-        <img src="/ironflag-plan.png" alt="Top Right" style={{ width: "164%" }} />
+        <img src="/ironflag-plan.png" alt="Top Right" style={{ width: "104%" }} />
       </Container>
     </div>
   );
