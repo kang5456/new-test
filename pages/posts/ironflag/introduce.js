@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contentWrapper: {
     margin: "0 auto", // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
-    maxWidth: "1920px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
+    maxWidth: "1280px", // 원하는 최대 너비 값을 설정하세요. 이 값에 따라 가로 폭이 제한됩니다.
     padding: theme.spacing(4, 0),
   },
 }));
