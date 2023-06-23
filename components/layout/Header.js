@@ -214,7 +214,7 @@ const Header = () => {
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-ironflag"
                 >
-                크로스체크
+                STiiM
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
