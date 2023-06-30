@@ -60,8 +60,13 @@ const useStyles = makeStyles((theme) => ({
   },
   background: {
     backgroundColor: "#ffff",
-    paddingTop: theme.spacing(0), // 여기를 조정해주세요 (위쪽 여백 추가)
-    paddingBottom: theme.spacing(1), // 여기를 조정해주세요 (아래쪽 여백 추가)
+    display: "flex",
+    width: "1920px",
+    height: "740px",
+    padding: "169px 0px",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -88,7 +93,18 @@ const TeamIntro = () => {
   return (
     <div className={classes.background}>
       <Container maxWidth="md">
-        <Typography variant="h2" align="center" gutterBottom style={{ fontWeight: "bold" }}>
+        <Typography 
+          variant="h2" 
+          align="center"
+          textAlign="center" 
+          gutterBottom 
+          style={{
+            fontSize: "28px",
+            fontFamily: "Pretendard",
+            fontStyle: "normal", 
+            fontWeight: "700",
+            lineHeight: "42px", 
+            }}>
           이끄는 사람들
         </Typography>
         <div className={classes.line}></div>

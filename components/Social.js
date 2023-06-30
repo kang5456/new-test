@@ -1,5 +1,6 @@
+import React, { useRef, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Menu, MenuItem } from "@material-ui/core";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
 // import FacebookIcon from "@material-ui/icons/Facebook";
@@ -29,22 +30,55 @@ const Social = ({ color }) => {
   // and import the Material Icon, then add the code.
   const { instagram, facebook, github, homepage } = socialMedia;
 
+  const ref = useRef(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMouseOver = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMouseOut = () => {
+    setAnchorEl(null);
+  };
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        handleMouseOut();
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, []);
+
+  const open = Boolean(anchorEl);
+
   // if you add twitter , it will be
   // const { instagram, facebook, github, homepage, twitter } = socialMedia;
-  {
-    //  and add this code to line 98,
-    /* <Grid
-        item
-        component={"a"}
-        target="_blank"
-        rel="noreferrer noopener"
-        href={twitter}
-      >
-       <TwitterIcon className={classes.snsIcon} />
-    </Grid> */
-  }
+  // {
+  //   //  and add this code to line 98,
+  //   /* <Grid
+  //       item
+  //       component={"a"}
+  //       target="_blank"
+  //       rel="noreferrer noopener"
+  //       href={twitter}
+  //     >
+  //      <TwitterIcon className={classes.snsIcon} />
+  //   </Grid> */
+  // }
   return (
-    <Grid item container spacing={0} justify="center" alignItems="center">
+    <Grid
+      ref={ref} 
+      item container 
+      spacing={0} 
+      justify="center" 
+      alignItems="center"
+      onMouseOver={handleMouseOver} 
+    >
       <Grid 
         item
         component={"a"}
@@ -54,6 +88,40 @@ const Social = ({ color }) => {
       >
         <Typography style={{ fontSize: "1em", color: "#fff" }}>CrossCheck</Typography>
       </Grid>
+      <Menu
+        id="mouse-over-popover"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleMouseOut}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <MenuItem onMouseLeave={handleMouseOut}>
+          <a 
+            target="_blank"
+            rel="noreferrer noopener"
+            href={instagram}
+          >
+            Instagram
+          </a>
+        </MenuItem>
+        <MenuItem onMouseLeave={handleMouseOut}>
+          <a 
+            target="_blank"
+            rel="noreferrer noopener"
+            href={github}
+          >
+            GitHub
+          </a>
+        </MenuItem>
+      </Menu>
+
       {/* <Grid
         item
         component={"a"}

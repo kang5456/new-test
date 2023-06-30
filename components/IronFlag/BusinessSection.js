@@ -13,10 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
   background: {
     backgroundColor: "#ffff",
-    paddingTop: theme.spacing(5), // 여기를 조정해주세요 (위쪽 여백 추가)
-    paddingBottom: theme.spacing(0), // 여기를 조정해주세요 (아래쪽 여백 추가)
+    display: "flex",
+    width: "1920px",
+    padding: "0px 468px",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "10px",
   },
-    iconWrapper: {
+  iconWrapper: {
     width: "110px",
     height: "110px",
     borderRadius: "50%",
@@ -44,11 +48,14 @@ const useStyles = makeStyles((theme) => ({
   bISPImageItem: {
     margin: "-40px", // B.ISP 이미지 간격 조절 (가로 간격)
   },
+  bTechFINImageItem: {
+    margin: "38px", 
+  }
 }));
 
 const businesses = [
   {
-    title: "B.TechFIN",
+    title: "B.STIIM",
   },
   {
     title: "B.ISP",
@@ -61,25 +68,33 @@ const bTechFINInfo = {
     "게임, 메타버스, 엔터테인먼트, ESG 블록체인 기반 금융 서비스 설계 및 플랫폼 개발",
   images: [
     {
-      src: "/img1.webp",
-      text: "B.GameFIN",
-      width: "75%",
+      src: "/BSTIIM2.webp",
+      //text: "B.GameFIN",
+      width: "313px",
+      height: "219px",
+      borderRadius: "16px",
+      background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
     },
     {
-      src: "/img2.webp",
-      text: "B.MetaFIN",
-      width: "75%",
+      src: "/BSTIIM3.webp",
+      //text: "B.MetaFIN",
+      width: "313px",
+      height: "219px",
+      borderRadius: "16px",
+      background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
     },
     {
-      src: "/img3.webp",
-      text: "B.EnterFIN",
-      width: "75%",
+      src: "/BSTIIM4.webp",
+      width: "313px",
+      height: "219px",
+      borderRadius: "16px",
+      background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
     },
-    {
-      src: "/img4.webp",
-      text: "B.ESGFIN",
-      width: "75%",
-    },
+    // {
+    //   src: "/img4.webp",
+    //   //text: "B.ESGFIN",
+    //   width: "75%",
+    // },
   ],
 };
 
@@ -142,10 +157,7 @@ const BusinessSection = () => {
 
   const splitTextAtIndex = (text, index) => {
     const words = text.split(" ");
-    return [
-      words.slice(0, index).join(" "),
-      words.slice(index).join(" "),
-    ];
+    return [words.slice(0, index).join(" "), words.slice(index).join(" ")];
   };
 
   const breakAtIndex = 2; // 원하는 줄바꿈 위치
@@ -157,11 +169,11 @@ const BusinessSection = () => {
           variant="h2"
           style={{
             textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            marginTop: "100px",
-            justifyContent: "center",
-            fontWeight: "bold",
+            fontSize: "28px",
+            fontFamily: "Pretendard",
+            fontStyle: "normal",
+            fontWeight: "700",
+            lineHeight: "42px",
           }}
           gutterBottom
         >
@@ -194,38 +206,97 @@ const BusinessSection = () => {
                   lineHeight: 1, // 각 줄간의 간격을 없애기 위해 1로 설정
                 }}
               >
-                {selectedBusiness.title === "B.TechFIN Blockchain Technology Finance" ? (
+                {selectedBusiness.title ===
+                "B.TechFIN Blockchain Technology Finance" ? (
                   <>
-                    <span style={{ whiteSpace: "nowrap", fontSize: "1.5em", marginBottom: "1%", color :"#7b68ee"}}>B.TechFIN</span>
-                    <span style={{ whiteSpace: "nowrap", fontSize: "0.7em", color: "#d3d3d3" }}>Blockchain Technology Finance</span>
+                    <span
+                      style={{
+                        whiteSpace: "nowrap",
+                        fontSize: "28px",
+                        fontFamily: "Pretendard",
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        lineHeight: "42px",
+                        marginBottom: "1%",
+                        color: "#7b68ee",
+                      }}
+                    >
+                      B.STIIM
+                    </span>
+                    <span
+                      style={{
+                        color: "#7C7C7C",
+                        fontSize: "18px",
+                        fontFamily: "Pretendard",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        lineHeight: "27px",
+                      }}
+                    >
+                      Securities Token Total Investmaent Indicator Map
+                    </span>
                   </>
-                ) : selectedBusiness.title === "B.ISP Blockchain Information Strategy Planning" ? (
+                ) : selectedBusiness.title ===
+                  "B.ISP Blockchain Information Strategy Planning" ? (
                   <>
-                    <span style={{ whiteSpace: "nowrap", fontSize: "1.5em", marginBottom: "1%", color :"#7b68ee" }}>B.ISP</span>
-                    <span style={{ whiteSpace: "nowrap", fontSize: "0.7em", color: "#d3d3d3" }}>Blockchain Information Strategy Planning</span>
-                  </>  
+                    <span
+                      style={{
+                        whiteSpace: "nowrap",
+                        fontSize: "28px",
+                        fontFamily: "Pretendard",
+                        fontStyle: "normal",
+                        fontWeight: "600",
+                        lineHeight: "42px",
+                        marginBottom: "1%",
+                        color: "#7b68ee",
+                      }}
+                    >
+                      B.ISP
+                    </span>
+                    <span
+                      style={{
+                        color: "#7C7C7C",
+                        fontSize: "18px",
+                        fontFamily: "Pretendard",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        lineHeight: "27px",
+                      }}
+                    >
+                      Blockchain Information Strategy Planning
+                    </span>
+                  </>
                 ) : (
-                  <span style={{ whiteSpace: "nowrap", fontSize: "1.5em" }}>{selectedBusiness.title}</span>
+                  <span style={{ whiteSpace: "nowrap", fontSize: "1.5em" }}>
+                    {selectedBusiness.title}
+                  </span>
                 )}
               </Typography>
             </Grid>
-            <Grid container spacing={1} justify="center">
+            <Grid container spacing={1} justify="center" alignItems="center">
               {/* B.TechFIN */}
               {selectedBusiness.btechfin && (
                 <Grid item xs={12} sm={6} md={3}>
-                  <img src={selectedBusiness.btechfin.image} style={{ width: selectedBusiness.btechfin.imageWidth }} />
-                  <Typography variant="body1" style={{ marginTop: "1rem" }}>
-                    {selectedBusiness.btechfin.number} {selectedBusiness.btechfin.text}
+                  <img
+                    src={selectedBusiness.btechfin.image}
+                    style={{ width: selectedBusiness.btechfin.imageWidth }}
+                  />
+                  {/* <Typography variant="body1" style={{ marginTop: "1rem" }}>
+                    {selectedBusiness.btechfin.number}{" "}
+                    {selectedBusiness.btechfin.text}
                   </Typography>
                   <Typography variant="body1" style={{ marginTop: "0.5rem" }}>
                     {selectedBusiness.btechfin.text2}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
               )}
               {/* B.ISP */}
               {selectedBusiness.bisp && (
                 <Grid item xs={12} sm={6} md={3}>
-                  <img src={selectedBusiness.bisp.image} style={{ width: selectedBusiness.bisp.imageWidth }} />
+                  <img
+                    src={selectedBusiness.bisp.image}
+                    style={{ width: selectedBusiness.bisp.imageWidth }}
+                  />
                   <Typography variant="body1" style={{ marginTop: "1rem" }}>
                     {selectedBusiness.bisp.number} {selectedBusiness.bisp.text}
                   </Typography>
@@ -236,44 +307,63 @@ const BusinessSection = () => {
               )}
               {/* Other images */}
               {selectedBusiness.images.map((image, index) => (
-                <Grid item 
-                  xs={12} sm={6} md={3} 
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={3}
                   key={index}
                   className={
-                    selectedBusiness.title === "B.TechFIN Blockchain Technology Finance"
+                    selectedBusiness.title ===
+                    "B.TechFIN Blockchain Technology Finance"
                       ? classes.bTechFINImageItem
-                      : selectedBusiness.title === "B.ISP Blockchain Information Strategy Planning"
+                      : selectedBusiness.title ===
+                        "B.ISP Blockchain Information Strategy Planning"
                       ? classes.bISPImageItem
                       : null
                   }
-                  >
+                >
                   {image.number ? (
                     <div className={classes.iconWrapper}>
                       <img src={image.src} style={{ width: image.width }} />
                     </div>
                   ) : (
                     <img
-                    src={image.src}
-                    style={{
-                      width: image.width,
-                      display: "block", // 추가
-                      marginLeft: "auto", // 추가
-                      marginRight: "auto", // 추가
-                    }}
-                  />
+                      src={image.src}
+                      style={{
+                        width: image.width,
+                        display: "block", // 추가
+                        marginLeft: "auto", // 추가
+                        marginRight: "auto", // 추가
+                      }}
+                    />
                   )}
-                  <Typography variant="body1" style={{ marginTop: "1rem", textAlign: "center", fontWeight: "bold", fontSize: "20px" }}>
-                    <span style={{ color: "#7b68ee" }}>{image.number}</span> <span>{image.text}</span>
+                  <Typography
+                    variant="body1"
+                    style={{
+                      marginTop: "1rem",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                    }}
+                  >
+                    <span style={{ color: "#7b68ee" }}>{image.number}</span>{" "}
+                    <span>{image.text}</span>
                   </Typography>
-                  <Typography variant="body1" style={{ marginTop: "0.5rem", textAlign: "center" }}>
+                  <Typography
+                    variant="body1"
+                    style={{ marginTop: "0.5rem", textAlign: "center" }}
+                  >
                     {image.text2 &&
                       image.text2.split(" ").map((word, index, wordsArray) => (
                         <React.Fragment key={index}>
                           {word}
                           {index === breakAtIndex - 1 && <br />}
-                          {index !== breakAtIndex - 1 && index < wordsArray.length - 1 && " "}
+                          {index !== breakAtIndex - 1 &&
+                            index < wordsArray.length - 1 &&
+                            " "}
                         </React.Fragment>
-                    ))}
+                      ))}
                   </Typography>
                 </Grid>
               ))}
@@ -291,13 +381,53 @@ const BusinessSection = () => {
                     lineHeight: 1, // 각 줄간의 간격을 없애기 위해 1로 설정
                   }}
                 >
-                  {selectedBusiness.description === "게임, 메타버스, 엔터테인먼트, ESG 블록체인 기반 금융 서비스 설계 및 플랫폼 개발" ? (
+                  {selectedBusiness.description ===
+                  "게임, 메타버스, 엔터테인먼트, ESG 블록체인 기반 금융 서비스 설계 및 플랫폼 개발" ? (
                     <>
-                      <span style={{ whiteSpace: "nowrap", fontSize: "0.8em", marginBottom: "1%", color: "#d3d3d3" }}>게임, 메타버스, 엔터테인먼트, ESG</span>
-                      <span style={{ whiteSpace: "nowrap", fontSize: "0.8em", color: "#d3d3d3" }}>블록체인 기반 금융 서비스 설계 및 플랫폼 개발</span>
+                      <span
+                        style={{
+                          whiteSpace: "nowrap",
+                          fontSize: "18px",
+                          fontFamily: "Pretendard",
+                          fontStyle: "normal",
+                          fontWeight: "400",
+                          lineHeight: "27px",
+                          color: "var(--gray-scale-700, #686868)",
+                        }}
+                      >
+                        토큰증권의 기초자산에 대해 투자자가 신뢰할 수 있는 투자정보를 기반으로 해당 상품에 직접 투자할 수 있는 채널링 서비스와
+                      </span>
+                      <span
+                        style={{
+                          whiteSpace: "nowrap",
+                          fontSize: "18px",
+                          fontFamily: "Pretendard",
+                          fontStyle: "normal",
+                          fontWeight: "400",
+                          lineHeight: "27px",
+                          color: "var(--gray-scale-700, #686868)",
+                        }}
+                      >
+                        자금을 분산하여 다양한 기회를 포착하고, 분산을 통해 리스크를 최소화할 수 있는 FUND/ETF/ETN/ELS 등
+                      </span>
+                      <span
+                        style={{
+                          whiteSpace: "nowrap",
+                          fontSize: "18px",
+                          fontFamily: "Pretendard",
+                          fontStyle: "normal",
+                          fontWeight: "400",
+                          lineHeight: "27px",
+                          color: "var(--gray-scale-700, #686868)",
+                        }}
+                      >
+                        포트폴리오 투자와 같이, 토큰증권에서 발생하는 수익의 일부에 투자하는 지역 단위의 묶음 간접투자상품을 제공하는 서비스
+                      </span>
                     </>
                   ) : (
-                    <span style={{ whiteSpace: "nowrap", fontSize: "1.5em" }}>{selectedBusiness.description}</span>
+                    <span style={{ whiteSpace: "nowrap", fontSize: "1.5em" }}>
+                      {selectedBusiness.description}
+                    </span>
                   )}
                 </Typography>
               </Grid>

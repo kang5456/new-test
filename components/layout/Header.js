@@ -213,8 +213,15 @@ const Header = () => {
                 href="/posts/ironflag/introduce" 
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-ironflag"
+                style={{ 
+                  fontSize: "18px",
+                  fontFamily: "Pretendard",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  lineHeight: "27px",
+                 }}
                 >
-                STiiM
+                STIIM
               </Nav.Link>
               <NavDropdown
                 className={classes.navDropdown}
@@ -247,6 +254,13 @@ const Header = () => {
                 href="/posts/insight"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-insight"
+                style={{ 
+                  fontSize: "18px",
+                  fontFamily: "Pretendard",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  lineHeight: "27px",
+                 }}
               >
                 인사이트
               </Nav.Link>
@@ -288,6 +302,13 @@ const Header = () => {
                 href="/posts/btechfin"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-btechfin"
+                style={{ 
+                  fontSize: "18px",
+                  fontFamily: "Pretendard",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  lineHeight: "27px",
+                 }}
               >
                 프레스
               </Nav.Link>
@@ -343,6 +364,13 @@ const Header = () => {
                 href="/posts/press"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
+                style={{ 
+                  fontSize: "18px",
+                  fontFamily: "Pretendard", 
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  lineHeight: "27px", 
+                 }}
               >
                 미디어
               </Nav.Link>

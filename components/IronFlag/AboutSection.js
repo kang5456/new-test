@@ -29,9 +29,19 @@ const useStyles = makeStyles((theme) => ({
   line: {
     backgroundColor: "#868e96",
     height: "0.5px",
-    width: "40%",
+    width: "15%",
     margin: "36px auto",
     color: "#d3d3d3",
+  },
+  background: {
+    backgroundColor: "#ffff",
+    display: "flex",
+    width: "1920px",
+    height: "740px",
+    padding: "169px 0px",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -74,7 +84,7 @@ const AboutSection = () => {
   const classes = useStyles();
 
   return (
-    <div style={{ backgroundColor: "#fff" }}>
+    <div className={classes.background} style={{ backgroundColor: "#fff" }}>
       <Container maxWidth="md">
       <Grid container direction="column" spacing={8} alignItems="center" justify="center">
           <Grid item>
@@ -82,42 +92,48 @@ const AboutSection = () => {
             variant="h2" 
             align="center"
             style={{
-              textAlign: "center",
-              display: "flex",
-              alignItems: "center",
-              marginTop: "100px",
-              justifyContent: "center",
-              fontWeight: "bold",
+              fontSize: "28px",
+              fontFamily: "Pretendard",
+              fontStyle: "normal",
+              fontWeight: "700",
+              lineHeight: "42px",
             }}
             >
-              회사 소개서
+              COMPANY PROFILE
             </Typography>
             <div className={classes.line}></div>
           </Grid>
           <Grid item>
-            <Typography variant="body1" align="center" style={{ color: "#d3d3d3" }}>
-              아이언플래그는 기술과 금융을 융·복합한 새로운 패러다임을 연구 및 제공하는
-              ‘블록체인 테크핀 애그리게이터(B.TechFIN Aggregator)’ 입니다.
+            <Typography 
+              variant="body1" 
+              align="center" 
+              style={{ 
+                color: "#666",
+                fontSize: "18px",
+                fontFamily: "Pretendard",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "27px",
+              }}
+            >
+              크로스체크는 고객의 비즈니스를 이해하고 최고의 STO 컨설팅 서비스로 새로운 세상을 이끌어 갑니다.
             </Typography>
           </Grid>
-          <Grid container spacing={2} justify="center">
-            <Grid item xs={12} sm={6} padding={1}>  
+          <Grid justifyContent="center" style={{ display: "flex", padding: "48px 0px", alignItems: "flex-start", gap: "24px" }}>
+            <Grid style={{ display: "flex", width: "480px", height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
               <About
-                title="아이언플래그 회사소개서"
-                date="2023 / 한국어"
-                image="/file1.webp"
+                title="크로스체크 회사소개서"
+                date="2022 / 한국어"
+                image="/crosscheck.webp"
                 fileUrl="/Ironflag-(KR)CI.pdf"
                 fileName="회사소개서.pdf"
               />
-              <About
-              
-              />
             </Grid>
-            <Grid item xs={12} sm={6} padding={1}>
+            <Grid style={{ display: "flex", width: "480px", height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
               <About
                 title="IRONFLAG Company Profile"
                 date="2023 / ENGLISH"
-                image="/file2.webp"
+                image="/crosscheck.webp"
                 fileUrl="/Ironflag-(EN)CI.pdf"
                 fileName="회사소개서.pdf"
               />

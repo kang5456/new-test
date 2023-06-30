@@ -5,7 +5,7 @@ import Head from "next/head";
 
 const Layout = ({ children, title, description, ogImage, url }) => {
   // website Url
-  const pageUrl = "https://blog-with-nextjs-and-contentful.vercel.app/";
+  const pageUrl = "initiative.stiim.co.kr";
   // when you share this page on facebook you'll see this image
   const ogImg = "";
   // google site vertification
@@ -20,7 +20,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
           content={
             description
               ? description
-              : "This is a statically generated blog example using Next.js and Contentful. | Blog with React/Next.js and Contentful"
+              : ""
           }
         />
         <meta
@@ -39,7 +39,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
           content={
             description
               ? description
-              : "This is a statically generated blog example using Next.js and Contentful."
+              : ""
           }
           key="og:description"
         />

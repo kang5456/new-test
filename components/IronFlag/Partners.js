@@ -8,9 +8,19 @@ const useStyles = makeStyles((theme) => ({
   line: {
     backgroundColor: "#868e96",
     height: "0.5px",
-    width: "8%",
+    width: "4%",
     margin: "36px auto",
     color: "#d3d3d3",
+  },
+  background: {
+    backgroundColor: "#ffff",
+    display: "flex",
+    width: "1920px",
+    height: "740px",
+    padding: "169px 0px",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -46,7 +56,7 @@ const Partners = () => {
   const classes = useStyles();
 
   return (
-    <div style={{ backgroundColor: "#fff" }}>
+    <div className={classes.background} style={{ backgroundColor: "#fff" }}>
       <Grid container justify="center">
         <Grid item xs={12} md={8} lg={6}>
           <Typography 
@@ -54,14 +64,15 @@ const Partners = () => {
             align="center"
             style={{
               textAlign: "center",
-              display: "flex",
-              alignItems: "center",
               marginTop: "10px",
-              justifyContent: "center",
-              fontWeight: "bold",
+              fontWeight: "700",
+              fontSize: "28px",
+              fontFamily: "Pretendard",
+              fontStyle: "normal",
+              lineHeight: "42px",
             }}
             gutterBottom>
-            파트너
+            OUR PARTNERS
           </Typography>
           <div className={classes.line}></div>
         </Grid>
@@ -98,6 +109,31 @@ const Partners = () => {
           </Marquee>
         </Grid>
       </Grid>
+
+      <Grid container justify="center">
+        <Grid item xs={12} md={8} lg={6}>
+          <Typography 
+            variant="h2" 
+            align="center"
+            style={{
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              marginTop: "10px",
+              justifyContent: "center",
+              color: "#666",
+              fontSize: "16px",
+              fontFamily: "Pretendard",
+              fontStyle: "normal",
+              fontWeight: "400",
+              lineHeight: "42px",
+            }}
+            gutterBottom>
+            사업 제휴 문의 hq@crosscheck.works
+          </Typography>
+        </Grid>
+      </Grid>
+      
     </div>
   );
 };
