@@ -44,7 +44,7 @@ function extractImageFromContent(content) {
 }
 
 function getYoutubeVideoId(url) {
-  if (!url) {
+  if (!url || typeof url !== 'string') {
     return null;
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
@@ -53,14 +53,11 @@ function getYoutubeVideoId(url) {
 }
 
 function getYoutubeThumbnailUrl(url) {
-  if (!url) {
+  if (!url || typeof url !== 'string') {
     return null;
   }
   const videoId = getYoutubeVideoId(url);
-  if (!videoId) {
-    return null;
-  }
-  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 }
 
 export async function getServerSideProps() {
