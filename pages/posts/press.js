@@ -49,6 +49,9 @@ function getYoutubeVideoId(url) {
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
   var match = url.match(regExp);
+  if (!match) {
+    return null;
+  }
   return (match && match[2].length == 11) ? match[2] : null;
 }
 
