@@ -7,6 +7,7 @@ import MorePress from "components/MorePost";
 import { getPressBySlug, getMorePress, getAllPressWithSlug } from "lib/index";
 import { Container, Grid, Typography, Box } from "@material-ui/core";
 import React from "react";
+import YouTube from "react-youtube";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
@@ -33,6 +34,7 @@ const generateSlug = (title = "") => {
   });
 };
 
+
 export async function getStaticPaths() {
   const allPress = await getAllPressWithSlug();
   return {
@@ -54,9 +56,17 @@ export async function getStaticProps({ params }) {
   };
 }
 
+function getYoutubeVideoId(url) {
+  var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match && match[2].length == 11) ? match[2] : null;
+}
+
 const Press = ({ press, morePress }) => {
   const router = useRouter();
   const classes = useStyles();
+
+  const videoId = getYoutubeVideoId(press?.fields.youtube);
 
   if (!router.isFallback && !press) {
     return <ErrorPage statusCode={404} />;
@@ -112,6 +122,9 @@ const Press = ({ press, morePress }) => {
                 slug={press?.fields.title}
                 date={press?.fields.date}
               />
+
+              <YouTube videoId={videoId}/>
+
             </Grid>
           </Grid>
           <Grid container alignItems="center">

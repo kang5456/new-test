@@ -63,14 +63,15 @@ const BlogBody = ({
         <img src={coverImage} alt="" className={classes.coverImage} />
       )}
       </div>
-      <Box
+      <Box // 게시글 조절
         component="div"
         style={{
-          fontSize: "15px",
+          fontSize: "18px",
+          fontFamily: "Pretendard",
+          fontWeight: "400",
           lineHeight: "1.6",
           letterSpacing: "0.009em",
           wordBreak: "keep-all",
-          fontFamily: "Roboto, sans-serif",
           color: "#333",
           padding: "0 1em", // 좌우 여백을 추가
           textAlign: "justify", // 텍스트 정렬을 양쪽 정렬로 변경

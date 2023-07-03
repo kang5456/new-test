@@ -39,6 +39,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-share": "^4.2.1",
     "react-swiper": "^0.1.5",
+    "react-youtube": "^10.1.0",
     "slick-carousel": "^1.8.1",
     "slugify": "^1.6.6",
     "styled-jsx": "^5.1.2",

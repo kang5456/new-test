@@ -288,7 +288,7 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  사설
+                  오피니언
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>

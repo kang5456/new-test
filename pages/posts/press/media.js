@@ -42,6 +42,23 @@ function extractImageFromContent(content) {
   return null;
 }
 
+function getYoutubeVideoId(url) {
+  if (!url) {
+    return null;
+  }
+  var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match && match[2].length == 11) ? match[2] : null;
+}
+
+function getYoutubeThumbnailUrl(url) {
+  if (!url) {
+    return null;
+  }
+  const videoId = getYoutubeVideoId(url);
+  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+}
+
 export async function getStaticProps() {
   // const press = await getAllPress();
   const media = await getMorePress(null, "media"); // title 필요하지 않으면 null로
@@ -96,7 +113,7 @@ export default function Release({ media }) {
                           <Press
                             title={fields.title}
                             type="media" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url || extractImageFromContent(fields.content)}
+                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
