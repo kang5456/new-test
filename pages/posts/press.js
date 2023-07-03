@@ -44,7 +44,7 @@ function extractImageFromContent(content) {
 }
 
 function getYoutubeVideoId(url) {
-  if (!url || typeof url !== 'string') {
+  if (!url) {
     return null;
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
@@ -53,7 +53,7 @@ function getYoutubeVideoId(url) {
 }
 
 function getYoutubeThumbnailUrl(url) {
-  if (!url || typeof url !== 'string') {
+  if (!url) {
     return null;
   }
   const videoId = getYoutubeVideoId(url);
@@ -145,7 +145,7 @@ export default function Index({ press }) {
                           <Press
                             title={fields.title}
                             type="press" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content)}
+                            coverImage={fields.cover?.fields?.file?.url || (fields.youtube && getYoutubeThumbnailUrl(fields.youtube)) || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
