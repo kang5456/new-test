@@ -57,7 +57,10 @@ function getYoutubeThumbnailUrl(url) {
     return null;
   }
   const videoId = getYoutubeVideoId(url);
-  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  if (!videoId) {
+    return null;
+  }
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 }
 
 export async function getServerSideProps() {
@@ -145,7 +148,7 @@ export default function Index({ press }) {
                           <Press
                             title={fields.title}
                             type="press" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content) || '/path/to/default/image.jpg'}
+                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
