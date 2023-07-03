@@ -49,9 +49,6 @@ function getYoutubeVideoId(url) {
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
   var match = url.match(regExp);
-  if (!match) {
-    return null;
-  }
   return (match && match[2].length == 11) ? match[2] : null;
 }
 
@@ -148,7 +145,7 @@ export default function Index({ press }) {
                           <Press
                             title={fields.title}
                             type="press" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content)}
+                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content) || '/path/to/default/image.jpg'}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
