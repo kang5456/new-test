@@ -123,7 +123,7 @@ const Press = ({ press, morePress }) => {
                 date={press?.fields.date}
               />
 
-              <YouTube videoId={videoId}/>
+              {videoId &&  <YouTube videoId={videoId}/>}
 
             </Grid>
           </Grid>
