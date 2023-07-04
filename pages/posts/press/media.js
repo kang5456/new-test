@@ -43,7 +43,7 @@ function extractImageFromContent(content) {
 }
 
 function getYoutubeVideoId(url) {
-  if (!url) {
+  if (typeof url !== 'string') {
     return null;
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
@@ -52,9 +52,6 @@ function getYoutubeVideoId(url) {
 }
 
 function getYoutubeThumbnailUrl(url) {
-  if (!url) {
-    return null;
-  }
   const videoId = getYoutubeVideoId(url);
   return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 }
@@ -113,7 +110,7 @@ export default function Release({ media }) {
                           <Press
                             title={fields.title}
                             type="media" // 이 부분을 추가합니다.
-                            coverImage={fields.cover?.fields?.file?.url || getYoutubeThumbnailUrl(fields.youtube) || extractImageFromContent(fields.content)}
+                            coverImage={fields.cover?.fields?.file?.url || (fields.youtube && getYoutubeThumbnailUrl(fields.youtube)) || extractImageFromContent(fields.content)}
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
