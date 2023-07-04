@@ -44,7 +44,7 @@ function extractImageFromContent(content) {
 }
 
 function getYoutubeVideoId(url) {
-  if (!url) {
+  if (typeof url !== 'string') {
     return null;
   }
   var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
@@ -53,9 +53,6 @@ function getYoutubeVideoId(url) {
 }
 
 function getYoutubeThumbnailUrl(url) {
-  if (!url) {
-    return null;
-  }
   const videoId = getYoutubeVideoId(url);
   return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 }
