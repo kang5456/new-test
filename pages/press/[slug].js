@@ -66,7 +66,7 @@ const Press = ({ press, morePress }) => {
   const router = useRouter();
   const classes = useStyles();
 
-  const videoId = getYoutubeVideoId(press?.fields.youtube);
+  const videoId = press?.fields.youtube ? getYoutubeVideoId(press.fields.youtube) : null;
 
   if (!router.isFallback && !press) {
     return <ErrorPage statusCode={404} />;
