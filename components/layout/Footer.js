@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     width: `100%`,
+    height: '120px',
     position: "relative",
     overflow: "hidden",
     marginTop: "6em",
@@ -34,32 +35,31 @@ const Footer = () => {
           style={{
             marginLeft: "calc(0% - 590px)", // 로고 위치 조정
             marginRight: "calc(50% - 530px)", // 로고 위치 조정
-            marginTop: "calc(0% - 5px)",
+            marginTop: "calc(0% - -20px)",
             marginBottom: "calc(0% - 39px)",
           }}
           >
-          <Grid item>
+          <Grid item> 
             <img
-              src="/crosscheck_logo200.webp"
+              src="/STI_W.svg"
               alt="logo"
               style={{
-                height: "32px",
-                width: "32px",
+                width: "150px",
                 position: "relative",
                 zIndex: 100,
-                marginBottom: "5px",
+                marginBottom: "0px",
                 filter: "grayscale(100%)"
               }}
               />
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Typography variant="h5" 
               className={classes.copylight}
               style={{ fontWeight: "bold" }}
               >
               ST.initiative
             </Typography>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item xs={12}>
           <Grid container alignItems="flex-end" justify="flex-end">
@@ -67,7 +67,7 @@ const Footer = () => {
               style={{ 
                 textAlign: "right", 
                 marginRight: "calc(50% - 640px)", // 로고 위치 조정
-                marginBottom: "calc(0% - 30px)",
+                marginBottom: "calc(0% - 10px)",
                 }}
                 >
               <Social />

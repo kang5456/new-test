@@ -66,7 +66,7 @@ const BlogBody = ({
       <Box // 게시글 조절
         component="div"
         style={{
-          fontSize: "18px",
+          fontSize: "16px",
           fontFamily: "Pretendard",
           fontWeight: "400",
           lineHeight: "1.6",

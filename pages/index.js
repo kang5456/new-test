@@ -41,10 +41,12 @@ export async function getStaticProps() {
 export default function Index({ posts, insights, slides, opinions }) {
   const router = useRouter();
   const [shownInsights, setShownInsights] = useState([]);
+  const [shownOpinions, setShownOpinions] = useState([]);
 
   useEffect(() => {
     setShownInsights(insights.slice(0, 5)); // 먼저 5개의 게시물만 표시
-  }, [insights]);
+    setShownOpinions(opinions.slice(0, 5));
+  }, [insights, opinions]);
 
   const handleClick = (title) => {
     router.push('/posts/totalPosts');
@@ -127,7 +129,7 @@ export default function Index({ posts, insights, slides, opinions }) {
             {/* 오피니언 영역 */}
             <Grid item xs={12} md={4}>
               {/* Pass opinions data to Opinion component */}
-              <Opinion opinions={opinions} />
+              <Opinion opinions={shownOpinions} />
             </Grid>
           </Grid>
         </Container>

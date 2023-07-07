@@ -48,7 +48,7 @@ const Opinion = ({ opinions }) => {
       ) : (
         <Grid container spacing={4}>
           {opinions?.map(({ fields, sys }) => (
-            <Grid item key={fields.slug} xs={12}>
+            <Grid item key={fields.slug} xs={12} style={{ fontWeight: "200" }}>
               <BtechFIN
                 title={fields.title}
                 author={fields.author}
@@ -59,9 +59,9 @@ const Opinion = ({ opinions }) => {
                 order={fields.order}
                 slug={fields.title}
                 createdAt={sys.createdAt}
-                datePosition={-3} // 날짜 위치를 원하는 값으로 조정합니다.
+                datePosition={-6} // 날짜 위치를 원하는 값으로 조정합니다.
                 authorPosition={29}
-                rankPosition={12}
+                rankPosition={11}
               />
             </Grid>
           ))}

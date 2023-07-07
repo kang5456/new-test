@@ -163,19 +163,18 @@ const Header = () => {
           >
             <Grid item>
               <img
-                src="/crosscheck_logo200.png"
+                src="/STI.svg"
                 alt="logo"
                 style={{
-                  height: "45px",
-                  width: "45px",
+                  width: "180px",
                   position: "relative",
                   zIndex: 100,
                   marginBottom: "5px",
-                  marginTop: "-15px",
+                  marginTop: "-5px",
                 }}
               />
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Typography
                 style={{
                   color: "#000",
@@ -187,7 +186,7 @@ const Header = () => {
               >
                 ST.initiative
               </Typography>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle" />
@@ -288,7 +287,7 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  오피니언
+                  칼럼
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav.Item>
@@ -329,7 +328,7 @@ const Header = () => {
                   onClick={handleItemClick}
                   className={classes.navDropdownItem}
                 >
-                  칼럼
+                  오피니언
                 </NavDropdown.Item>
                 {/* <NavDropdown.Item
                   href="/posts/btechfin/b.metafin"
