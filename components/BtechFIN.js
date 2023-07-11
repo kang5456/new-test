@@ -34,16 +34,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contentWrapper: {
-
     position: 'relative',
     // padding: '16px',
     width: '80%',
     height: '200px',
     '@media (768px <= width <= 1280px)': {
-      height: '160px',
+      height: '180px',
     },
     '@media (max-Width: 768px)': {
-      height: '80px',
+      height: '100px',
     },
   },
 }));
@@ -91,7 +90,6 @@ const Btechfin = ({
             >
               오피니언
             </Typography>
-
             <Typography
               variant='h5'
               component='h2'
@@ -99,21 +97,63 @@ const Btechfin = ({
                 fontWeight: 'bold',
                 fontSize: isMobile ? '14px' : '20px',
                 overflow: 'hidden',
-                maxHeight: isMobile ? '40px' : '144px',
-                paddingBottom: isMobile ? '0px' : '32px',
+                maxHeight: isMobile ? '38px' : '120px',
+                paddingBottom: isMobile ? '0px' : '16px',
               }}
             >
               {title}
             </Typography>
-            <Typography
+            {isMobile ? (
+              <>
+                <Typography
+                  variant='subtitle1'
+                  color='textSecondary'
+                  style={{
+                    // position: 'absolute', // 변경합니다.
+                    // bottom: authorPosition || 4, // 변경합니다.
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {author} {rank}
+                </Typography>
+              </>
+            ) : (
+              <>
+                <Typography
+                  variant='subtitle1'
+                  color='textSecondary'
+                  style={{
+                    // position: 'absolute', // 변경합니다.
+                    // bottom: authorPosition || 4, // 변경합니다.
+                    fontSize: '15px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {author}
+                </Typography>
+                <Typography
+                  variant='subtitle1'
+                  color='textSecondary'
+                  style={{
+                    // position: 'absolute', // 변경합니다.
+                    bottom: rankPosition || -16, // 변경합니다.
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {rank}
+                </Typography>
+              </>
+            )}
+            {/* <Typography
               variant='subtitle1'
               color='textSecondary'
               style={{
                 // position: 'absolute', // 변경합니다.
-                bottom: authorPosition || 4, // 변경합니다.
-                fontSize: '15px',
+                // bottom: authorPosition || 4, // 변경합니다.
+                fontSize: isMobile ? '12px' : '15px',
                 fontWeight: 'bold',
-
               }}
             >
               {author}
@@ -122,16 +162,14 @@ const Btechfin = ({
               variant='subtitle1'
               color='textSecondary'
               style={{
-
                 // position: 'absolute', // 변경합니다.
                 bottom: rankPosition || -16, // 변경합니다.
-                fontSize: '13px',
+                fontSize: isMobile ? '11px' : '13px',
                 fontWeight: 'bold',
-
               }}
             >
               {rank}
-            </Typography>
+            </Typography> */}
             <Typography
               variant='subtitle2'
               color='textSecondary'
