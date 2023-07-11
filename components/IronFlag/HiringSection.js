@@ -1,11 +1,12 @@
 import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useMediaQuery } from "react-responsive";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    width: "1920px",
-    height: "740px",
+    // width: "1920px",
+    // height: "740px",
     padding: "220px 0px",
     flexDirection: "column",
     justifyContent: "center",
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HiringSection = () => {
   const classes = useStyles();
-
+  const recruitView = useMediaQuery({query : '(min-width:768px)'});
   const jobs = [
     {
       image: "/job1.webp",
@@ -62,7 +63,7 @@ const HiringSection = () => {
 
   return (
     <div className={classes.root} style={{ backgroundColor: "#fff" }}>
-      <Container maxWidth="md" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Container style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Typography variant="h2" align="center" className={classes.titleBold}>
           RECRUIT
         </Typography>
@@ -86,11 +87,12 @@ const HiringSection = () => {
           <Grid 
             style={{ 
               display: "flex",
-              width: "982px",
+              width: "100%",
               paddingRight: "0px",
               justifyContent: "center",
               alignItems: "flex-start",
               gap: "12px",
+              flexWrap : `${recruitView ? "nowrap":  "wrap"}`
             }}
           >
             {jobs.map((job, index) => (

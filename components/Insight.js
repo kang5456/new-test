@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: "16px",
     width: "80%",
-    height: "200px",
+    // height: "200px",
   },
 }));
 
