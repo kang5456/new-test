@@ -20,24 +20,35 @@
 }
 
 .navbar-brand {
-  margin-left: calc(50% - 640px); /* 로고 위치 조정 */
-  margin-right: calc(50% - 500px); /* 로고 위치 조정 */
+  margin-left: 15px;
+  margin-right: calc(50% - 500px);
+}
+@media (max-width: 600px) {
+  .navbar-brand {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .navbar-toggle {
   position: fixed;
   margin-left: calc(50% - 204px); /* 로고 위치 조정 */
   margin-right: calc(50% - 500px); /* 로고 위치 조정 */
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 @media (max-width: 768px) {
   .navbar-brand, .navbar-toggle, .dropdown-menu {
-    margin-left: auto;
+    margin-left: 15px;
     margin-right: auto;
   }
   .navbar-nav {
     flex-direction: column;
   }
 }
+
+.dark-menu-item {
+  color: #000 !important;
+}
+
 
