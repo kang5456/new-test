@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     height: '200px',
     '@media (768px <= width <= 1280px)': {
-      height: '160px',
+      height: '180px',
     },
     '@media (max-Width: 768px)': {
       height: '80px',
@@ -94,7 +94,8 @@ const Press = ({
                 fontWeight: 'bold',
                 fontSize: isMobile ? '14px' : '20px',
                 overflow: 'hidden',
-                maxHeight: isMobile ? '40px' : '144px',
+                // maxHeight: isMobile ? '40px' : '144px',
+                height: isMobile ? '38px' : '120px',
                 paddingBottom: isMobile ? '0px' : '32px',
               }}
             >
