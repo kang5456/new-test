@@ -33,17 +33,25 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  @media only screen and (max-width:650px) {
+    flex-direction: column; 
+  }
 }
 
 .slide img {
   flex: 1.12; /* 이미지 영역이 전체 슬라이드의 반을 차지하도록 설정합니다. */
   position: relative;
   object-fit: cover;
-  width: 50%;
+  width: 50% !important;
   height: 98.5%;
   border-top-left-radius: 20px; /* 이 속성을 추가합니다. */
   border-bottom-left-radius: 20px; /* 이 속성을 추가합니다. */
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+ @media only screen and (max-width:650px) {
+    width: 100% !important;
+    height: 49%;
+    border-radius: 20px;
+  }
 }
 
 .slide div {
@@ -59,6 +67,11 @@
   border-top-right-radius: 20px; /* 이 속성을 추가합니다. */
   border-bottom-right-radius: 20px; /* 이 속성을 추가합니다. */
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  @media only screen and (max-width:650px) {
+    width: 100% !important;
+    height: 49%;
+    border-radius: 20px;
+  }
 }
 
 .slide h2,
