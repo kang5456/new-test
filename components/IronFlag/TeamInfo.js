@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)",
   },
   avatar: {
-    maxWidth: "100%",
+    width: "100%",
     height: "auto",
     borderRadius: theme.spacing(2),
     position: "relative",
@@ -61,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: "#ffff",
     display: "flex",
-    width: "1920px",
-    height: "740px",
+    // width: "1920px",
+    // height: "740px",
     padding: "169px 0px",
     flexDirection: "column",
     justifyContent: "center",

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: "16px",
     width: "80%",
-    height: "200px",
+    // height: "200px",
   },
 }));
 
@@ -64,7 +64,7 @@ const Btechfin = ({ title, type, coverImage, author, rank, content, order, slug,
               component="h2"
               style={{ 
                 fontWeight: "bold",
-                fontSize: "20px"
+                fontSize: "16px"
                }}
               >
               {title}
@@ -73,8 +73,8 @@ const Btechfin = ({ title, type, coverImage, author, rank, content, order, slug,
               variant="subtitle1"
               color="textSecondary"
               style={{
-                position: "absolute", // 변경합니다.
-                bottom: authorPosition || 4, // 변경합니다.
+                // position: "absolute", // 변경합니다.
+                // bottom: authorPosition || 4, // 변경합니다.
                 fontSize: "15px",
                 fontWeight: "bold",
               }}
@@ -85,8 +85,8 @@ const Btechfin = ({ title, type, coverImage, author, rank, content, order, slug,
               variant="subtitle1"
               color="textSecondary"
               style={{
-                position: "absolute", // 변경합니다.
-                bottom: rankPosition || -16, // 변경합니다.
+                // position: "absolute", // 변경합니다.
+                // bottom: rankPosition || -16, // 변경합니다.
                 fontSize: "13px",
                 fontWeight: "bold",
               }}
@@ -96,11 +96,11 @@ const Btechfin = ({ title, type, coverImage, author, rank, content, order, slug,
             <Typography 
                 variant="subtitle2" 
                 color="textSecondary" 
-                style={{ 
-                  position: "absolute", // 변경합니다.
-                  bottom: datePosition || 4, // 변경합니다.
-                  left: "15px",
-                  }}
+                // style={{ 
+                //   position: "absolute", // 변경합니다.
+                //   bottom: datePosition || 4, // 변경합니다.
+                //   left: "15px",
+                //   }}
                   >
               {createdAt && new Intl.DateTimeFormat("ko-KR", {
                 year: "numeric",
