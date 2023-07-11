@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: "#ffff",
     display: "flex",
-    width: "1920px",
-    padding: "0px 468px",
+    width: "100%",
+    // padding: "0px 468px",
     flexDirection: "column",
     alignItems: "flex-start",
     gap: "10px",
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "-40px", // B.ISP 이미지 간격 조절 (가로 간격)
   },
   bTechFINImageItem: {
-    margin: "38px", 
+    margin: "0", 
   }
 }));
 
@@ -70,7 +70,7 @@ const bTechFINInfo = {
     {
       src: "/BSTIIM2.webp",
       //text: "B.GameFIN",
-      width: "313px",
+      width: "100%",
       height: "219px",
       borderRadius: "16px",
       background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
@@ -78,14 +78,14 @@ const bTechFINInfo = {
     {
       src: "/BSTIIM3.webp",
       //text: "B.MetaFIN",
-      width: "313px",
+      width: "100%",
       height: "219px",
       borderRadius: "16px",
       background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
     },
     {
       src: "/BSTIIM4.webp",
-      width: "313px",
+      width: "100%",
       height: "219px",
       borderRadius: "16px",
       background: "url(<path-to-image>), lightgray -41.243px -13.048px / 119.077% 113.302% no-repeat",
@@ -164,7 +164,7 @@ const BusinessSection = () => {
 
   return (
     <div className={classes.background}>
-      <Container maxWidth="lg">
+      <div style={{width: "100%"}} >
         <Typography
           variant="h2"
           style={{
@@ -180,12 +180,12 @@ const BusinessSection = () => {
           주요 사업 부문
         </Typography>
         <div className={classes.line}></div>
-        <Grid container spacing={4} justify="center">
+        <Grid container justifyContent="center">
           {businesses.map((business) => (
             <Grid
-              item
               key={business.title}
               onClick={() => handleBusinessClick(business.title)}
+              style={{width:"40%"}}
             >
               <BusinessCard title={business.title} />
             </Grid>
@@ -273,10 +273,10 @@ const BusinessSection = () => {
                 )}
               </Typography>
             </Grid>
-            <Grid container spacing={1} justify="center" alignItems="center">
+            <Grid container justifyContent="center" alignItems="center">
               {/* B.TechFIN */}
               {selectedBusiness.btechfin && (
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={2}>
                   <img
                     src={selectedBusiness.btechfin.image}
                     style={{ width: selectedBusiness.btechfin.imageWidth }}
@@ -332,13 +332,14 @@ const BusinessSection = () => {
                       src={image.src}
                       style={{
                         width: image.width,
-                        display: "block", // 추가
-                        marginLeft: "auto", // 추가
-                        marginRight: "auto", // 추가
+                        height: "auto",
+                        // display: "block", // 추가
+                        // marginLeft: "auto", // 추가
+                        // marginRight: "auto", // 추가
                       }}
                     />
                   )}
-                  <Typography
+                  {/* <Typography
                     variant="body1"
                     style={{
                       marginTop: "1rem",
@@ -364,7 +365,7 @@ const BusinessSection = () => {
                             " "}
                         </React.Fragment>
                       ))}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
               ))}
               {/* Description */}
@@ -386,7 +387,8 @@ const BusinessSection = () => {
                     <>
                       <span
                         style={{
-                          whiteSpace: "nowrap",
+                          // whiteSpace: "nowrap",
+                          padding : "0 10px",
                           fontSize: "18px",
                           fontFamily: "Pretendard",
                           fontStyle: "normal",
@@ -399,7 +401,8 @@ const BusinessSection = () => {
                       </span>
                       <span
                         style={{
-                          whiteSpace: "nowrap",
+                          // whiteSpace: "nowrap",
+                          padding : "0 10px",
                           fontSize: "18px",
                           fontFamily: "Pretendard",
                           fontStyle: "normal",
@@ -412,7 +415,8 @@ const BusinessSection = () => {
                       </span>
                       <span
                         style={{
-                          whiteSpace: "nowrap",
+                          // whiteSpace: "nowrap",
+                          padding : "0 10px",
                           fontSize: "18px",
                           fontFamily: "Pretendard",
                           fontStyle: "normal",
@@ -434,7 +438,7 @@ const BusinessSection = () => {
             </Grid>
           </div>
         )}
-      </Container>
+      </div>
     </div>
   );
 };

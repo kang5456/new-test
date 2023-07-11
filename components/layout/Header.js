@@ -86,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navDropdownItem: {
     fontSize: "0.9em", // 원하는 글씨 크기로 조절
+    color: "#000",
   },
   lightBoxShadow: {
     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)", // 그림자 색상과 퍼지 정도를 조절
@@ -139,8 +140,8 @@ const Header = () => {
     <Box className={classes.lightBoxShadow}>
       <Navbar
         expand="lg"
-        bg="white"
-        variant="white"
+        bg="light"
+        variant="light"
         className="navbar-hover"
         fixed="top"
         style={{
@@ -150,10 +151,7 @@ const Header = () => {
         <Navbar.Brand
           href="/"
           className="navbar-brand"
-          style={{
-            marginLeft: "calc(50% - 640px)", // 로고 위치 조정
-            marginRight: "calc(50% - 500px)", // 로고 위치 조정
-          }}
+
         >
           <Grid
             container
@@ -189,7 +187,7 @@ const Header = () => {
             </Grid> */}
           </Grid>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle"/>
         <Navbar.Collapse
           id="responsive-navbar-nav"
           style={{
@@ -201,7 +199,7 @@ const Header = () => {
             fontSize: "1.051em",
           }}
         >
-          <Nav className="mx-auto">
+          <Nav className="mr-auto">
             <Nav.Item
               onMouseEnter={() => handleDropdownOpen("ironflag")}
               onMouseLeave={handleDropdownClose}
@@ -268,13 +266,7 @@ const Header = () => {
                 show={dropdownOpen.insight}
                 menualign={{ lg: "center" }}
               >
-                {/* <NavDropdown.Item
-                  href="/posts/insight/opinion"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  오피니언
-                </NavDropdown.Item> */}
+
                 <NavDropdown.Item
                   href="/posts/insight/report"
                   onClick={handleItemClick}
@@ -330,27 +322,6 @@ const Header = () => {
                 >
                   오피니언
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item
-                  href="/posts/btechfin/b.metafin"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  B.MetaFIN
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/posts/btechfin/b.enterfin"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  B.EnterFIN
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/posts/btechfin/b.esgfin"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  B.ESGFIN
-                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav.Item>
 
@@ -392,13 +363,6 @@ const Header = () => {
                 >
                   Youtube
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item
-                  href="/posts/press/ir"
-                  onClick={handleItemClick}
-                  className={classes.navDropdownItem}
-                >
-                  IR
-                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav.Item>
           </Nav>

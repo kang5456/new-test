@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dialog, IconButton, makeStyles } from "@material-ui/core";
 import { GetApp } from "@material-ui/icons";
 import { Container, Grid, Typography } from "@material-ui/core";
+import { useMediaQuery } from 'react-responsive';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -21,10 +22,16 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(2),
     marginRight: theme.spacing(2),
   },
+  avatarView : {
+      margin : "0",
+      width : "55%",
+      padding : "15px 10px",
+  },
   aboutContainer: {
     display: "flex",
     alignItems: "center",
     margin: `${theme.spacing(4)}px 0`,
+    justifyContent:"center"
   },
   line: {
     backgroundColor: "#868e96",
@@ -36,14 +43,23 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: "#ffff",
     display: "flex",
-    width: "1920px",
-    height: "740px",
+    // width: "1920px",
+    // height: "740px",
     padding: "169px 0px",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
+  aboutContainerView :{
+     display: "flex",
+    alignItems: "center",
+   flexWrap : "wrap",
+   justifyContent:"center",
+   padding : "10px 0",
+  },
+
 }));
+
 
 const PDFViewer = ({ fileUrl }) => {
   const [open, setOpen] = useState(false);
@@ -67,10 +83,11 @@ const PDFViewer = ({ fileUrl }) => {
 
 const About = ({ title, date, en, image, fileUrl, fileName }) => {
   const classes = useStyles();
+  const profileView = useMediaQuery({query : "(min-width:768px)"});
 
   return (
-    <div className={classes.aboutContainer}>
-      <img style={{ marginLeft: "3rem" }} src={image} alt={title} className={classes.avatar} />
+    <div className={profileView ? classes.aboutContainer : classes.aboutContainerView}>
+      <img style={{ marginLeft: `${profileView ? "3rem":"0" } ` }} src={image} alt={title} className={profileView ?classes.avatar :classes.avatarView} />
       <div>
         <p className={classes.title}>{title}</p>
         <p className={classes.date}>{date}</p>
@@ -83,10 +100,12 @@ const About = ({ title, date, en, image, fileUrl, fileName }) => {
 const AboutSection = () => {
   const classes = useStyles();
 
+const profileView = useMediaQuery({query : "(min-width:1000px)"});
+
   return (
     <div className={classes.background} style={{ backgroundColor: "#fff" }}>
       <Container maxWidth="md">
-      <Grid container direction="column" spacing={8} alignItems="center" justify="center">
+      <Grid container alignItems="center" justifyContent="center">
           <Grid item>
           <Typography 
             variant="h2" 
@@ -119,8 +138,8 @@ const AboutSection = () => {
               크로스체크는 고객의 비즈니스를 이해하고 최고의 STO 컨설팅 서비스로 새로운 세상을 이끌어 갑니다.
             </Typography>
           </Grid>
-          <Grid justifyContent="center" style={{ display: "flex", padding: "48px 0px", alignItems: "flex-start", gap: "24px" }}>
-            <Grid style={{ display: "flex", width: "480px", height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
+          <Grid justifyContent="center" style={{ display: "flex", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:`${profileView ? "nowrap" : "wrap" }` }}>
+            <Grid style={{ display: "flex", width: `${profileView?"48%": "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
               <About
                 title="크로스체크 회사소개서"
                 date="2022 / 한국어"
@@ -129,7 +148,7 @@ const AboutSection = () => {
                 fileName="회사소개서.pdf"
               />
             </Grid>
-            <Grid style={{ display: "flex", width: "480px", height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
+            <Grid style={{ display: "flex", width: `${profileView?"48%": "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
               <About
                 title="IRONFLAG Company Profile"
                 date="2023 / ENGLISH"

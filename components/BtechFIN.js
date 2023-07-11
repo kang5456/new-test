@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contentWrapper: {
+
     position: 'relative',
     // padding: '16px',
     width: '80%',
@@ -90,6 +91,7 @@ const Btechfin = ({
             >
               오피니언
             </Typography>
+
             <Typography
               variant='h5'
               component='h2'
@@ -111,6 +113,7 @@ const Btechfin = ({
                 bottom: authorPosition || 4, // 변경합니다.
                 fontSize: '15px',
                 fontWeight: 'bold',
+
               }}
             >
               {author}
@@ -119,10 +122,12 @@ const Btechfin = ({
               variant='subtitle1'
               color='textSecondary'
               style={{
+
                 // position: 'absolute', // 변경합니다.
                 bottom: rankPosition || -16, // 변경합니다.
                 fontSize: '13px',
                 fontWeight: 'bold',
+
               }}
             >
               {rank}

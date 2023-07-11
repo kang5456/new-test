@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-Width: 768px)': {
       height: '80px',
     },
+
   },
 }));
 
