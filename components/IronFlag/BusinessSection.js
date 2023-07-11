@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ffff",
     display: "flex",
     width: "100%",
-    // padding: "0px 468px",
     flexDirection: "column",
     alignItems: "flex-start",
     gap: "10px",
@@ -49,7 +48,11 @@ const useStyles = makeStyles((theme) => ({
     margin: "-40px", // B.ISP 이미지 간격 조절 (가로 간격)
   },
   bTechFINImageItem: {
-    margin: "0", 
+    margin: "0",
+    width:"300px",
+    height : "250px",
+    maxWidth: "250px",
+    maxHeight : "210px",
   }
 }));
 
@@ -273,13 +276,13 @@ const BusinessSection = () => {
                 )}
               </Typography>
             </Grid>
-            <Grid container justifyContent="center" alignItems="center">
+            <Grid container justifyContent="center" alignItems="center" style={{padding : "0 5%"}}>
               {/* B.TechFIN */}
               {selectedBusiness.btechfin && (
                 <Grid xs={12} sm={6} md={2}>
                   <img
                     src={selectedBusiness.btechfin.image}
-                    style={{ width: selectedBusiness.btechfin.imageWidth }}
+                    style={{ width: selectedBusiness.btechfin.imageWidth}}
                   />
                   {/* <Typography variant="body1" style={{ marginTop: "1rem" }}>
                     {selectedBusiness.btechfin.number}{" "}
@@ -331,8 +334,9 @@ const BusinessSection = () => {
                     <img
                       src={image.src}
                       style={{
-                        width: image.width,
-                        height: "auto",
+                        width: "100%",
+                        height: "100%",
+                        padding:"5px"
                         // display: "block", // 추가
                         // marginLeft: "auto", // 추가
                         // marginRight: "auto", // 추가
@@ -374,12 +378,12 @@ const BusinessSection = () => {
                   variant="h3"
                   style={{
                     textAlign: "center",
-                    height: "200px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexDirection: "column", // 세로 방향으로 정렬
                     lineHeight: 1, // 각 줄간의 간격을 없애기 위해 1로 설정
+                    padding : "40px 0 0 0 "
                   }}
                 >
                   {selectedBusiness.description ===
