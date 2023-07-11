@@ -5,6 +5,7 @@ import styles from "./SlideShow.module.css";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import { Carousel } from "react-responsive-carousel";
+import { useMediaQuery } from "react-responsive";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
@@ -19,18 +20,18 @@ function extractImageFromContent(content) {
   if (!content || !content.content) {
     return null;
   }
-
+  
   for (const item of content.content) {
     if (item.nodeType === "embedded-asset-block") {
       return item.data.target.fields.file.url;
     }
-
+    
     const nestedImage = extractImageFromContent(item);
     if (nestedImage) {
       return nestedImage;
     }
   }
-
+  
   return null;
 }
 
@@ -38,7 +39,8 @@ const SlideShow = ({ slides }) => {
   const router = useRouter();
   const classes = useStyles();
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const fontSizeView = useMediaQuery({query : '(max-width:650px)'});
+  
   const handleClick = (title) => {
     router.push(`/insight/${title}`);
   };
@@ -148,8 +150,8 @@ const SlideShow = ({ slides }) => {
                   style={{
                     position: "absolute",
                     fontWeight: "bold",
-                    fontSize: "18px",
-                    top: 80,
+                    fontSize: `${fontSizeView ?  "12px":"18px"}`,
+                    top: `${fontSizeView ?  "62px":"80px"}`,
                     left: 20,
                   }}
                 >
