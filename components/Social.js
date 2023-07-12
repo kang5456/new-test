@@ -70,7 +70,7 @@ const Social = ({ color }) => {
       >
         <Typography style={{ fontSize: "1em", color: "#fff" }}>CrossCheck</Typography>
       </Grid>
-      <Menu
+      {/* <Menu
         id="mouse-over-popover"
         anchorEl={anchorEl}
         open={open}
@@ -106,7 +106,7 @@ const Social = ({ color }) => {
             Blog
           </a>
         </MenuItem>
-      </Menu>
+      </Menu> */}
 
       {/* <Grid
         item

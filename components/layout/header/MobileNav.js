@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Box } from "@material-ui/core";
 import { Grid, Typography } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 
@@ -55,7 +56,15 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
 
           </Grid>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle"/>
+        <Navbar.Toggle 
+          aria-controls="responsive-navbar-nav" 
+          className="navbar-toggle"
+          style={{
+            borderColor: "rgba(0, 0, 0, 0)"
+          }}
+        >
+          <MenuIcon />
+        </Navbar.Toggle>
         <Navbar.Collapse
           id="responsive-navbar-nav"
           style={{
@@ -69,9 +78,10 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 margin:"0 auto",
                 alignItems: "center",
                 backgroundColor: "#fff", 
-                border: "1px solid black",
+                border: "1px solid gray",
                 borderRadius: "10px",
-                width: "150px",
+                width: "100px",
+                left: "23px",
             }}
           >
             <Nav.Item
@@ -81,20 +91,20 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
             >
 
               <Nav.Link 
-                // href="/posts/ironflag/introduce" 
+                href="/posts/ironflag/introduce" 
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-ironflag"
                 style={{ 
-                  fontSize: "18px",
+                  fontSize: "15px",
                   fontFamily: "Pretendard",
                   fontStyle: "normal",
                   fontWeight: "600",
-                  lineHeight: "27px",
+                  lineHeight: "10px",
                  }}
                 >
                 STIIM
               </Nav.Link>
-              <NavDropdown
+              {/* <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.ironflag}
                 menualign={{ lg: "center" }}y
@@ -113,7 +123,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 >
                 B.TechFIN
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav.Item>
 
             <Nav.Item
@@ -122,20 +132,20 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                // href="/posts/insight"
+                href="/posts/insight"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-insight"
                 style={{ 
-                  fontSize: "18px",
+                  fontSize: "15px",
                   fontFamily: "Pretendard",
                   fontStyle: "normal",
                   fontWeight: "600",
-                  lineHeight: "27px",
+                  lineHeight: "10px",
                  }}
               >
                 인사이트
               </Nav.Link>
-              <NavDropdown
+              {/* <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.insight}
                 menualign={{ lg: "center" }}
@@ -155,7 +165,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 >
                   칼럼
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav.Item>
 
             <Nav.Item
@@ -164,20 +174,20 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                // href="/posts/btechfin"
+                href="/posts/btechfin"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-btechfin"
                 style={{ 
-                  fontSize: "18px",
+                  fontSize: "15px",
                   fontFamily: "Pretendard",
                   fontStyle: "normal",
                   fontWeight: "600",
-                  lineHeight: "27px",
+                  lineHeight: "10px",
                  }}
               >
                 프레스
               </Nav.Link>
-              <NavDropdown
+              {/* <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.btechfin}
                 menuAlign={{ lg: "center" }}
@@ -196,7 +206,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 >
                   오피니언
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav.Item>
 
             <Nav.Item
@@ -205,20 +215,20 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                // href="/posts/press"
+                href="/posts/press"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
                 style={{ 
-                  fontSize: "18px",
+                  fontSize: "15px",
                   fontFamily: "Pretendard", 
                   fontStyle: "normal",
                   fontWeight: "600",
-                  lineHeight: "27px", 
+                  lineHeight: "10px", 
                  }}
               >
                 미디어
               </Nav.Link>
-              <NavDropdown
+              {/* <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.press}
                 menuAlign={{ lg: "center" }}
@@ -237,7 +247,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 >
                   Youtube
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
