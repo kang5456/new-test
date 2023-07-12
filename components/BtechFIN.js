@@ -1,9 +1,9 @@
 import Link from 'components/Link';
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography } from '@material-ui/core';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { useMediaQuery } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {Card, CardContent, Typography} from '@material-ui/core';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import {useMediaQuery} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -70,7 +70,7 @@ const Btechfin = ({
 
   return (
     <Link href={`/btechfin/${slug}`}>
-      <a style={{ textDecoration: 'none' }}>
+      <a style={{textDecoration: 'none'}}>
         <Card className={classes.root}>
           <div
             className={classes.cover}
@@ -80,7 +80,7 @@ const Btechfin = ({
           ></div>
           <CardContent className={classes.contentWrapper}>
             <Typography
-              variant='subtitle1'
+              variant="subtitle1"
               style={{
                 fontWeight: 'bold',
                 marginBottom: isMobile ? '0px' : '12px',
@@ -91,13 +91,13 @@ const Btechfin = ({
               오피니언
             </Typography>
             <Typography
-              variant='h5'
-              component='h2'
+              variant="h5"
+              component="h2"
               style={{
                 fontWeight: 'bold',
                 fontSize: isMobile ? '14px' : '20px',
                 overflow: 'hidden',
-                maxHeight: isMobile ? '38px' : '120px',
+                maxHeight: isMobile ? '38px' : '82px',
                 paddingBottom: isMobile ? '0px' : '16px',
               }}
             >
@@ -106,8 +106,8 @@ const Btechfin = ({
             {isMobile ? (
               <>
                 <Typography
-                  variant='subtitle1'
-                  color='textSecondary'
+                  variant="subtitle1"
+                  color="textSecondary"
                   style={{
                     // position: 'absolute', // 변경합니다.
                     // bottom: authorPosition || 4, // 변경합니다.
@@ -121,8 +121,8 @@ const Btechfin = ({
             ) : (
               <>
                 <Typography
-                  variant='subtitle1'
-                  color='textSecondary'
+                  variant="subtitle1"
+                  color="textSecondary"
                   style={{
                     // position: 'absolute', // 변경합니다.
                     // bottom: authorPosition || 4, // 변경합니다.
@@ -133,8 +133,8 @@ const Btechfin = ({
                   {author}
                 </Typography>
                 <Typography
-                  variant='subtitle1'
-                  color='textSecondary'
+                  variant="subtitle1"
+                  color="textSecondary"
                   style={{
                     // position: 'absolute', // 변경합니다.
                     bottom: rankPosition || -16, // 변경합니다.
@@ -171,8 +171,8 @@ const Btechfin = ({
               {rank}
             </Typography> */}
             <Typography
-              variant='subtitle2'
-              color='textSecondary'
+              variant="subtitle2"
+              color="textSecondary"
               style={{
                 // position: 'absolute', // 변경합니다.
                 bottom: datePosition || 4, // 변경합니다.
