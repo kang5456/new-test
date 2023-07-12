@@ -83,23 +83,26 @@ const Social = ({ color }) => {
           vertical: 'top',
           horizontal: 'left',
         }}
+        style={{
+          marginLeft: "-115px"
+        }}
       >
         <MenuItem>
           <a 
             target="_blank"
             rel="noreferrer noopener"
-            href={instagram}
+            href={homepage}
           >
-            Instagram
+            HomePage
           </a>
         </MenuItem>
         <MenuItem>
           <a 
             target="_blank"
             rel="noreferrer noopener"
-            href={github}
+            href={instagram}
           >
-            GitHub
+            Blog
           </a>
         </MenuItem>
       </Menu>
