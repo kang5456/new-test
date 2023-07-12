@@ -3,6 +3,7 @@ import { Button, Dialog, IconButton, makeStyles } from "@material-ui/core";
 import { GetApp } from "@material-ui/icons";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { useMediaQuery } from 'react-responsive';
+import FileDownloadButton from './FileDownloadButton';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -24,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
   avatarView : {
       margin : "0",
-      width : "55%",
-      padding : "15px 10px",
+      width : "65%",
+      padding : "15px 0px",
   },
   aboutContainer: {
     display: "flex",
@@ -43,43 +44,32 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: "#ffff",
     display: "flex",
-    // width: "1920px",
-    // height: "740px",
     padding: "169px 0px",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
   aboutContainerView :{
-     display: "flex",
-    alignItems: "center",
+  display: "flex",
+  alignItems: "center",
    flexWrap : "wrap",
    justifyContent:"center",
    padding : "10px 0",
+   flexDirection: "column"
   },
-
+  downloadContainer : {
+    display:"flex",
+    width : "40%",
+    justifyContent: "center",
+    alignItems:"flex-start",
+    flexDirection: "column",
+    padding  : "0 0 0 20px",
+  },
+  downloadContainerView : {
+    width : "70%",
+  }
 }));
 
-
-const PDFViewer = ({ fileUrl }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <>
-      <Button onClick={handleOpen}>View PDF</Button>
-      <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth="md">
-        <iframe
-          src={fileUrl}
-          style={{ width: '100%', height: '90vh' }}
-          frameBorder="0"
-        />
-      </Dialog>
-    </>
-  );
-};
 
 const About = ({ title, date, en, image, fileUrl, fileName }) => {
   const classes = useStyles();
@@ -88,10 +78,10 @@ const About = ({ title, date, en, image, fileUrl, fileName }) => {
   return (
     <div className={profileView ? classes.aboutContainer : classes.aboutContainerView}>
       <img style={{ marginLeft: `${profileView ? "3rem":"0" } ` }} src={image} alt={title} className={profileView ?classes.avatar :classes.avatarView} />
-      <div>
-        <p className={classes.title}>{title}</p>
-        <p className={classes.date}>{date}</p>
-        {fileUrl && <PDFViewer fileUrl={fileUrl} />}
+      <div className={`${profileView ?classes.downloadContainer : classes.downloadContainerView}`}>
+        <div className={classes.title}>{title}</div>
+        <div className={classes.date}>{date}</div>
+        {fileUrl && <FileDownloadButton fileUrl={fileUrl} fileName={fileName}/>}
       </div>
     </div>
   );
@@ -138,7 +128,7 @@ const profileView = useMediaQuery({query : "(min-width:1000px)"});
               크로스체크는 고객의 비즈니스를 이해하고 최고의 STO 컨설팅 서비스로 새로운 세상을 이끌어 갑니다.
             </Typography>
           </Grid>
-          <Grid justifyContent="center" style={{ display: "flex", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:`${profileView ? "nowrap" : "wrap" }` }}>
+          <Grid justifyContent="center" style={{ display: "flex", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:"wrap" }}>
             <Grid style={{ display: "flex", width: `${profileView?"48%": "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
               <About
                 title="크로스체크 회사소개서"
@@ -148,7 +138,7 @@ const profileView = useMediaQuery({query : "(min-width:1000px)"});
                 fileName="회사소개서.pdf"
               />
             </Grid>
-            <Grid style={{ display: "flex", width: `${profileView?"48%": "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
+            <Grid style={{ display: "flex", width: `${ profileView ? "48%" : "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
               <About
                 title="IRONFLAG Company Profile"
                 date="2023 / ENGLISH"

@@ -32,18 +32,25 @@
 
 .navbar-toggle {
   position: fixed;
-  margin-left: calc(50% - 204px); /* 로고 위치 조정 */
-  margin-right: calc(50% - 500px); /* 로고 위치 조정 */
-  margin-top: 0px;
+  left: 0;
+  transform: translateX(0);
 }
 
 @media (max-width: 768px) {
-  .navbar-brand, .navbar-toggle, .dropdown-menu {
+  .navbar-brand, .dropdown-menu {
     margin-left: 15px;
     margin-right: auto;
   }
   .navbar-nav {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 1000px) {
+  .navbar-toggle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

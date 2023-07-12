@@ -15,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: "#ffff",
     display: "flex",
-    // width: "1920px",
-    // height: "740px",
     padding: "169px 0px",
     flexDirection: "column",
     justifyContent: "center",
@@ -25,31 +23,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const partnersRow1 = [
-  // { id: 1, logoUrl: "/partner/logo-1.webp" },
-  // { id: 2, logoUrl: "/partner/logo-2.webp" },
-  // { id: 3, logoUrl: "/partner/logo-3.webp" },
-  // { id: 4, logoUrl: "/partner/logo-4.webp" },
-  // { id: 5, logoUrl: "/partner/logo-5.webp" },
-  // { id: 6, logoUrl: "/partner/logo-6.webp" },
-  // { id: 7, logoUrl: "/partner/logo-7.webp" },
-  // { id: 8, logoUrl: "/partner/logo-8.webp" },
-  // { id: 9, logoUrl: "/partner/logo-9.webp" },
-  // { id: 10, logoUrl: "/partner/logo-10.webp" },
-  // { id: 11, logoUrl: "/partner/logo-11.webp" },
+  { id: 1, logoUrl: "/partner/logo-1.webp" },
+  { id: 2, logoUrl: "/partner/logo-2.webp" },
+  { id: 3, logoUrl: "/partner/logo-3.webp" },
+  { id: 4, logoUrl: "/partner/logo-4.webp" },
+  { id: 5, logoUrl: "/partner/logo-5.webp" },
+  { id: 6, logoUrl: "/partner/logo-6.webp" },
+  { id: 7, logoUrl: "/partner/logo-7.webp" },
+  { id: 8, logoUrl: "/partner/logo-8.webp" },
+  { id: 9, logoUrl: "/partner/logo-9.webp" },
+  { id: 10, logoUrl: "/partner/logo-10.webp" },
+  { id: 11, logoUrl: "/partner/logo-11.webp" },
 ];
 
 const partnersRow2 = [
-  // { id: 12, logoUrl: "/partner/logo-12.webp" },
-  // { id: 13, logoUrl: "/partner/logo-13.webp" },
-  // { id: 14, logoUrl: "/partner/logo-14.webp" },
-  // { id: 15, logoUrl: "/partner/logo-15.webp" },
-  // { id: 16, logoUrl: "/partner/logo-16.webp" },
-  // { id: 17, logoUrl: "/partner/logo-17.webp" },
-  // { id: 18, logoUrl: "/partner/logo-18.webp" },
-  // { id: 19, logoUrl: "/partner/logo-19.webp" },
-  // { id: 20, logoUrl: "/partner/logo-20.webp" },
-  // { id: 21, logoUrl: "/partner/logo-21.webp" },
-  // { id: 22, logoUrl: "/partner/logo-22.webp" },
+  { id: 12, logoUrl: "/partner/logo-12.webp" },
+  { id: 13, logoUrl: "/partner/logo-13.webp" },
+  { id: 14, logoUrl: "/partner/logo-14.webp" },
+  { id: 15, logoUrl: "/partner/logo-15.webp" },
+  { id: 16, logoUrl: "/partner/logo-16.webp" },
+  { id: 17, logoUrl: "/partner/logo-17.webp" },
+  { id: 18, logoUrl: "/partner/logo-18.webp" },
+  { id: 19, logoUrl: "/partner/logo-19.webp" },
+  { id: 20, logoUrl: "/partner/logo-20.webp" },
+  { id: 21, logoUrl: "/partner/logo-21.webp" },
+  { id: 22, logoUrl: "/partner/logo-22.webp" },
 ];
 
 const Partners = () => {
