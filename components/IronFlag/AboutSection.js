@@ -32,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     margin: `${theme.spacing(4)}px 0`,
-    justifyContent:"center"
+    justifyContent:"center",
+    flexWrap : "nowrap",
+    flexDirection: "row",
+    padding : "0 15px",
   },
   line: {
     backgroundColor: "#868e96",
@@ -73,12 +76,12 @@ const useStyles = makeStyles((theme) => ({
 
 const About = ({ title, date, en, image, fileUrl, fileName }) => {
   const classes = useStyles();
-  const profileView = useMediaQuery({query : "(min-width:768px)"});
+  const profileAboutView = useMediaQuery({query : "(max-width:768px)"});
 
   return (
-    <div className={profileView ? classes.aboutContainer : classes.aboutContainerView}>
-      <img style={{ marginLeft: `${profileView ? "3rem":"0" } ` }} src={image} alt={title} className={profileView ?classes.avatar :classes.avatarView} />
-      <div className={`${profileView ?classes.downloadContainer : classes.downloadContainerView}`}>
+    <div className={profileAboutView ? classes.aboutContainerView : classes.aboutContainer}>
+      <img src={image} alt={title} className={profileAboutView ?classes.avatarView :classes.avatar} />
+      <div className={`${profileAboutView ?classes.downloadContainerView : classes.downloadContainer}`}>
         <div className={classes.title}>{title}</div>
         <div className={classes.date}>{date}</div>
         {fileUrl && <FileDownloadButton fileUrl={fileUrl} fileName={fileName}/>}
@@ -90,7 +93,7 @@ const About = ({ title, date, en, image, fileUrl, fileName }) => {
 const AboutSection = () => {
   const classes = useStyles();
 
-const profileView = useMediaQuery({query : "(min-width:1000px)"});
+const profileView = useMediaQuery({query : "(max-width:1000px)"});
 
   return (
     <div className={classes.background} style={{ backgroundColor: "#fff" }}>
@@ -128,8 +131,8 @@ const profileView = useMediaQuery({query : "(min-width:1000px)"});
               크로스체크는 고객의 비즈니스를 이해하고 최고의 STO 컨설팅 서비스로 새로운 세상을 이끌어 갑니다.
             </Typography>
           </Grid>
-          <Grid justifyContent="center" style={{ display: "flex", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:"wrap" }}>
-            <Grid style={{ display: "flex", width: `${profileView?"48%": "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
+          <Grid justifyContent="center" style={{ display: "flex", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:`${profileView ? "wrap": "nowrap" } ` }}>
+            <Grid style={{ width: `${profileView?"55%": "48%"}`,  background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
               <About
                 title="크로스체크 회사소개서"
                 date="2022 / 한국어"
@@ -138,7 +141,7 @@ const profileView = useMediaQuery({query : "(min-width:1000px)"});
                 fileName="회사소개서.pdf"
               />
             </Grid>
-            <Grid style={{ display: "flex", width: `${ profileView ? "48%" : "55%"}`, height: "252px", alignItems: "center", background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
+            <Grid style={{  width: `${ profileView ? "55%" : "48%"}`, background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
               <About
                 title="IRONFLAG Company Profile"
                 date="2023 / ENGLISH"
