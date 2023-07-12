@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import slugify from 'slugify';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -22,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
     padding: theme.spacing(9), // 추가: 내용과 흰색 배경 사이에 공간을 만듭니다
     margin: theme.spacing(10),
+    '@media (768px <= width <= 1280px)': {
+      padding: theme.spacing(4),
+      margin: theme.spacing(4),
+    },
+    '@media (max-Width: 768px)': {
+      padding: theme.spacing(2),
+      margin: theme.spacing(2),
+    },
   },
   contentWrapper: {
     margin: '0 auto', // 가로 마진을 자동으로 설정하면, 화면 크기에 관계없이 중앙에 고정됩니다.
@@ -65,6 +74,7 @@ export async function getStaticProps({ params }) {
 const Btechfin = ({ bTechFin, moreBtechfin }) => {
   const router = useRouter();
   const classes = useStyles();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   if (!router.isFallback && !bTechFin) {
     return <ErrorPage statusCode={404} />;
