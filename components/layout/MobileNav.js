@@ -81,7 +81,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
             >
 
               <Nav.Link 
-                href="/posts/ironflag/introduce" 
+                // href="/posts/ironflag/introduce" 
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-ironflag"
                 style={{ 
@@ -122,7 +122,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                href="/posts/insight"
+                // href="/posts/insight"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-insight"
                 style={{ 
@@ -164,7 +164,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                href="/posts/btechfin"
+                // href="/posts/btechfin"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-btechfin"
                 style={{ 
@@ -205,7 +205,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               className={classes.hideDropdownArrow}
             >
               <Nav.Link
-                href="/posts/press"
+                // href="/posts/press"
                 className={classes.navItem}
                 id="collapsible-nav-dropdown-press"
                 style={{ 
