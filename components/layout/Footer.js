@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     width: `100%`,
     height: '120px',
     position: 'relative',
-    marginTop: '20px',
+    marginTop: '30px',
 
     padding: '2em 0',
   },
