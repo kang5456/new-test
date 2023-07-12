@@ -69,7 +69,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
             className="mr-auto"
             style={{
                 position: "relative",
-                margin: "0 0",
+                margin:"0 auto",
                 alignItems: "center",
                 backgroundColor: "#fff", 
                 border: "1px solid black",
@@ -100,7 +100,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
               <NavDropdown
                 className={classes.navDropdown}
                 show={dropdownOpen.ironflag}
-                menualign={{ lg: "center" }}
+                menualign={{ lg: "center" }}y
               >
                 <NavDropdown.Item
                   href="/posts/ironflag/introduce"
