@@ -43,7 +43,7 @@ const FootComponent = ({classes}) => {
             item
             style={{
               textAlign: 'right',
-              marginTop: '-90px',
+              marginTop: '-60px',
               marginRight: '50px',
             }}
           >
