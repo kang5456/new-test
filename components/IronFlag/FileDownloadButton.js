@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor : "rgba(0,0,0,0)",
     fontSize : "12px",
     display:"flex",
+    alignItems: "center",
   }
 }));
 

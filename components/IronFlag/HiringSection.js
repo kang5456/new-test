@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    padding: "220px 0px",
+    padding: "100px 0px",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
