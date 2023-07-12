@@ -59,10 +59,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
         <Navbar.Collapse
           id="responsive-navbar-nav"
           style={{
-            position: "absolute",
-            marginTop: "15px",
-            fontWeight: "bold",
-            fontSize: "1.051em",
+
           }}
         >
           <Nav 
