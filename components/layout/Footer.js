@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     width: `100%`,
-    height: '120px',
+    height: '100px',
     position: 'relative',
     marginTop: '6em',
     padding: '2em 0',
