@@ -1,4 +1,8 @@
 /* styles.css */
+body{
+	font-family: "NanumSquare","맑은 고딕", sans-serif;
+}
+
 .navbar .dropdown:hover .dropdown-menu {
     display: block;
   }

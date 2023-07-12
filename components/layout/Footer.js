@@ -5,7 +5,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Social from 'components/Social';
 import FootComponent from './footer/Container';
 import MFootComponent from './footer/MobileCon';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -45,23 +45,15 @@ const Footer = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     handleResize();
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const footercomponent =
+  const footercomponent = <FootComponent classes={classes} />;
 
-  <FootComponent
-    classes={classes}
-  />
-
-  const mfootercomponent =
-
-  <MFootComponent
-    classes={classes}
-  />
+  const mfootercomponent = <MFootComponent classes={classes} />;
 
   return (
     <footer className={classes.footer}>
