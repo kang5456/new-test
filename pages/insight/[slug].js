@@ -1,4 +1,4 @@
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
 import InsightHeader from 'components/BlogHeader';
@@ -9,13 +9,13 @@ import {
   getMoreInsight,
   getAllInsightWithSlug,
 } from 'lib/index';
-import {Container, Grid, Typography} from '@material-ui/core';
+import { Container, Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import slugify from 'slugify';
-import {useMediaQuery} from '@material-ui/core';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const insight = await getInsightBySlug(params.slug); // 수정
   const moreInsight = await getMoreInsight(params.slug); // 수정
 
@@ -71,7 +71,7 @@ export async function getStaticProps({params}) {
   };
 }
 
-const Insight = ({insight, moreInsight}) => {
+const Insight = ({ insight, moreInsight }) => {
   const router = useRouter();
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -85,9 +85,7 @@ const Insight = ({insight, moreInsight}) => {
       title={insight?.fields.title}
       description={insight?.fields.subTitle}
       ogImage={insight?.fields.cover?.fields.file.url || 'default_image_url'}
-      url={`https://yourwebsite.com/insight/${generateSlug(
-        insight?.fields.title,
-      )}`}
+      url={`https://yourwebsite.com/insight/${generateSlug(insight?.sys.id)}`}
     >
       <div className={classes.contentWrapper}>
         <div className={classes.background}>
@@ -100,7 +98,7 @@ const Insight = ({insight, moreInsight}) => {
                       <Typography
                         variant="subtitle2"
                         color="textSecondary"
-                        style={{fontSize: '13px'}}
+                        style={{ fontSize: '13px' }}
                       >
                         언론
                       </Typography>
@@ -116,7 +114,7 @@ const Insight = ({insight, moreInsight}) => {
                       <Typography
                         variant="subtitle2"
                         color="textSecondary"
-                        style={{fontSize: '13px'}}
+                        style={{ fontSize: '13px' }}
                       >
                         보도 자료
                       </Typography>
@@ -138,7 +136,7 @@ const Insight = ({insight, moreInsight}) => {
             content={insight?.fields.content}
             coverImage={insight?.fields.cover?.fields?.file?.url}
           />
-          <Container maxWidth="lg" style={{marginTop: '8em'}}>
+          <Container maxWidth="lg" style={{ marginTop: '8em' }}>
             <Grid container direction="column" alignItems="center">
               <Grid item>
                 <Typography
