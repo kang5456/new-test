@@ -91,7 +91,7 @@ export default function Report({ insight }) {
       setCurrentPage(prevPage);
       if (prevPage < startPage) {
         setStartPage(
-          startPage - numOfPagesToShow > 0 ? startPage - numOfPagesToShow : 1
+          startPage - numOfPagesToShow > 0 ? startPage - numOfPagesToShow : 1,
         );
       }
     }
@@ -112,13 +112,13 @@ export default function Report({ insight }) {
     <Layout>
       <div className={classes.contentWrapper}>
         <div className={classes.background}>
-          <Container maxWidth='md'>
-            <Grid container spacing={4} justify='center'>
+          <Container maxWidth="md">
+            <Grid container spacing={4} justify="center">
               <Grid item xs={12}>
                 <Typography
-                  variant='h2'
-                  component='h1'
-                  align='left'
+                  variant="h2"
+                  component="h1"
+                  align="left"
                   gutterBottom
                   style={{
                     fontSize: isMobile ? '18px' : '28px',
@@ -138,14 +138,14 @@ export default function Report({ insight }) {
                     }}
                   >
                     <img
-                      src='/empty-folder.svg'
-                      alt='Empty folder'
+                      src="/empty-folder.svg"
+                      alt="Empty folder"
                       style={{ width: '30px' }}
                     />
                   </div>
                   <Typography
-                    variant='subtitle1'
-                    align='center'
+                    variant="subtitle1"
+                    align="center"
                     gutterBottom
                     className={classes.customText}
                   >
@@ -153,16 +153,16 @@ export default function Report({ insight }) {
                   </Typography>
                 </Grid>
               ) : (
-                <Grid container spacing={4} justify='center'>
+                <Grid container spacing={4} justify="center">
                   <Grid item xs={12}>
-                    <Grid container spacing={isMobile ? 3 : 5} justify='center'>
+                    <Grid container spacing={isMobile ? 3 : 5} justify="center">
                       {currentPosts?.map(({ fields, sys }) => (
                         <Grid item key={fields.title} xs={12}>
                           <Insight
                             title={fields.title}
                             author={fields.author}
                             rank={fields.rank}
-                            type='insight' // 이 부분을 추가합니다.
+                            type="insight" // 이 부분을 추가합니다.
                             coverImage={
                               fields.cover?.fields?.file?.url ||
                               extractImageFromContent(fields.content)
@@ -182,7 +182,7 @@ export default function Report({ insight }) {
                     <Grid
                       container
                       spacing={2}
-                      justify='center'
+                      justify="center"
                       style={{ marginTop: '2rem' }}
                     >
                       <Grid item>
