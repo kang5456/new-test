@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
     color: '#d3d3d3',
   },
   background: {
-    backgroundColor: "#ffff",
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "10px",
+    backgroundColor: '#ffff',
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '10px',
   },
   iconWrapper: {
     width: '110px',
@@ -48,12 +48,12 @@ const useStyles = makeStyles((theme) => ({
     margin: '0', // B.ISP 이미지 간격 조절 (가로 간격)
   },
   bTechFINImageItem: {
-    margin: "0",
-    width:"300px",
-    height : "250px",
-    maxWidth: "250px",
-    maxHeight : "210px",
-  }
+    margin: '0',
+    width: '300px',
+    height: '250px',
+    maxWidth: '250px',
+    maxHeight: '210px',
+  },
 }));
 
 const businesses = [
@@ -146,7 +146,7 @@ const bISPInfo = {
 };
 
 const businessInfo = {
-  'B.TechFIN': bTechFINInfo,
+  'B.STIIM': bTechFINInfo,
   'B.ISP': bISPInfo,
 };
 
@@ -154,7 +154,7 @@ const BusinessSection = () => {
   const classes = useStyles();
 
   const [selectedBusiness, setSelectedBusiness] = useState(
-    businessInfo['B.TechFIN']
+    businessInfo['B.STIIM'],
   );
 
   const handleBusinessClick = (title) => {
@@ -184,7 +184,7 @@ const BusinessSection = () => {
     <div className={classes.background}>
       <div style={{ width: '100%' }}>
         <Typography
-          variant='h2'
+          variant="h2"
           style={{
             textAlign: 'center',
             fontSize: '28px',
@@ -198,7 +198,7 @@ const BusinessSection = () => {
           주요 사업 부문
         </Typography>
         <div className={classes.line}></div>
-        <Grid container justifyContent='center'>
+        <Grid container justifyContent="center">
           <Grid
             key={'B.STIIM'}
             onClick={() => handleBusinessClick('B.STIIM')}
@@ -226,7 +226,7 @@ const BusinessSection = () => {
           <div style={{ marginTop: '0.1rem' }}>
             <Grid item xs={12}>
               <Typography
-                variant='h3'
+                variant="h3"
                 style={{
                   textAlign: 'center',
                   height: '200px',
@@ -305,13 +305,18 @@ const BusinessSection = () => {
               </Typography>
             </Grid>
 
-            <Grid container justifyContent="center" alignItems="center" style={{padding : "0 5%"}}>
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              style={{ padding: '0 5%' }}
+            >
               {/* B.TechFIN */}
               {selectedBusiness.btechfin && (
                 <Grid xs={12} sm={6} md={2}>
                   <img
                     src={selectedBusiness.btechfin.image}
-                    style={{ width: selectedBusiness.btechfin.imageWidth}}
+                    style={{ width: selectedBusiness.btechfin.imageWidth }}
                   />
                   {/* <Typography variant="body1" style={{ marginTop: "1rem" }}>
                     {selectedBusiness.btechfin.number}{" "}
@@ -329,10 +334,10 @@ const BusinessSection = () => {
                     src={selectedBusiness.bisp.image}
                     style={{ width: selectedBusiness.bisp.imageWidth }}
                   />
-                  <Typography variant='body1' style={{ marginTop: '1rem' }}>
+                  <Typography variant="body1" style={{ marginTop: '1rem' }}>
                     {selectedBusiness.bisp.number} {selectedBusiness.bisp.text}
                   </Typography>
-                  <Typography variant='body1' style={{ marginTop: '0.5rem' }}>
+                  <Typography variant="body1" style={{ marginTop: '0.5rem' }}>
                     {selectedBusiness.bisp.text2}
                   </Typography>
                 </Grid>
@@ -363,9 +368,9 @@ const BusinessSection = () => {
                     <img
                       src={image.src}
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        padding:"5px"
+                        width: '100%',
+                        height: '100%',
+                        padding: '5px',
                       }}
                     />
                   )}
@@ -401,15 +406,15 @@ const BusinessSection = () => {
               {/* Description */}
               <Grid item xs={12}>
                 <Typography
-                  variant='h3'
+                  variant="h3"
                   style={{
-                    textAlign: "center",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "column", // 세로 방향으로 정렬
+                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column', // 세로 방향으로 정렬
                     lineHeight: 1, // 각 줄간의 간격을 없애기 위해 1로 설정
-                    padding : "40px 0 0 0 "
+                    padding: '40px 0 0 0 ',
                   }}
                 >
                   {selectedBusiness.description ===
