@@ -61,6 +61,7 @@ const Btechfin = ({
   authorPosition,
   rankPosition,
   entry,    
+
 }) => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 768px)');
