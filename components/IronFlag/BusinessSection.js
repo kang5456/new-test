@@ -45,10 +45,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '-20px', // B.TechFIN 이미지 간격 조절 (가로 간격)
   },
   bISPImageItem: {
-    margin: '-40px', // B.ISP 이미지 간격 조절 (가로 간격)
+    margin: '0', // B.ISP 이미지 간격 조절 (가로 간격)
   },
   bTechFINImageItem: {
-
     margin: "0",
     width:"300px",
     height : "250px",
@@ -325,7 +324,7 @@ const BusinessSection = () => {
               )}
               {/* B.ISP */}
               {selectedBusiness.bisp && (
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={3}>
                   <img
                     src={selectedBusiness.bisp.image}
                     style={{ width: selectedBusiness.bisp.imageWidth }}
@@ -342,9 +341,9 @@ const BusinessSection = () => {
               {selectedBusiness.images.map((image, index) => (
                 <Grid
                   item
-                  xs={12}
-                  sm={6}
-                  md={3}
+                  xs={8}
+                  sm={4}
+                  md={2}
                   key={index}
                   className={
                     selectedBusiness.title ===
@@ -364,13 +363,9 @@ const BusinessSection = () => {
                     <img
                       src={image.src}
                       style={{
-
                         width: "100%",
                         height: "100%",
                         padding:"5px"
-                        // display: "block", // 추가
-                        // marginLeft: "auto", // 추가
-                        // marginRight: "auto", // 추가
                       }}
                     />
                   )}
@@ -408,7 +403,6 @@ const BusinessSection = () => {
                 <Typography
                   variant='h3'
                   style={{
-
                     textAlign: "center",
                     display: "flex",
                     alignItems: "center",
