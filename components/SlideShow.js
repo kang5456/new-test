@@ -41,8 +41,9 @@ const SlideShow = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const fontSizeView = useMediaQuery({query : '(max-width:650px)'});
   
-  const handleClick = (title) => {
-    router.push(`/insight/${title}`);
+  const handleClick = (entry, isbTechFin) => {
+    if(isbTechFin) router.push(`/btechfin/${entry}`);
+    else router.push(`/insight/${entry}`);
   };
 
   const renderArrowPrev = (onClickHandler, hasPrev, label) =>
@@ -118,19 +119,20 @@ const SlideShow = ({ slides }) => {
             fields?.cover?.fields?.file?.url ||
             extractImageFromContent(fields.content);
           const httpsImageUrl = imageUrl?.replace("http:", "https:");
-          const title = fields.title;
+          const entry = sys.id;
+          const isbTechFin = sys.contentType.sys.id.includes("bTechFin");
 
           const slug = encodeURIComponent(
-            title.replace(/\s+/g, "-").toLowerCase()
-          ); // title 값을 slug로 변환하고 인코딩
+            entry.replace(/\s+/g, "-").toLowerCase()
+          ); // entry 값을 slug로 변환하고 인코딩
 
           return (
             <div
               key={index}
               className={styles.slide}
-              onClick={() => handleClick(title)}
+              onClick={() => handleClick(entry, isbTechFin)}
             >
-              {httpsImageUrl && <img src={httpsImageUrl} alt={title} />}
+              {httpsImageUrl && <img src={httpsImageUrl} alt={entry} />}
               <CardContent className={classes.contentWrapper}>
                 <Typography
                   variant="subtitle1"
@@ -155,32 +157,8 @@ const SlideShow = ({ slides }) => {
                     left: 20,
                   }}
                 >
-                  {title}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  color="textSecondary"
-                  style={{
-                    position: "absolute",
-                    bottom: 60, // 위치를 원하는 곳에 맞추어 조정
-                    left: 20,
-                    fontWeight: "bold",
-                  }}
-                >
-                  {fields.author} {/* author 표시 */}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  color="textSecondary"
-                  style={{
-                    position: "absolute",
-                    bottom: 40, // 위치를 원하는 곳에 맞추어 조정
-                    left: 20,
-                    fontWeight: "bold",
-                  }}
-                >
-                  {fields.rank} {/* rank 표시 */}
-                </Typography>
+                  {fields.title}
+                </Typography>            
                 <Typography
                   variant="subtitle2"
                   color="textSecondary"
