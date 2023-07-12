@@ -60,6 +60,7 @@ const Insight = ({
   datePosition,
   authorPosition,
   rankPosition,
+  entry
 }) => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -69,7 +70,7 @@ const Insight = ({
   const linkAs = type === 'insight' ? `/insight/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={`/insight/${title}`}>
+    <Link href={`/insight/${entry}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div

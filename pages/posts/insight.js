@@ -173,6 +173,7 @@ export default function Report({ insight }) {
                             datePosition={-33} // 날짜 위치를 원하는 값으로 조정합니다.
                             authorPosition={2}
                             rankPosition={0}
+                            entry={sys.id}                    
                           />
                         </Grid>
                       ))}
