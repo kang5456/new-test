@@ -76,13 +76,12 @@ const useStyles = makeStyles((theme) => ({
 
 const About = ({ title, date, en, image, fileUrl, fileName }) => {
   const classes = useStyles();
-  const profileAboutView = useMediaQuery({query : "(max-width:768px)"});
   const mobileAboutView = useMediaQuery({query : "(max-width:500px)"});
 
   return (
-    <div className={profileAboutView || mobileAboutView ? classes.aboutContainerView : classes.aboutContainer}>
-      <img src={image} alt={title} className={profileAboutView || mobileAboutView ?classes.avatarView :classes.avatar} />
-      <div className={`${profileAboutView || mobileAboutView ?classes.downloadContainerView : classes.downloadContainer}`}>
+    <div className={ mobileAboutView ? classes.aboutContainerView : classes.aboutContainer}>
+      <img src={image} alt={title} className={mobileAboutView ?classes.avatarView : classes.avatar} />
+      <div className={mobileAboutView ? classes.downloadContainerView :classes.downloadContainer}>
         <div className={classes.title}>{title}</div>
         <div className={classes.date}>{date}</div>
         {fileUrl && <FileDownloadButton fileUrl={fileUrl} fileName={fileName}/>}
@@ -133,8 +132,8 @@ const profileView768 = useMediaQuery({query : "(max-width:768px)"});
               크로스체크는 고객의 비즈니스를 이해하고 최고의 STO 컨설팅 서비스로 새로운 세상을 이끌어 갑니다.
             </Typography>
           </Grid>
-          <Grid style={{ display: "flex", justifyContent:"center", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:`${profileView || profileView768 ? "wrap": "nowrap" } `}}>
-            <Grid style={{ width: `${profileView || profileView768? "55%" : "48%"}`,  background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
+          <Grid style={{ display: "flex", justifyContent:"center", width:"100%", padding: "48px 0px", alignItems: "flex-start", gap: "24px", flexWrap:'wrap'}}>
+            <Grid style={{ width: '85%',  background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>  
               <About
                 title="크로스체크 회사소개서"
                 date="2022 / 한국어"
@@ -143,7 +142,7 @@ const profileView768 = useMediaQuery({query : "(max-width:768px)"});
                 fileName="회사소개서.pdf"
               />
             </Grid>
-            <Grid style={{  width: `${ profileView || profileView768 ? "55%" : "48%"}`, background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
+            <Grid style={{  width: '85%', background:"var(--primary-300, #F3F5FF)", borderRadius: "16px", }}>
               <About
                 title="IRONFLAG Company Profile"
                 date="2023 / ENGLISH"

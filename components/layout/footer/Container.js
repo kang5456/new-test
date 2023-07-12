@@ -14,9 +14,9 @@ const FootComponent = ({classes}) => {
         src="/STI_W.png"
         alt="logo"
         style={{
-          width: '150px',
+          width: '140px',
           position: 'relative',
-          marginTop: '20px',
+          marginTop: '15px',
         }}
       />
       <Grid container direction="column" alignItems="center" justify="center">
@@ -26,6 +26,7 @@ const FootComponent = ({classes}) => {
             style={{
               textAlign: 'center',
               fontSize: '12px',
+              marginTop: '-20px',
             }}
           >
             <div style={{color: 'gray', marginBottom: '0px'}}>
@@ -42,7 +43,7 @@ const FootComponent = ({classes}) => {
             item
             style={{
               textAlign: 'right',
-              marginTop: '-100px',
+              marginTop: '-90px',
               marginRight: '50px',
             }}
           >

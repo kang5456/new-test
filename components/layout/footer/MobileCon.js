@@ -16,6 +16,7 @@ const MFootComponent = ({classes}) => {
           width: '150px',
           position: 'relative',
           marginTop: '0px',
+
         }}
       />
       <Grid container direction="column" alignItems="center" justify="center">
