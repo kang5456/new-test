@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import {Container, Grid, Typography} from '@material-ui/core';
 import Social from 'components/Social';

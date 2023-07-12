@@ -81,7 +81,7 @@ const Insight = ({
           ></div>
           <CardContent className={classes.contentWrapper}>
             <Typography
-              variant='subtitle1'
+              variant="subtitle1"
               style={{
                 fontWeight: 'bold',
                 marginBottom: isMobile ? '0px' : '12px',
@@ -92,8 +92,8 @@ const Insight = ({
               업계소식
             </Typography>
             <Typography
-              variant='h5'
-              component='h2'
+              variant="h5"
+              component="h2"
               style={{
                 fontWeight: 'bold',
                 fontSize: isMobile ? '14px' : '20px',
@@ -106,8 +106,8 @@ const Insight = ({
               {title}
             </Typography>
             <Typography
-              variant='subtitle1'
-              color='textSecondary'
+              variant="subtitle1"
+              color="textSecondary"
               style={{
                 position: 'absolute', // 변경합니다.
                 bottom: authorPosition || 4, // 변경합니다.
@@ -118,8 +118,8 @@ const Insight = ({
               {author}
             </Typography>
             <Typography
-              variant='subtitle1'
-              color='textSecondary'
+              variant="subtitle1"
+              color="textSecondary"
               style={{
                 position: 'absolute', // 변경합니다.
                 bottom: rankPosition || -16, // 변경합니다.
@@ -130,8 +130,8 @@ const Insight = ({
               {rank}
             </Typography>
             <Typography
-              variant='subtitle2'
-              color='textSecondary'
+              variant="subtitle2"
+              color="textSecondary"
               style={{
                 // position: 'absolute', // 변경합니다.
                 bottom: datePosition || 4, // 변경합니다.

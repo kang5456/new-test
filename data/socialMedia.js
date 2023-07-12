@@ -5,9 +5,9 @@
 // you can find out  Material icon. => https://material-ui.com/components/material-icons/
 
 export const socialMedia = {
+  homepage: "http://www.crosscheck.works/",
   instagram: "https://blog.naver.com/sangbin1",
   // github: "https://github.com/kang5456/brand-new",
-   homepage: "http://www.crosscheck.works/",
   // You can add like this
   // twitter: "https://twitter.com",
 };
