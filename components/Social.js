@@ -75,6 +75,7 @@ const Social = ({ color }) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleMouseOut}
+        onMouseLeave={handleMouseOut}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -84,7 +85,7 @@ const Social = ({ color }) => {
           horizontal: 'left',
         }}
         style={{
-          marginLeft: "-115px"
+          marginLeft: "-90px"
         }}
       >
         <MenuItem>
@@ -93,7 +94,7 @@ const Social = ({ color }) => {
             rel="noreferrer noopener"
             href={homepage}
           >
-            HomePage
+            Home
           </a>
         </MenuItem>
         <MenuItem>

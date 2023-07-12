@@ -138,6 +138,7 @@ export default function Release({ pressrelease }) {
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
                             datePosition={-32} // 날짜 위치를 원하는 값으로 조정합니다.
+                            entry={sys.id}
                           />
                         </Grid>
                       ))}

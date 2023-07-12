@@ -77,7 +77,7 @@ const Press = ({ press, morePress }) => {
       title={press?.fields.title}
       description={press?.fields.subTitle}
       ogImage={press?.fields.cover?.fields.file.url || 'default_image_url'}
-      url={`https://yourwebsite.com/press/${generateSlug(press?.fields.title)}`}
+      url={`https://yourwebsite.com/press/${generateSlug(press?.sys.id)}`}
     >
       <div className={classes.contentWrapper}>
         <div className={classes.background}>

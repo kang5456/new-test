@@ -98,6 +98,7 @@ export default function Opinion({ opinion }) {
                             content={fields.content}
                             slug={fields.title}
                             createdAt={sys.createdAt} // 이 부분을 추가합니다.
+                            entry={sys.id}
                           />
                         </Grid>
                       ))}

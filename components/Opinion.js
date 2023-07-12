@@ -79,6 +79,7 @@ const Opinion = ({opinions}) => {
                 datePosition={-6} // 날짜 위치를 원하는 값으로 조정합니다.
                 authorPosition={29}
                 rankPosition={11}
+                entry={sys.id}
               />
             </Grid>
           ))}

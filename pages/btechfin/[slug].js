@@ -75,9 +75,7 @@ const Btechfin = ({ bTechFin, moreBtechfin }) => {
       title={bTechFin?.fields.title}
       description={bTechFin?.fields.subTitle}
       ogImage={bTechFin?.fields.cover?.fields.file.url || 'default_image_url'}
-      url={`https://yourwebsite.com/bTechFin/${generateSlug(
-        bTechFin?.fields.title,
-      )}`}
+      url={`https://yourwebsite.com/bTechFin/${generateSlug(bTechFin?.sys.id)}`}
     >
       <div className={classes.contentWrapper}>
         <div className={classes.background}>

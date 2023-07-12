@@ -57,6 +57,7 @@ const Press = ({
   slug,
   createdAt,
   datePosition,
+  entry
 }) => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -66,7 +67,7 @@ const Press = ({
   const linkAs = type === 'press' ? `/press/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={`/press/${slug}`}>
+    <Link href={`/press/${entry}`}>
       <a style={{ textDecoration: 'none' }}>
         <Card className={classes.root}>
           <div

@@ -60,6 +60,7 @@ const Btechfin = ({
   datePosition,
   authorPosition,
   rankPosition,
+  entry,    
 }) => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -69,7 +70,7 @@ const Btechfin = ({
   const linkAs = type === 'bTechFin' ? `/bTechFin/${slug}` : `/blog/${slug}`;
 
   return (
-    <Link href={`/btechfin/${slug}`}>
+    <Link href={`/btechfin/${entry}`}>
       <a style={{textDecoration: 'none'}}>
         <Card className={classes.root}>
           <div

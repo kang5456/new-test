@@ -86,6 +86,7 @@ export default function Index({ posts, insights, slides, opinions }) {
                         datePosition={-5} // 날짜 위치를 원하는 값으로 조정합니다.
                         authorPosition={30}
                         rankPosition={12}
+                        entry={sys.id}
                       />
                     </Grid>
                   ))}

@@ -141,6 +141,7 @@ export default function Stories({ stories }) {
                             datePosition={-32} // 날짜 위치를 원하는 값으로 조정합니다.
                             authorPosition={1}
                             rankPosition={0}
+                            entry={sys.id}
                           />
                         </Grid>
                       ))}
