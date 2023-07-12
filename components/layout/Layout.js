@@ -7,7 +7,7 @@ const Layout = ({ children, title, description, ogImage, url }) => {
   // website Url
   const pageUrl = "initiative.stiim.co.kr";
   // when you share this page on facebook you'll see this image
-  const ogImg = "/STI_symbol180.png";
+  const ogImg = "/public/STI_symbol180.png";
   // google site vertification
   const GOOGLE_SITE_VERTIFICATION = process.env.GOOGLE_SITE_VERTIFICATION;
   return (
