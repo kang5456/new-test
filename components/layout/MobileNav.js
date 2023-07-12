@@ -44,7 +44,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                 src="/STI.svg"
                 alt="logo"
                 style={{
-                  width: "180px",
+                  width: "120px",
                   position: "relative",
                   zIndex: 100,
                   marginBottom: "5px",
