@@ -32,19 +32,19 @@ export default function MyApp(props) {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href="/STI_symbol180.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/crosscheck_logo32.png"
+          href="/STI_symbol32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="crosscheck_logo16.png"
+          href="STI_symbol16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
