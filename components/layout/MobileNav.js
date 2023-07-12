@@ -37,7 +37,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
             container
             direction="column" // 수직 방향 정렬
             alignItems="center"
-            style={{ marginTop: "20px", marginBottom: "10px" }}
+            style={{ marginTop: "5px", marginBottom: "5px" }}
           >
             <Grid item>
               <img
@@ -47,7 +47,7 @@ const MobileNavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClos
                   width: "120px",
                   position: "relative",
                   zIndex: 100,
-                  marginBottom: "5px",
+                  marginBottom: "-5px",
                   marginTop: "-5px",
                 }}
               />

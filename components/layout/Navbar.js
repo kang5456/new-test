@@ -55,7 +55,8 @@ const NavbarComponent = ({ classes, handleDropdownOpen, handleDropdownClose, han
                 position: "relative",
                 alignItems: "center",
                 left: "135px",
-                flexDirection: "row",    
+                flexDirection: "row",
+                marginTop: "10px",    
             }}
           >
             <Nav.Item
