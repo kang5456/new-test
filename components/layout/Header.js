@@ -4,8 +4,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Grid, Typography, Box } from "@material-ui/core";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import NavbarComponent from './Navbar';
-import MobileNavbarComponent from './MobileNav';
+import NavbarComponent from './header/Navbar';
+import MobileNavbarComponent from './header/MobileNav';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -164,6 +164,7 @@ const Header = () => {
   />
 
   const mobilenavbar = 
+  
   <MobileNavbarComponent
     classes={classes}
     handleDropdownOpen={handleDropdownOpen}
